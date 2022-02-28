@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import constructionTextImg from "../images/construction-text.jpg"
-import EditableTextBlock from "../components/editableTextBlock"
-import MultifunctionalTextarea from "../components/multifunctionalTextarea"
+import constructionTextImg from "../../images/offertypes/construction-text.jpg"
 
 const StyledWrapper = styled.div`
     width: 100%;
@@ -107,17 +105,14 @@ function HelloTextTool(props) {
                     contentEditable={true}
                     tabIndex={0}>
                         Dear Mr. Smith
-                        {/* <EditableTextBlock title="Dear Mr. Smith" textareaHeight="30px" /> */}
                     </StyledLeftHeading>
                     <StyledLeftContent>
                         <p contentEditable={true}>{props.data.text}</p>
-                        {/* <MultifunctionalTextarea title={props.data.text} textareaHeight="25px" /> */}
                     </StyledLeftContent>
                     <StyledLeftRegisterLink>
                         <p contentEditable={true}>
                             <a href={props.data.regLink.url}>{props.data.regLink.word}</a>
                         </p>
-                        {/* <EditableTextBlock title={props.data.regLink.word} link={props.data.regLink.url} textareaHeight="15px"/> */}
                     </StyledLeftRegisterLink>
                 </StyledLeft>
                 <StyledRight>

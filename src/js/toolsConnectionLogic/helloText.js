@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import HelloTextTool from "../toolsComponents/helloTextTool"
 
-
 class HelloText extends React.Component {
     static get toolbox() {
         return {
