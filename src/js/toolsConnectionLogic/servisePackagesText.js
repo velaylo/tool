@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ServisePackagesTextTool from '../toolsComponents/servisePackagesTextTool'
 
+
 class ServisePackagesText extends React.Component {
     static get toolbox() {
         return {
@@ -63,7 +64,6 @@ class ServisePackagesText extends React.Component {
         const rootNode = document.createElement('div');
         rootNode.setAttribute('class', 'service-packages-text');
         this.wrapper = rootNode;
-
 
         ReactDOM.render(
             (

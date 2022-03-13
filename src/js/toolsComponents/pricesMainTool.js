@@ -5,7 +5,7 @@ const StyledPricesMain = styled.div`
     padding-top: 60px;
     padding-bottom: 60px;
     width: 100%;
-    max-width: 1170px;
+    max-width: 1160px;
     margin: 0 auto;
     .heading {
         font-weight: bold;
@@ -32,7 +32,18 @@ const StyledPricesMain = styled.div`
 
 function AddPricesBlocks(props) {
     let allPrices = props.pricesInformation;
+    let listPrices = []
 
+    for(let key in allPrices) {
+        listPrices[key] = AddSinglePriceBlock(allPrices[key])
+    }
+}
+
+function AddSinglePriceBlock(obj) {
+    console.log(obj)
+    // if(obj) {
+    //     return
+    // }
 }
 
 function PricesMainTool(props) {

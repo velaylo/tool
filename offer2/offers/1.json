@@ -1,0 +1,639 @@
+{
+  "offer_id": 1,
+  "manager_id": 9,
+  "name": "Default EN",
+  "data": {
+    "time": 1645004140925,
+    "blocks": [
+      {
+        "id": "-22JVkyNwi",
+        "type": "Hello",
+        "data": {
+          "dataId": "01-hello-TM1Njk4",
+          "contents": {
+            "slogan": "European online marketplace of commercial vehicles",
+            "heading": "Commercial Offer",
+            "visitors_text": "visitors per month",
+            "sellers_text": "sellers",
+            "versions_text": "language versions",
+            "years_text": "years online"
+          },
+          "logo": "intl",
+          "type": "construction"
+        }
+      },
+      {
+        "id": "qwBHdoAAJy",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "xxZPWjU_iU",
+        "type": "HelloText",
+        "data": {
+          "dataId": "02-hello-text-Dg3NTA2",
+          "contents": {
+            "heading": "Dear Mr. Smith"
+          },
+          "text": [
+            "Введите текст..."
+          ],
+          "regLink": {
+            "word": "Register",
+            "url": "https://www.truck1.eu/_TEN_registration.html"
+          }
+        }
+      },
+      {
+        "id": "mRqxvkm0uT",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "x4F4yGZUum",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "FppHK6VSQ0",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "QpzbggHsGb",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "eoHm7GztRQ",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "wwVKhn3MpH",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "BIA9CMRfcM",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "PTgfjJpzyj",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "BaDbqZ-T1A",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "ky5FYDw--M",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "kb_Osn7zRm",
+        "type": "PackagePriceList",
+        "data": {
+          "dataId": "03-packages-pricelist-DUxNzA4",
+          "contents": {
+            "heading": "Service Packages",
+            "packageGold_header": "GOLD",
+            "packageGold_slogan": "ALL YOU EVER NEED",
+            "packageStandard_header": "Standard",
+            "packageStandard_slogan": "STARTING OUT",
+            "packagePremium_header": "PREMIUM",
+            "packagePremium_slogan": "MOST POPULAR PLAN"
+          },
+          "lists": {
+            "list_gold": [
+              "All services of Standard and Premium packages",
+              "Profile of the company + Article",
+              "Additonal promotion in our social media (Instagram, Facebook)",
+              "360-degree video of the vehicle",
+              "Scanner of the stock from personal website",
+              "Banner"
+            ],
+            "list_standard": [
+              "Ads in all 31 language versions",
+              "Up to 20 photos per ad",
+              "Profile of the company",
+              "Detailed statistics",
+              "Personal account manager"
+            ],
+            "list_premium": [
+              "All services of Standard package",
+              "Possibility to upload the video for each ad",
+              "\"Reliable\" and \"Official Dealer\" statuses",
+              "Automatic transfer of your stock",
+              "Links to your social media and personal website",
+              "Premium promotion",
+              "Logo in \"Top Sellers\""
+            ]
+          },
+          "prices": [
+            {
+              "id": 2,
+              "enableCrossed": false,
+              "prices": {
+                "price_standard": {
+                  "topText": "50 ads - 12 months",
+                  "currency": "€",
+                  "price_default": {
+                    "price_value": "77",
+                    "price_text": "/ m. (total 924€)"
+                  },
+                  "price_crossed": {
+                    "price_value": "...",
+                    "price_text": "..."
+                  }
+                },
+                "price_premium": {
+                  "topText": "50 ads - 12 months",
+                  "currency": "€",
+                  "price_default": {
+                    "price_value": "85",
+                    "price_text": "/ m. (total 1017€)"
+                  },
+                  "price_crossed": {
+                    "price_value": "...",
+                    "price_text": "..."
+                  }
+                },
+                "price_gold": {
+                  "topText": "50 ads - 12 months",
+                  "currency": "€",
+                  "price_default": {
+                    "price_value": "139",
+                    "price_text": "/ m. (total 1663€)"
+                  },
+                  "price_crossed": {
+                    "price_value": "...",
+                    "price_text": "..."
+                  }
+                }
+              }
+            }
+          ],
+          "show_standard": true,
+          "show_premium": true,
+          "show_gold": true
+        }
+      },
+      {
+        "id": "DIqA8ailk_",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "FvfwgSf5gh",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "vPoc67n2HV",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "Rq6bFNCxmj",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "5hqjAUbG9U",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "2mblHJseqZ",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "labA0pWM5c",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "WL-f0m7qZR",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "62MC5tVeEr",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "R0nflrqshO",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "kd7OqkujGT",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "g9HfbgM9sz",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "mQMWXjJ0XP",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "XfS2tILf7I",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "7bv7oaKY9e",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "AvPTKJULWK",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "K0rkIrPWbB",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "zKZMw6y4DV",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "yVGo2_8qsn",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "oFJ_vjf0tD",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "gVcmliqZ-g",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "iYF9EtrMge",
+        "type": "PackagesText",
+        "data": {
+          "dataId": "04-service-packages-text-TY3OTM0",
+          "contents": {
+            "heading": "SERVICE PACKAGES ALSO INCLUDES:"
+          },
+          "text": {
+            "left": [
+              {
+                "title": "Ad views",
+                "content": "You can see the quantity of views in your control panel"
+              },
+              {
+                "title": "Buyers calls",
+                "content": "You can get the quantity of clicks on your phone numbers in your control panel, or from your personal manager"
+              },
+              {
+                "title": "Direct requests",
+                "content": "Buyers' requests on definite ads will be sent to your email and saved in your control panel"
+              },
+              {
+                "title": "\"Wanted\" Messages",
+                "content": "Messages from buyers intented in buying some kind of equipment, for example \"I want to buy MAN TGX 26.480 under 70000$\""
+              }
+            ],
+            "right": [
+              {
+                "title": "Personal business card",
+                "content": "Everything is included in the price, no extra charges: your own page with full contacts, logo, link to your website, photos, video and promotional text about your company. Also you’ll get detailed stats for your stock and every ad, direct promotion of your vehicles with Google Adwords and support of the personal account manager"
+              },
+              {
+                "title": "Automatic update",
+                "content": "No additional charges for placing and updating your ads. We’ll import your stock using the source of your choice: your website, 3rd party website, zip, xml or any other data file"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "_rvFLXNn1z",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "JHdlCpV9eT",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "iO0l92LZeF",
+        "type": "CreditsNotice",
+        "data": {
+          "dataId": "05-credits-notice-Tc3MDMy",
+          "contents": {
+            "creditsNotice": "You can use your credits to promote your ads to the top of search results, to highlight your ads with color or advertising text to gain more attention"
+          }
+        }
+      },
+      {
+        "id": "D5yRYZPa3m",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "bwE3hboB9H",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "rspb8DrPtc",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "E5oSwvtsEA",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "9lZnD3SfWC",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "9u0Ib3ExKV",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "V-SPWYIbBX",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "uAgJaRU9fA",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "yuWYNxnoO1",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "foKBaY9-vD",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "rFlADp5uQr",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "PQdj0rkp2o",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "nJX5ZEmrjc",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "pxViJbU0j7",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "4qZVS9LMi0",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "L3HeekRoTv",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "11GyJpEsq3",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "WDnFMZc9cz",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "IapGjH3ASf",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "V__Hx9PO8Z",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "N1hkF-TEdl",
+        "type": "CreditsPrices",
+        "data": {
+          "dataId": "06-credits-prices-DA2MDU2",
+          "contents": {
+            "heading": "PRICES FOR CREDITS (PROMO)",
+            "slogan": " Use your credits to promote your ads to the top of search results, to highlight your ads with color or advertising text to gain more attention"
+          },
+          "prices": [
+            {
+              "value": "25",
+              "currency": "€",
+              "text": "500 credits"
+            },
+            {
+              "value": "150",
+              "currency": "€",
+              "text": "5 000 credits"
+            },
+            {
+              "value": "45",
+              "currency": "€",
+              "text": "1 000 credits"
+            },
+            {
+              "value": "300",
+              "currency": "€",
+              "text": "10 000 credits"
+            },
+            {
+              "value": "80",
+              "currency": "€",
+              "text": "2 000 credits"
+            }
+          ],
+          "hideSlogan": false
+        }
+      },
+      {
+        "id": "_77_5u824b",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "NREHuIxkfH",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "KZi7WRi9oZ",
+        "type": "CreditsInfo",
+        "data": {
+          "dataId": "07-credits-info-TM0ODUy",
+          "contents": {
+            "heading": "INFO ABOUT CREDITS:"
+          },
+          "text": [
+            {
+              "def": "<span class=\"text-orange text-bold text-roboto\">TOP</span> ad is placed first in results list. If more than one TOP ad appears in the results, random ad is shown.",
+              "price": "30 credits per day per ad"
+            },
+            {
+              "def": "Ads with <span class=\"text-green text-bold text-roboto\">CUSTOM TEXT</span> are good to announce special proposals, for example sales, discounts etc.",
+              "price": "20 credits per day per ad"
+            },
+            {
+              "def": "<span class=\"text-blue text-bold text-roboto\">COLOR ads</span> are marked with contrast background color to attract more attention.",
+              "price": "20 credits per day per ad"
+            }
+          ]
+        }
+      }
+    ],
+    "version": "2.22.2"
+  }
+}

@@ -5,7 +5,7 @@ const StyledHr = styled.hr`
     border: none;
     border-top: 1px solid #eaeaea;
     width: 100%;
-    max-width: 1170px;
+    max-width: 1160px;
     margin: 0 auto;
 `
 

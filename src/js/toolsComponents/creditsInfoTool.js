@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const StyledCreditsInfo = styled.div`
     padding-top: 80px;
     width: 100%;
-    max-width: 1170px;
+    max-width: 1160px;
     margin: 0 auto;
     line-height: 1.55;
     font-size: 18px;

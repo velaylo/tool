@@ -13,9 +13,9 @@ import agriculture from "../../images/offertypes/agriculture-top.jpg";
 
 const StyledHelloScreen = styled.div`
     position: relative;
-    .hello_header {
+    .hello--header {
         width: 100%;
-        max-width: 1170px;
+        max-width: 1160px;
         height: 100px;
         background-color: #2b2b2b;
         margin-left: auto;
@@ -57,11 +57,11 @@ const StyledHelloScreen = styled.div`
             }
         }
     }
-    .hello_information {
+    .hello-information {
         width: 100%;
-        max-width: 1170px;
+        max-width: 1160px;
         margin: 0 auto;
-        background-color: #fff;
+        background-color: #fcfcfc;
         border-top-right-radius: 15px;
         border-top-left-radius: 15px;
         position: relative;
@@ -75,6 +75,7 @@ const StyledHelloScreen = styled.div`
             text-align: center;
             text-transform: uppercase;
             line-height: 1.55;
+            color: #323F4B;
             :focus-visible {
                 outline: solid 2px lightseagreen;
             }
@@ -108,7 +109,7 @@ const StyledHelloScreen = styled.div`
             }
         }
     }   
-    .hello_image {
+    .hello-image {
         position: absolute;
         z-index: 1;
         top: 0;
@@ -152,8 +153,14 @@ function RenderAchievements(props) {
     const achievements = ['visitors', 'sellers', 'versions', 'years'];
     const listAchievements = achievements.map((item) => 
         <div key={item} className="achieve">
-            <div className="value heading">{props.types[item]}</div>
-            <div contentEditable={true} tabIndex={0} className="key">{props.types[`${item}_text`]}</div>
+            <div className="value heading" data-key={item}>{props.types[item]}</div>
+            <div 
+                suppressContentEditableWarning={true} 
+                contentEditable={true} 
+                tabIndex={0} 
+                className="key">
+                    {props.types[`${item}_text`]}
+            </div>
         </div>
     )
     
@@ -164,18 +171,38 @@ function RenderAchievements(props) {
 
 function HelloScreenTool(props) {
     return (
-        <StyledHelloScreen className="hello_wrapper">
-            <div className="hello_header">
-                <div className="logo" data-logo="intl" data-value-attr="logo"></div>
-                <span className="slogan" contentEditable={true} tabIndex={0}>{props.dataContents.slogan}</span>
+        <StyledHelloScreen className="hello--wrapper">
+            <div className="hello--header">
+                <div
+                    className="logo" 
+                    data-logo="intl" 
+                    data-value-attr="logo">
+                </div>
+                <span 
+                    className="slogan" 
+                    contentEditable={true} 
+                    suppressContentEditableWarning={true} 
+                    tabIndex={0}>
+                        {props.dataContents.slogan}
+                </span>
             </div>
-            <div className="hello_information">
-                <div contentEditable={true} tabIndex={0} className="heading">{props.dataContents.heading}</div>
-                <div className="achievements">
+            <div className="hello-information">
+                <div
+                    contentEditable={true}
+                    suppressContentEditableWarning={true}  
+                    tabIndex={0} 
+                    className="heading">
+                        {props.dataContents.heading}
+                </div>
+                <div className="achievements" data-key="stats">
                     <RenderAchievements types={props.dataContents} />
                 </div>
             </div>
-            <div className="hello_image" data-type={props.type} data-value-attr="type"></div>
+            <div
+                className="hello-image" 
+                data-type={props.type} 
+                data-value-attr="type">
+            </div>
         </StyledHelloScreen>
     )
 }

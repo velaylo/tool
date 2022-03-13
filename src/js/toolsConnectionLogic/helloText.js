@@ -40,6 +40,8 @@ class HelloText extends React.Component {
         this.isFocusedP = null;
     }
 
+    
+
     render() {
         const rootNode = document.createElement('div');
         rootNode.setAttribute('class', this.CSS.wrapper);
@@ -51,11 +53,14 @@ class HelloText extends React.Component {
             };
         }
 
+
+
         ReactDOM.render(
             (
                 <HelloTextTool
                    onDataChange={onDataChange}
                    data={this.data}
+                   type='construction'
                     />
             ),
             rootNode);

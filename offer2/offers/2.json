@@ -1,0 +1,625 @@
+{
+  "offer_id": 2,
+  "manager_id": 9,
+  "name": "Default DE",
+  "data": {
+    "time": 1645004177054,
+    "blocks": [
+      {
+        "id": "tGDDI3zgF4",
+        "type": "Hello",
+        "data": {
+          "dataId": "01-hello-Tc0MDc0",
+          "contents": {
+            "slogan": "Nutzfahrzeuge aus Europa zu verkaufen",
+            "heading": "KOMMERZIELLES ANGEBOT",
+            "visitors_text": "Besucher pro Monat",
+            "sellers_text": "Händler",
+            "versions_text": "Sprachversionen",
+            "years_text": "Jahre Online"
+          },
+          "logo": "de",
+          "type": "construction"
+        }
+      },
+      {
+        "id": "J6k3f0mDUN",
+        "type": "HelloText",
+        "data": {
+          "dataId": "02-hello-text-Tk3NjI1",
+          "contents": {
+            "heading": "Dear Mr. Smith"
+          },
+          "text": [
+            "Введите текст..."
+          ],
+          "regLink": {
+            "word": "Anmelden",
+            "url": "https://www.alle-lkw.de/_TDE_registration.html"
+          }
+        }
+      },
+      {
+        "id": "fvysMzIi8c",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "oYufhChpwN",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "igsmphaLpd",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "0wVNXAFt-L",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "e7WOrY6MIz",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "3MJ5t4W3Pn",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "jLpaddOW_-",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "ceQ4twEJkA",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "_XnVd7FYi_",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "LGHNjU2WhP",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "mJ5AZnShOF",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "uKtMIkonZu",
+        "type": "PackagePriceList",
+        "data": {
+          "dataId": "03-packages-pricelist-zMxMTY3",
+          "contents": {
+            "heading": "SERVICEPAKETE",
+            "packageGold_header": "GOLD",
+            "packageGold_slogan": "ALLES, WAS DU BRAUCHST",
+            "packageStandard_header": "Standard",
+            "packageStandard_slogan": "ANFANGEN",
+            "packagePremium_header": "PREMIUM",
+            "packagePremium_slogan": "BELIEBTESTER PLAN"
+          },
+          "lists": {
+            "list_gold": [
+              "Alle Leistungen der Standard- und Premium-Pakete",
+              "Visitenkarte + Artikel",
+              "Zusätzliche Förderung Ihres Unternehmens in unseren sozialen Medien (Instagram/Facebook)",
+              "360-Grad-Videoinspektion",
+              "Möglichkeit der Ausarbeitung des personalen Scanners von der Homepage",
+              "Bannerwerbung "
+            ],
+            "list_standard": [
+              "Ihre Anzeigen auf 31 Sprachversionen",
+              "Bis zu 20 Fotos für jede Anzeige",
+              "Visitenkarte Ihrer Firma",
+              "Detaillierte Statistik",
+              "Ihr persönlicher Manager"
+            ],
+            "list_premium": [
+              "Alle Leistungen der Standard-Pakete",
+              "Die Möglichkeit, Videos für jede Anzeige hochzuladen",
+              "Status \"Zuverlässig\" und \"Offizieller Händler\"",
+              "Automatische Datenübertragung",
+              "Direktlinks auf Ihre soziale Medien und Ihre persönliche Webseite",
+              "Premium Hervorhebung",
+              "Logo in \"Top Händler\" "
+            ]
+          },
+          "prices": [
+            {
+              "id": 2,
+              "enableCrossed": false,
+              "prices": {
+                "price_standard": {
+                  "topText": "50 Anzeigen - 12 Monate",
+                  "currency": "€",
+                  "price_default": {
+                    "price_value": "77",
+                    "price_text": "/ M. (total 924€)"
+                  },
+                  "price_crossed": {
+                    "price_value": "...",
+                    "price_text": "..."
+                  }
+                },
+                "price_premium": {
+                  "topText": "50 Anzeigen - 12 Monate",
+                  "currency": "€",
+                  "price_default": {
+                    "price_value": "85",
+                    "price_text": "/ M. (total 1017€)"
+                  },
+                  "price_crossed": {
+                    "price_value": "...",
+                    "price_text": "..."
+                  }
+                },
+                "price_gold": {
+                  "topText": "50 Anzeigen - 12 Monate",
+                  "currency": "€",
+                  "price_default": {
+                    "price_value": "139",
+                    "price_text": "/ M. (total 1663€)"
+                  },
+                  "price_crossed": {
+                    "price_value": "...",
+                    "price_text": "..."
+                  }
+                }
+              }
+            }
+          ],
+          "show_standard": true,
+          "show_premium": true,
+          "show_gold": true
+        }
+      },
+      {
+        "id": "7kJcKTiIg3",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "7UDG-DPdS2",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "9Zt9dMaYHS",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "d0eIo4g3iD",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "B4R39hl8e8",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "WFE43B-U2D",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "oaHTdqYm2E",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "lJTHvuzWBl",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "zHN5Y4jpa4",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "nho1HZ7i3L",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "1IS2XqdhN5",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "aUGIDJ1mU-",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "o0F6ngIfXI",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "kqJNmrIXaZ",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "RqOVVmEnXa",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "R9Dd_GRAuf",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "Kf6v4tJOIo",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "oGhYZfeExF",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "e_buXHRksp",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "jkZGTKG7t5",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "n_O0XoXovg",
+        "type": "PackagesText",
+        "data": {
+          "dataId": "04-service-packages-text-DcxMzU5",
+          "contents": {
+            "heading": "LEISTUNGSPAKET UMFASST:"
+          },
+          "text": {
+            "left": [
+              {
+                "title": "Anzeigenansichten",
+                "content": "Sie können die Zahl der Ansichten in der Schalttafel überwachen."
+              },
+              {
+                "title": "Käuferanrufe",
+                "content": "Sie können sich nach der Zahl der Klicks auf Ihren Telefonen in der Schalttafel oder bei Ihrem persöhnlichen Manager erkundigen."
+              },
+              {
+                "title": "Direkte Anfragen",
+                "content": "Käuferanfragen nach bestimmten Anzeigen, die an Ihre E-Mail gesendet und in der Schalttafel gespeichert werden."
+              },
+              {
+                "title": "Fahrzeugbestellung",
+                "content": "Meldungen von Käufern, die ein Fahrzeug kaufen wollen, z.B.: Ich will einen MAN TGX 26.480 bis zu 70000 Euro kaufen."
+              }
+            ],
+            "right": [
+              {
+                "title": "Vorstellungskarte",
+                "content": "Dieser Preis umfasst alle Details, keine zusätzliche Kosten: Ihre persöhnliche Seite mit Kontakten, dem Logo, dem Link zu Ihrer eigenen Website, Bildern, dem Video und einem Werbetext über Ihre Firma. Dabei können Sie eine ausführliche Statistik zu Ihren Anzeigen insgesamt und einzeln durchschauen. Additional werden die Anzeigen mit Google Adwords beworben. Darüber hinaus ist es immer möglich, Ihren persöhnlichen Manager um Hilfe anzugehen."
+              },
+              {
+                "title": "Automatisches Update",
+                "content": "Ohne zusätzliche Kosten für die Platzierung und das Update laden wir Ihre Anzeigen in jeder Ihnen genehmen Weise hoch: von Ihrer eigenen Website, durch den Dritten/ eine Vermittlerfirma, mithilfe von ZIP- und XML-Datein oder anderen Dateien."
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "pBaVjye34M",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "UxHqWPGmlb",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "qBJ05Cafso",
+        "type": "CreditsNotice",
+        "data": {
+          "dataId": "05-credits-notice-zU3OTk3",
+          "contents": {
+            "creditsNotice": "Es ist möglich auch zu Krediten zu greifen, um die Anzeigen an der Spitze der Suchergebnisse zu bringen. Markieren Sie die Anzeigen mit der Farbe, um mehr Aufmerksamkeit zu erhalten."
+          }
+        }
+      },
+      {
+        "id": "5FyszqNmNa",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "JVI81puycu",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "bEViAV82TW",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "nXPyvKed37",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "6s34oXE29_",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "a2zy0osBQE",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "YwaaHOqYXX",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "VVgrMrf_Ra",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "dKISoSXM2s",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "8IEDU0-Uh_",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "7STdMLwvoS",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "eb4DN0FVJF",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "G3BY_0PuyK",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "M7ImLPxY-5",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "IQyEG88xh2",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "4HOae4C7Ji",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "_0MgyzI6hM",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "SOJfOHK0FV",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "v_sQbM65Q0",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "f6TANCF_HD",
+        "type": "CreditsPrices",
+        "data": {
+          "dataId": "06-credits-prices-DU5MzIw",
+          "contents": {
+            "heading": "PROMOTION",
+            "slogan": " Es ist möglich auch zu Krediten zu greifen, um die Anzeigen an der Spitze der Suchergebnisse zu bringen. Markieren Sie die Anzeigen mit der Farbe, um mehr Aufmerksamkeit zu erhalten."
+          },
+          "prices": [
+            {
+              "value": "25",
+              "currency": "€",
+              "text": "500 Kredite"
+            },
+            {
+              "value": "150",
+              "currency": "€",
+              "text": "5 000 Kredite"
+            },
+            {
+              "value": "45",
+              "currency": "€",
+              "text": "1 000 Kredite"
+            },
+            {
+              "value": "300",
+              "currency": "€",
+              "text": "10 000 Kredite"
+            },
+            {
+              "value": "80",
+              "currency": "€",
+              "text": "2 000 Kredite"
+            }
+          ],
+          "hideSlogan": false
+        }
+      },
+      {
+        "id": "I63JoiON4d",
+        "type": "CreditsInfo",
+        "data": {
+          "dataId": "07-credits-info-DI1Mzkx",
+          "contents": {
+            "heading": "WÄHLEN SIE DEN TYP DER PROMOTION"
+          },
+          "text": [
+            {
+              "def": "<span class=\"text-orange text-bold text-roboto\">TOP-Anzeige</span> wird als Erste bei den Suchergebnissen platziert. Bei mehreren Top-Anzeigen in den Suchergebnissen wird die zufällige Anzeige als Erste platziert.",
+              "price": "30 Kredite pro Tag"
+            },
+            {
+              "def": "Die Anzeigen mit dem <span class=\"text-green text-bold text-roboto\">TEXT</span> passen für die speziellen Angebote, z.B. Rabatte, Ausverkauf etc..",
+              "price": "20 Kredite pro Tag"
+            },
+            {
+              "def": "Die Anzeige mit der <span class=\"text-blue text-bold text-roboto\">KontrastFARBE</span> ruft mehr Aufmerksamkeit hervor.",
+              "price": "20 Kredite pro Tag"
+            }
+          ]
+        }
+      },
+      {
+        "id": "dmhlgQuhb8",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      },
+      {
+        "id": "nm80eetfke",
+        "type": "paragraph",
+        "data": {
+          "text": "&nbsp;&nbsp;&nbsp;"
+        }
+      }
+    ],
+    "version": "2.22.2"
+  }
+}

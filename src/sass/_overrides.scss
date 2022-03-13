@@ -3,14 +3,28 @@
   z-index: 999;
 }
 
+.ce-settings {
+  max-width: 114px;
+}
+
 .ce-block__content,
 .ce-toolbar__content {
   max-width: 100%;
 }
 
+.ce-toolbar__actions {
+  width: 100%;
+}
+
 .ce-toolbar__plus,
 .codex-editor--narrow .ce-toolbar__plus {
-  left: -40px;
+  position: absolute;
+  left: -75px;
+}
+
+.ce-toolbar__actions-buttons {
+  position: absolute;
+  right: -1px;
 }
 
 .ce-toolbar__actions,
@@ -19,8 +33,14 @@
 }
 
 .ce-paragraph {
-  //   @include container;
-  //   @include text;
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
+  &:focus-visible {
+    outline: solid 2px lightseagreen;
+  }
 }
 
 @media screen and (min-width: 651px) {

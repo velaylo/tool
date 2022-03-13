@@ -1,5 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
+import removingTextTool from "../components/removingTextTool";
 
 const StyledServisePackagesTextWrapper = styled.div`
     .service-packages-text_heading {
@@ -19,7 +20,7 @@ const StyledServisePackagesTextWrapper = styled.div`
             }
         }
     }
-    .service-packages-text_content {
+    .service-packages-text--content {
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -32,6 +33,30 @@ const StyledServisePackagesTextWrapper = styled.div`
         .service-packages-text_left-content, .service-packages-text_right-content {
             width: 370px;
             position: relative;
+            &:hover {
+                .add_ {
+                    display: flex;  
+                }
+            }
+            .list-control-button {
+                position: absolute;
+                z-index: 2;
+                background: #fff;
+                font-size: 20px;
+                font-weight: bold;
+                border: 1px solid #ccc;
+                display: none;
+            }
+            .add_ {
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 98%;
+                &:hover {
+                    display: flex;  
+                }
+            }
             .item_ {
                 padding-left: 50px;
                 margin-bottom: 40px;
@@ -79,6 +104,24 @@ const StyledServisePackagesTextWrapper = styled.div`
                     }
                 }
             }
+            .list-control-button {
+                position: absolute;
+                z-index: 2;
+                background: #fff;
+                font-size: 20px;
+                font-weight: bold;
+                border: 1px solid #ccc;
+                display: none;
+            }
+            .remove_ {
+                position: absolute;
+                top: unset;
+                right: -20px;
+                left: unset;
+            }
+            .is-visible {
+                display: flex;
+            }
         }
     }
 `
@@ -96,30 +139,127 @@ function AddContent(props) {
     )
 }
 
+function initRemoveParagraphTool(event) {
+    let  mainContainer = document.querySelector('#service-packages-text');
+    let sideContainer = event.target.closest('div[data-side]');
+    let side = sideContainer.getAttribute("data-side") 
+
+    return removingTextTool({
+        wrapper: mainContainer,
+        parent: `.service-packages-text--content .${side}`,
+        focusedElem: event.trget,
+        getChild: function(_, focused) {
+          return focused.parentNode;
+        },
+        focusEventCondition: function(target) {
+          return target.parentNode.classList.contains('item_');
+        }
+    })();
+}
+
 const addSingleContent = ({ title, content }) => {
 
     return (
-        <div key={title} className='item_'>
-            <div className='circle'></div>
-            <div contentEditable={true} tabIndex={0} className='title_'>{title}</div>
-            <div contentEditable={true} tabIndex={0} className='content_'>{content}</div>
+        <div
+            key={title} 
+            className='item_'
+            onClick={initRemoveParagraphTool}>
+                <div className='circle'></div>
+                <div
+                    contentEditable={true} 
+                    tabIndex={0} 
+                    suppressContentEditableWarning={true}
+                    className='title_'>
+                        {title}
+                </div>
+                <div
+                    contentEditable={true} 
+                    tabIndex={0} 
+                    className='content_'
+                    suppressContentEditableWarning={true}>
+                        {content}
+                </div>
         </div>
     )
 }
 
 function ServisePackagesTextTool(props) {
 
-    return (
-        <StyledServisePackagesTextWrapper>
-            <div className='service-packages-text_heading'>
-                <div contentEditable={true} className="heading">SERVICE PACKAGES ALSO INCLUDES:</div>
+    // Adding paragraph tool
+    function initAddParagraphTool(event) {
+        let  mainContainer = document.querySelector('#service-packages-text');
+        let button = mainContainer.querySelector('.add_');
+
+        button.addEventListener('click', onAddParagraph(event))
+    }
+
+
+    function onAddParagraph(event) {
+        let item = document.createElement('div');
+        item.classList.add('item_');
+        item.addEventListener('click', initRemoveParagraphTool)
+        item.innerHTML = addParagraph()
+        let container = event.target.closest('div.information-container');
+  
+        container.appendChild(item)
+
+        let lastParagraph = getLastParagraph(event);
+        lastParagraph.focus()
+    }
+
+    function getLastParagraph(event) {
+        let  container = event.target.closest('div.information-container');
+        let item = container.querySelectorAll('div.item_');
+
+        return item[item.length - 1];
+    }
+
+    function addParagraph() {
+
+        return (
+            `
+            <div class='circle'></div>
+            <div
+                contenteditable=${true} 
+                tabindex=${0} 
+                class='title_'>
+                    Title
             </div>
-            <div className='service-packages-text_content'>
-                <div className='service-packages-text_left-content'>
-                    <AddContent content={props.content.left} />
+            <div
+                contenteditable=${true} 
+                tabindex=${0} 
+                class='content_'>
+                    Content
+            </div>`
+        )
+    }
+
+    return (
+        <StyledServisePackagesTextWrapper id="service-packages-text">
+            <div className='service-packages-text_heading'>
+                <div 
+                    contentEditable={true} 
+                    suppressContentEditableWarning={true}
+                    className="heading">
+                        SERVICE PACKAGES ALSO INCLUDES:
                 </div>
-                <div className='service-packages-text_right-content'>
-                <AddContent content={props.content.right} />
+            </div>
+            <div className='service-packages-text--content'>
+                <div className='service-packages-text_left-content left information-container' data-side='left'>
+                    <AddContent content={props.content.left} />
+                    <div 
+                        className="list-control-button add_ cdx-settings-button" 
+                        onClick={initAddParagraphTool}>
+                            +
+                    </div>
+                </div>
+                <div className='service-packages-text_right-content right information-container' data-side='right'>
+                    <AddContent content={props.content.right} />
+                    <div 
+                        className="list-control-button add_ cdx-settings-button" 
+                        onClick={initAddParagraphTool}>
+                            +
+                    </div>
                 </div>
             </div>
         </StyledServisePackagesTextWrapper>

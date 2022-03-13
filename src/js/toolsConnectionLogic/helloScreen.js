@@ -290,18 +290,47 @@ class HelloScreen extends React.Component {
     }
 
     render() {
-        const rootNode = document.createElement('div');
-        rootNode.setAttribute('id', 'hello-screen');
+      const api = endpoint => window.location.hostname.indexOf('truck1.eu') !== -1 ? `https://www.truck1.eu/t1api/comOffer/${endpoint}` : `http://localhost/offer2/index.php/${endpoint}`;
+      const that = this;
 
-        this.wrapper = rootNode;
+      try {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', api('stats'));
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4) {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              let json = JSON.parse(xhr.responseText);
+              let stats = that.wrapper.querySelector('[data-key="stats"]');
+              for (const key in json) {
+                let value = stats.querySelector(`.value[data-key=${key}]`);
+                value.textContent = json[key][0];
+              }
+            } else {
+              console.log(xhr.responseText);
+            }
+          }
+        }
+        xhr.send()
+      } catch (error) {
+        console.log(error);
+      }
 
-        ReactDOM.render(
-            (
-                <HelloScreenTool dataContents={this.data.contents} type="construction"/>
-            ),
-            rootNode);
+
+      const rootNode = document.createElement('div');
+      rootNode.setAttribute('id', 'hello-screen');
+
+      this.wrapper = rootNode;
+
+      ReactDOM.render(
+        (
+          <HelloScreenTool
+            dataContents={this.data.contents} 
+            type="construction"
+            />
+        ),
+        rootNode);
         
-        return rootNode
+      return rootNode
     }
 }
 
