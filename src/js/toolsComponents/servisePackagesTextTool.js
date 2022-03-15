@@ -5,16 +5,16 @@ import removingTextTool from "../components/removingTextTool";
 const StyledServisePackagesTextWrapper = styled.div`
     .service-packages-text_heading {
         width: 100%;
-        max-width: 970px;
+        max-width: 968px;
         margin: 0 auto;
         padding-top: 40px;
         .heading {
-            font-weight: bold;
+            font-weight: 700;
             font-size: 24px;
             text-transform: capitalize;
             text-align: center;
             color: #323F4B;
-            line-height: 1.55;
+            line-height: 37px;
             :focus-visible {
                 outline: solid 2px lightseagreen;
             }
@@ -29,7 +29,7 @@ const StyledServisePackagesTextWrapper = styled.div`
         line-height: 1.55;
         font-size: 18px;
         color: #6b6b6b;
-        padding-top: 70px;
+        padding-top: 40px;
         .service-packages-text_left-content, .service-packages-text_right-content {
             width: 370px;
             position: relative;
@@ -58,24 +58,25 @@ const StyledServisePackagesTextWrapper = styled.div`
                 }
             }
             .item_ {
-                padding-left: 50px;
+                padding-left: 40px;
                 margin-bottom: 40px;
                 position: relative;
                 .circle {
                     position: absolute;
-                    width: 30px;
-                    height: 30px;
+                    width: 24px;
+                    height: 24px;
                     top: 0;
                     left: 0;
-                    border-radius: 15px;
-                    background-image: linear-gradient(133.61deg, #80F563 0%, #22CB14 100%);       
+                    border-radius: 16px;
+                    background-color: #47535F;       
                     &::after {
                       content: '';
-                      width: 12px;
+                      width: 10px;
                       height: 5px;
                       position: absolute;
+                      font-weight: bold;
                       left: 50%;
-                      top: 48%;
+                      top: 41%;
                       transform: translate(-50%, -50%) rotateZ(-45deg);
                       border: 1px solid #fff;
                       border-top-color: transparent;
@@ -84,34 +85,26 @@ const StyledServisePackagesTextWrapper = styled.div`
                 }
         
                  .title_ {
-                    font-weight: 500;
+                    font-weight: 700;
                     font-size: 20px;
                     color: #323F4B;
-                    margin-bottom: 5px;
-                    line-height: 1.55;
+                    margin-bottom: 4px;
+                    line-height: 31px;
                     :focus-visible {
                         outline: solid 2px lightseagreen;
                     }
                  }
         
                 .content_ {
-                    line-height: 1.55;
-                    color: #6b6b6b;
+                    line-height: 25px;
+                    font-weight: 400;
+                    color: #47535F;
                     font-family: "Source Sans Pro", sans-serif;
                     font-size: 16px;
                     :focus-visible {
                         outline: solid 2px lightseagreen;
                     }
                 }
-            }
-            .list-control-button {
-                position: absolute;
-                z-index: 2;
-                background: #fff;
-                font-size: 20px;
-                font-weight: bold;
-                border: 1px solid #ccc;
-                display: none;
             }
             .remove_ {
                 position: absolute;

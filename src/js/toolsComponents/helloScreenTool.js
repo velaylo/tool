@@ -23,9 +23,9 @@ const StyledHelloScreen = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 33px 100px;
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
+        padding: 32px 100px;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
         color: #fff;
         position: relative;
         z-index: 2;
@@ -51,7 +51,8 @@ const StyledHelloScreen = styled.div`
         .slogan {
             font-family: 'Source Sans Pro', sans-serif;
             font-size: 18px;
-            line-height: 1.55;
+            font-weight: bold;
+            line-height: 28px;
             :focus-visible {
                 outline: solid 2px lightseagreen;
             }
@@ -61,7 +62,7 @@ const StyledHelloScreen = styled.div`
         width: 100%;
         max-width: 1160px;
         margin: 0 auto;
-        background-color: #fcfcfc;
+        background-color: #F8F9F9;
         border-top-right-radius: 15px;
         border-top-left-radius: 15px;
         position: relative;
@@ -83,25 +84,37 @@ const StyledHelloScreen = styled.div`
         .divider-line {
             max-width: 770px;
         }
+        .hello-screen-hr {
+            width: 770px;
+            height: 1px;
+            background-color: #E3E8F1;
+            margin: 0 auto;
+            flex: none;
+            order: 1;
+            flex-grow: 0;
+            border: none;
+        }
         .achievements {
-            padding: 50px 60px;
+            padding: 60px 60px;
             display: flex;
             justify-content: space-between;
             .achieve {
               text-align: center;
               .value {
                 font-size: 24px;
-                font-weight: 500;
+                font-weight: bold;
                 letter-spacing: initial;
                 margin-bottom: 0;
-                line-height: 1.55;
+                line-height: 37px;
+                color: #323F4B;
               }
               .key {
-                margin-top: 5px;
+                margin-top: 4px;
                 font-family: 'Source Sans Pro', sans-serif;
-                line-height: 1.55;
+                line-height: 28px;
+                font-weight: 400;
                 font-size: 18px;
-                color: #6b6b6b;
+                color: #47535F;
                 :focus-visible {
                     outline: solid 2px lightseagreen;
                 }
@@ -194,6 +207,7 @@ function HelloScreenTool(props) {
                     className="heading">
                         {props.dataContents.heading}
                 </div>
+                <hr className="hello-screen-hr" />
                 <div className="achievements" data-key="stats">
                     <RenderAchievements types={props.dataContents} />
                 </div>

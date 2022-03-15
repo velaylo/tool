@@ -19,14 +19,14 @@ const StyledWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     .left_ {
-        width: 570px;
+        width: 600px;
         .hello-text--heading {
             font-size: 24px;
-            font-weight: 500;
-            margin-bottom: 30px;
+            font-weight: 700;
+            margin-bottom: 16px;
             letter-spacing: 0.01em;
             color: #323F4B;
-            line-height: 1.55;
+            line-height: 37px;
             font-family: "Roboto", sans-serif;
             :focus {
                 outline: solid 2px lightseagreen;
@@ -73,6 +73,9 @@ const StyledWrapper = styled.div`
                 font-family: "Source Sans Pro", sans-serif;
                 line-height: 1.55;
                 margin: 16px 0;
+                &:not(:first-child) {
+                    margin-top: 25px
+                }
                 color: #6b6b6b;
                 :focus {
                 outline: solid 2px lightseagreen;
@@ -120,14 +123,12 @@ const StyledWrapper = styled.div`
         }
     }
     .right_ {
-        width: 470px;
+        width: 468px;
         .hello-text--image {
-            border-radius: 10px;
-            height: 500px;
-            padding: 10px;
-            box-shadow: 2px 2px 6px rgba(43, 43, 43, 0.15);
+            border-radius: 16px;
+            height: 498px;
             div {
-                border-radius: 10px;
+                border-radius: 16px;
                 overflow: hidden;
                 background-position: center;
                 background-size: cover;

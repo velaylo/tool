@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledCreditsInfo = styled.div`
-    padding-top: 80px;
+    padding-top: 60px;
     width: 100%;
     max-width: 1160px;
     margin: 0 auto;
@@ -10,12 +10,12 @@ const StyledCreditsInfo = styled.div`
     font-size: 18px;
     color: #6b6b6b;
     .heading {
-        font-weight: 500;
+        font-weight: 700;
         font-size: 20px;
         color: #323F4B;
         margin-bottom: 40px;
         text-align: center;
-        line-height: 1.55;
+        line-height: 31px;
         :focus-visible {
             outline: solid 2px lightseagreen;
         }
@@ -24,27 +24,17 @@ const StyledCreditsInfo = styled.div`
         display: flex;
         justify-content: space-between;
         .info-item {
-            width: 370px;
-            padding: 30px;
-            padding-right: 60px;
-            box-shadow: -6px -6px 11px #ffffff, 6px 6px 11px #ededed;;
-            border-radius: 10px;
+            width: 368px;
+            padding: 24px;
+            box-shadow: 4px 4px 10px #EAEAEA;
+            border-radius: 16px;
 
             .def_, .price_ {
-                font-family: "Source Sans Pro", sans-serif;
                 font-size: 18px;
+                font-weight: 400;
                 margin-top: 0;
-                line-height: 1.55;
-                color: #6b6b6b;
-                .text-orange {
-                    color: #ff9447;
-                }
-                .text-green {
-                  color: #50cd24;
-                }
-                .text-blue {
-                  color: #4ec4f0;
-                }
+                line-height: 28px;
+                color: #323F4B;
                 .text-bold {
                   font-weight: bold;
                 }
@@ -57,13 +47,14 @@ const StyledCreditsInfo = styled.div`
             }
 
             .def_ {
-                margin-bottom: 18px;
+                margin-bottom: 12px;
             }
 
             .price_ {
                 color: #323F4B;
                 font-weight: 600;
                 margin-bottom: 0;
+                font-family: "Source Sans Pro", sans-serif;
             }
         }
     }

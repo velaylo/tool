@@ -1,5 +1,4 @@
 import Paragraph from '@editorjs/paragraph';
-import List from '@editorjs/list';
 import HelloText from './js/toolsConnectionLogic/helloText';
 import Hr from './js/toolsConnectionLogic/hr';
 import HelloScreen from './js/toolsConnectionLogic/helloScreen';
@@ -8,6 +7,7 @@ import CreditsNotice from './js/toolsConnectionLogic/creditsNotice';
 import CreditsPrices from './js/toolsConnectionLogic/creditsPrices';
 import CreditsInfo from './js/toolsConnectionLogic/creditsInfo';
 import PricesMain from './js/toolsConnectionLogic/pricesMain';
+import ServisePackagesPricelist from './js/toolsConnectionLogic/servisePackagesPricelist';
 
 export const EDITOR_JS_TOOLS = {
     paragraph: {
@@ -24,7 +24,9 @@ export const EDITOR_JS_TOOLS = {
         class: HelloText,
         inlineToolbar: ['link']
     },
-    list: List,
+    ServisePackagesPricelist: {
+        class: ServisePackagesPricelist
+    },
     ServisePackagesText: {
         class: ServisePackagesText
     },
@@ -35,7 +37,8 @@ export const EDITOR_JS_TOOLS = {
         class: CreditsPrices
     },
     CreditsInfoTool: {
-        class: CreditsInfo
+        class: CreditsInfo,
+        inlineToolbar: ['MarkOrange', 'MarkGreen', 'MarkBlue']
     },
     PricesMain: {
         class: PricesMain

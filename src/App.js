@@ -16,7 +16,7 @@ const StyledWorkspace = styled.div`
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  background-color: #fcfcfc;
+  background-color: #F8F9F9;
 `
 
 const ReactEditorJS = createReactEditorJS()

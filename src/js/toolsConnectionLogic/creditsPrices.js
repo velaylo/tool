@@ -67,6 +67,32 @@ class creditsPrices extends React.Component {
         this.focusedEl = null;
   }
 
+    renderSettings() {
+      const wrapper = document.createElement('div');
+      this.settings.forEach(tune => {
+        let button = document.createElement('div');
+        button.classList.add('cdx-settings-button');
+        button.innerHTML = tune.icon;
+        wrapper.appendChild(button);
+
+        button.addEventListener('click', () => {
+          this._toggleTune(tune.name);
+        })
+      });
+      return wrapper;
+    }
+
+    _toggleTune(tuneName) {
+      switch(tuneName) {
+        case 'hideSlogan': this._toggleHideSlogan(); break;
+      }
+    }
+  
+    _toggleHideSlogan() {
+      let slogan = this.wrapper.querySelector('.slogan');
+      slogan.hidden = !slogan.hidden;
+    }
+
     render() {
         const rootNode = document.createElement('div');
         rootNode.setAttribute('class', 'credits-prices');

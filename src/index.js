@@ -20,7 +20,7 @@ html {
   font-family: "Roboto", sans-serif;
 }
 html, body {
-  background-color: #fcfcfc;
+  background-color: #F8F9F9;
 }
 
 @media print {
