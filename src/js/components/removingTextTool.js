@@ -28,11 +28,9 @@ function initRemoveTool(options) {
     }
 
     let onFocus = event => {
-      console.log(button)
       focusedElem = event.target;
       let child = (getChild(container, focusedElem) || focusedElem);
       button.classList.add('is-visible');
-      console.log(button)
       button.style.bottom = `${container.offsetHeight - child.offsetTop - 30}px`;
       if (watchRemoveButtonXAxis) {
         button.style.right = `${container.offsetWidth - (child.offsetLeft + child.offsetWidth - 30)}px`;

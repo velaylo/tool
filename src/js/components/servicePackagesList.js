@@ -29,6 +29,16 @@ function ServicePackagesList(props) {
                 slogan='All you ever need' 
                 packageType='Premium Plus'
                 dataPackage="premium-plus" />
+            <PackagesList 
+                list={props.lists['list_gold']} 
+                slogan='All you ever need' 
+                packageType='Gold'
+                dataPackage="gold" />
+            <PackagesList 
+                list={props.lists['list_platinum']} 
+                slogan='All you ever need' 
+                packageType='Platinum'
+                dataPackage="platinum" />
         </StyledServicePackagesList>
     )
 }

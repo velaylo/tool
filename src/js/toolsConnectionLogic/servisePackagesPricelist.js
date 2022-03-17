@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDom from 'react-dom';
 import ServisePackagesPricelistTool from "../toolsComponents/servisePackagesPricelistTool";
+import StyledServicePackagesList from "../components/packageList";
 
 class ServisePackagesPricelist extends React.Component {
   static get toolbox() {
@@ -95,42 +96,105 @@ class ServisePackagesPricelist extends React.Component {
     this.wrapper = undefined;
     this.settings = [
       {
-        name: 'show_gold',
-        icon: `<span class="rect-control orange" title="Показать/скрыть: Gold">G</span>`
+        name: 'add_standard',
+        icon: `<span class="rect-control" data-package="standard" title="Показать/скрыть: Standard">S</span>`
       },
       {
-        name: 'show_premium',
-        icon: `<span class="rect-control green" title="Показать/скрыть: Premium">P</span>`
+        name: 'add_premium',
+        icon: `<span class="rect-control" data-package="premium" title="Показать/скрыть: Premium">Pr</span>`
       },
       {
-        name: 'show_standard',
-        icon: `<span class="rect-control dark" title="Показать/скрыть: Standard">S</span>`
+        name: 'add_premium_plus',
+        icon: `<span class="rect-control" data-package="premium-plus" title="Показать/скрыть: Premium Plus">PP</span>`
       },
       {
-        name: 'premiumType=price_default',
-        icon: `<span title="Премиум - без лого"><del>L</del></span>`
+        name: 'add_gold',
+        icon: `<span class="rect-control" data-package="gold" title="Показать/скрыть: Gold">G</span>`
       },
       {
-        name: 'premiumType=price_withLogo',
-        icon: `<span title="Премиум - с лого"><ins>L</ins></span>`
+        name: 'add_platinum',
+        icon: `<span class="rect-control" data-package="platinum" title="Показать/скрыть: Platinum">Pl</span>`
       },
-      {
-        name: 'goldType=price_default',
-        icon: `<span title="Gold - без баннера"><del>T1</del></span>`
-      },
-      {
-        name: 'goldType=price_withBannerT1',
-        icon: `<span title="Gold - с баннером T1"><ins>T1</ins></span>`
-      },
-      {
-        name: 'goldType=price_withBannerT2',
-        icon: `<span title="Gold - с баннером T2"><ins>T2</ins></span>`
-      },
-      {
-        name: 'goldType=price_withoutLogo',
-        icon: `<span title="Gold - без баннера и логотипа"><del>L</del></span>`
-      }
     ];   
+  }
+
+  renderSettings() {
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = `
+      <div class='subwrapper'>
+        <div class='tunes-title' style="text-align: center; font-size:18px; line-height:19px;">Добавить пакеты</div>
+        <form class="tunes_" data-tune-type="add">
+          <button class='add-type-list' type='submit'>Добавить</button>
+        </form>
+      </div>
+    `
+    this.settings.forEach(tune => {
+      let buttonLabel = document.createElement('label')
+      buttonLabel.classList.add('cdx-settings-button',  `${tune.name.split('_')[1]}`);
+      
+      let button = document.createElement('input');
+      button.setAttribute('type', 'checkbox')
+      button.setAttribute('value', `${tune.name.split('_')[1]}`)
+
+      buttonLabel.innerHTML = tune.icon
+      buttonLabel.prepend(button)
+
+
+      let subwrapper = [...wrapper.querySelectorAll('.tunes_')].find(sw => {
+        let _name = tune.name.indexOf('=') === -1 ? tune.name.split('_')[0] : tune.name.split('=')[0];
+        return sw.dataset['tuneType'].indexOf(_name) === 0;
+      });
+
+      subwrapper.prepend(buttonLabel);
+
+      let checkedValue = []
+
+      subwrapper.querySelector('button.add-type-list').addEventListener('click', getCheckedCheckBoxes)
+
+      function getCheckedCheckBoxes(event) {
+        event.preventDefault()
+        let checkboxes = subwrapper.querySelectorAll('input[type="checkbox"]');
+        let checkboxesChecked = [];
+        for (let index = 0; index < checkboxes.length; index++) {
+          if (checkboxes[index].checked) {
+            checkboxesChecked.push(checkboxes[index].value);
+          }
+        }
+
+        checkedValue=checkboxesChecked
+
+        displayCheckedList(checkboxesChecked)
+        console.log(checkedValue)
+      }
+
+      function displayCheckedList(checkedLists) {
+        let mainWrapper = document.querySelector('.packages-pricelist--content')
+        let wrapper = [...mainWrapper.querySelectorAll('.package-wrapper')]
+        checkedLists.forEach(type => {
+          wrapper.forEach(list => {
+            if(list.getAttribute('data-package') === type) {
+              list.style.display = 'flex'
+            }
+          })
+        })
+
+        wrapper.forEach(list => {
+          list.style.display = 'none'
+        })
+
+        wrapper.forEach(list => {
+
+          checkedLists.forEach(type => {
+            if(list.getAttribute('data-package') === type) {
+              list.style.display = 'flex'
+            }
+          })
+        })
+      }
+
+    })
+  
+    return wrapper
   }
 
   render() {
@@ -146,6 +210,7 @@ class ServisePackagesPricelist extends React.Component {
 
     return rootNode;
   }
+
 }
 
 export default ServisePackagesPricelist
