@@ -215,17 +215,20 @@ function HelloTextTool(props) {
     }
 
     return (
-        <div id="hello-text">
-            <StyledWrapper className="hello-text--wrapper">
-                <div className="left_">
-                    <div 
-                        className="hello-text--heading" 
-                        contentEditable={true}
-                        suppressContentEditableWarning={true}
-                        tabIndex={0}>
-                            Dear Mr. Smith
-                    </div>
-                    <div className="hello-text--content" data-hello-text-content>
+        <StyledWrapper className="hello-text--wrapper" id="hello-text">
+            <div className="left_">
+                <div 
+                    className="hello-text--heading" 
+                    contentEditable={true}
+                    suppressContentEditableWarning={true}
+                    data-value-content
+                    data-key="heading"
+                    tabIndex={0}>
+                        Dear Mr. Smith
+                </div>
+                <div 
+                    className="hello-text--content" 
+                    data-hello-text-content>
                         <p 
                             className="hello-text--p" 
                             suppressContentEditableWarning={true} 
@@ -238,20 +241,26 @@ function HelloTextTool(props) {
                             onClick={initAddParagraphTool}>
                                 +
                         </div>
-                    </div>
-                    <div className="hello-text--register-link">
-                        <p suppressContentEditableWarning={true} contentEditable={true}>
-                            <a href={props.data.regLink.url}>{props.data.regLink.word}</a>
+                </div>
+                <div 
+                    className="hello-text--register-link" 
+                    data-hello-reglink>
+                        <p 
+                            suppressContentEditableWarning={true} 
+                            contentEditable={true}>
+                                <a href={props.data.regLink.url}>{props.data.regLink.word}</a>
                         </p>
+                </div>
+            </div>
+            <div className="right_">
+                <div className="hello-text--image">
+                    <div 
+                        data-type={props.type} 
+                        data-value-attr="type">
                     </div>
                 </div>
-                <div className="right_">
-                    <div className="hello-text--image">
-                        <div data-type={props.type}></div>
-                    </div>
-                </div>
-            </StyledWrapper>    
-        </div>
+            </div>
+        </StyledWrapper>    
     );
 }
 

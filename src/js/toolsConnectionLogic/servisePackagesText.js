@@ -62,7 +62,7 @@ class ServisePackagesText extends React.Component {
 
     render() {
         const rootNode = document.createElement('div');
-        rootNode.setAttribute('class', 'service-packages-text');
+        rootNode.setAttribute('data-id', `${this.data.dataId || (`04-service-packages-text-${btoa(Math.random()).slice(5, 12)}`)}`)
         this.wrapper = rootNode;
 
         ReactDOM.render(

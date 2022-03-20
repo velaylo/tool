@@ -92,7 +92,7 @@ class PricesMain extends React.Component {
 
         ReactDOM.render(
             (
-                <PricesMainTool pricesInformation={this.data.prices} />
+              <PricesMainTool pricesInformation={this.data.prices} />
             ),
             rootNode);
         

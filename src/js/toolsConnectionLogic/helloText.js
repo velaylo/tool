@@ -30,12 +30,6 @@ class HelloText extends React.Component {
             this.data[key] = _defaults[key];
           }
         }
-        this.CSS = {
-            wrapper: 'hello-text',
-        };
-        this.nodes = {
-            holder: null,
-        };
         this.wrapper = undefined;
         this.isFocusedP = null;
     }
@@ -44,16 +38,15 @@ class HelloText extends React.Component {
 
     render() {
         const rootNode = document.createElement('div');
-        rootNode.setAttribute('class', this.CSS.wrapper);
-        this.nodes.holder = rootNode;
+        rootNode.setAttribute('data-id', `${this.data.dataId || (`02-hello-text-${btoa(Math.random()).slice(5, 12)}`)}`)
+        
+        this.wrapper = rootNode
 
         const onDataChange = (newData) => {
             this.data = {
               ...newData
             };
         }
-
-
 
         ReactDOM.render(
             (
@@ -65,11 +58,24 @@ class HelloText extends React.Component {
             ),
             rootNode);
         
-        return this.nodes.holder
+        return this.wrapper
     }
 
-    save() {
-        return this.data;
+    save(el) {
+        const contents = [ ...el.querySelectorAll('[data-value-content][data-key]') ].reduce((acc, elem) => {
+            acc[elem.dataset['key']] = elem.textContent;
+            return acc;
+        }, {});
+
+        return {
+            dataId: el.getAttribute('data-id'),
+            contents,
+            text: [ ...el.querySelectorAll('p.hello-text--p') ].map(p => p.innerHTML),
+            regLink: {
+              word: el.querySelector('[data-hello-reglink] a').textContent,
+              url: el.querySelector('[data-hello-reglink] a').getAttribute('href')
+            }
+        }
     }
 }
   

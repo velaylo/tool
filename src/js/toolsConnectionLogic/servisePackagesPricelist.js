@@ -84,6 +84,7 @@ class ServisePackagesPricelist extends React.Component {
       show_gold: true,
       show_premium: true,
       show_standard: true
+
     }
     this.data = data;
     for (const key in _defaults) {
@@ -104,7 +105,7 @@ class ServisePackagesPricelist extends React.Component {
         icon: `<span class="rect-control" data-package="premium" title="Показать/скрыть: Premium">Pr</span>`
       },
       {
-        name: 'add_premium_plus',
+        name: 'add_premium-plus',
         icon: `<span class="rect-control" data-package="premium-plus" title="Показать/скрыть: Premium Plus">PP</span>`
       },
       {
@@ -115,7 +116,80 @@ class ServisePackagesPricelist extends React.Component {
         name: 'add_platinum',
         icon: `<span class="rect-control" data-package="platinum" title="Показать/скрыть: Platinum">Pl</span>`
       },
-    ];   
+    ];  
+    this._addPriceModals = {
+      l: {
+        exists: false,
+        construct: function(form) {
+          this._add_makeDetails({
+            form,
+            values: ['EN', 'DE', 'PL', 'FR', 'ES', 'IT', 'RU', 'TR'],
+            summaryText: 'Язык',
+            paramName: 'l',
+            next: 'ads'
+          });
+        },
+        boundHandler: null,
+        el: null
+      },
+      //ads: {
+      //  exists: false,
+      //  construct: function(form) {
+      //    this._add_makeDetails({
+      //      form,
+      //      values: ['10', '15', '20', '25', '30', '35', '40', '50', '60', '70', '75', '80', '85', '90', '95', '100', '125', '130', '150', '175', '200', '300', '400', '500', '600', '750', '1000'],
+      //      summaryText: 'Количество объявлений',
+      //      paramName: 'ads',
+      //      next: 'months'
+      //    });
+      //  },
+      //  boundHandler: null,
+      //  el: null
+      //},
+      //months: {
+      //  exists: false,
+      //  construct: function(form) {
+      //    this._add_makeDetails({
+      //      form,
+      //      values: ['6', '12'],
+      //      summaryText: 'Количество месяцев',
+      //      paramName: 'months',
+      //      next: 'section',
+      //      onSelectCallback: function(value) {
+      //        localStorage.setItem('offer2021_months_package', JSON.stringify(value));
+      //      }
+      //    });
+      //  },
+      //  boundHandler: null,
+      //  el: null
+      //},
+      //section: {
+      //  exists: false,
+      //  construct: function(form) {
+      //    this._add_makeDetails({
+      //      form,
+      //      values: ['tru', 'agr', 'frk', 'att', 'spr'],
+      //      summaryText: 'Тип техники',
+      //      paramName: 'section',
+      //      next: 'submit'
+      //    });
+      //  },
+      //  boundHandler: null,
+      //  el: null
+      //},
+      //submit: {
+      //  exists: false,
+      //  construct: function(form) {
+      //    
+      //    form.appendChild(Helpers.DOM.make('button', {
+      //      class: 'co-btn',
+      //      textContent: 'Создать ценники',
+      //      el: { type: 'submit' }
+      //    }));
+      //    this._addPriceModals.submit.exists = true;
+      //  }
+      //}
+    };
   }
 
   renderSettings() {
@@ -164,7 +238,6 @@ class ServisePackagesPricelist extends React.Component {
         checkedValue=checkboxesChecked
 
         displayCheckedList(checkboxesChecked)
-        console.log(checkedValue)
       }
 
       function displayCheckedList(checkedLists) {

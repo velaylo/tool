@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 import HelloScreenTool from "../toolsComponents/helloScreenTool";
+import makeRenderEl from "../utils/makeRenderEl";
 
 const icons_vehicleType = {
     trucks: `<span title="Грузовики и тягачи"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 25">
@@ -188,150 +189,174 @@ const icons_vehicleType = {
 }
 
 class HelloScreen extends React.Component {
-    static get toolbox() {
-        return {
-            icon: '<span>HS</span>',
-            title: 'Hello Screen'
-        };
+  static get toolbox() {
+    return {
+      icon: '<span>HS</span>',
+      title: 'Hello Screen'
+    };
+  }
+
+  static get isReadOnlySupported() {
+    return true;
+  }
+
+  constructor({ data }) {
+    super();
+    const _defaults = {
+      contents: {
+        slogan: 'European online marketplace of commercial vehicles',
+        heading: 'Commercial Offer',
+        visitors: '...3 000 000',
+        visitors_text: 'visitors per month',
+        sellers: '...2 500',
+        sellers_text: 'sellers',
+        versions: '...31',
+        versions_text: 'language versions',
+        years: '18',
+        years_text: 'years online'
+      }
     }
 
-    static get isReadOnlySupported() {
-        return true;
+    this.data = data || {};
+    this.data.contents = this.data.contents || {}
+
+    for (const key in _defaults.contents) {
+      if (!this.data.contents[key]) {
+        this.data.contents[key] = _defaults.contents[key];
+      }
     }
 
-    constructor({ data }) {
-        super();
-        const _defaults = {
-            contents: {
-                slogan: 'European online marketplace of commercial vehicles',
-                heading: 'Commercial Offer',
-                visitors: '...3 000 000',
-                visitors_text: 'visitors per month',
-                sellers: '...2 500',
-                sellers_text: 'sellers',
-                versions: '...31',
-                versions_text: 'language versions',
-                years: '18',
-                years_text: 'years online'
-            }
-        }
+    this.wrapper = undefined;
 
-        this.data = data || {};
-        this.data.contents = this.data.contents || {}
+    this.settings = [
+      {
+        name: 'logoLang_INTL',
+        icon: '<span title="Logo: International (Truck1.eu)">INTL</span>'        
+      },
+      {
+        name: 'logoLang_DE',
+        icon: '<span title="Logo: German (Alle-LKW.de)">DE</span>'
+      },
+      {
+        name: 'logoLang_RU',
+        icon: '<span title="Logo: Russian (Gruzovik.com)">RU</span>'
+      },
+    ].concat(Object.keys(icons_vehicleType).map(type => {
+      return {
+        name: `vehicleType_${type}`,
+        icon: icons_vehicleType[type]
+      }
+    }));
+  }
 
-        for (const key in _defaults.contents) {
-          if (!this.data.contents[key]) {
-            this.data.contents[key] = _defaults.contents[key];
-          }
-        }
-
-        this.wrapper = undefined;
-
-        this.settings = [
-            {
-              name: 'logoLang_INTL',
-              icon: '<span title="Logo: International (Truck1.eu)">INTL</span>'        
-            },
-            {
-              name: 'logoLang_DE',
-              icon: '<span title="Logo: German (Alle-LKW.de)">DE</span>'
-            },
-            {
-              name: 'logoLang_RU',
-              icon: '<span title="Logo: Russian (Gruzovik.com)">RU</span>'
-            },
-        ].concat(Object.keys(icons_vehicleType).map(type => {
-            return {
-              name: `vehicleType_${type}`,
-              icon: icons_vehicleType[type]
-            }
-          }));
-    }
-
-    renderSettings() {
-      const wrapper = document.createElement('div');
-      wrapper.innerHTML = `<div class="subwrapper">
-          <div class="tunes-title">Логотип</div>
-          <div class="tunes_" data-tune-type="logoLang"></div>
-        </div>
-        <div class="subwrapper">
-          <div class="tunes-title">Тип техники</div>
-          <div class="tunes_" data-tune-type="vehicleType"></div>
-        </div>`;
-      this.settings.forEach(tune => {
-        let button = document.createElement('div');
-        button.classList.add('cdx-settings-button');
-        button.innerHTML = tune.icon;
+  renderSettings() {
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = `<div class="subwrapper">
+        <div class="tunes-title">Логотип</div>
+        <div class="tunes_" data-tune-type="logoLang"></div>
+      </div>
+      <div class="subwrapper">
+        <div class="tunes-title">Тип техники</div>
+        <div class="tunes_" data-tune-type="vehicleType"></div>
+      </div>`;
+    this.settings.forEach(tune => {
+      let button = document.createElement('div');
+      button.classList.add('cdx-settings-button');
+      button.innerHTML = tune.icon;
   
-        let subwrapper = [...wrapper.querySelectorAll('.tunes_')].find(sw => {
-          let _name = tune.name.split('_')[0];
-          return sw.dataset['tuneType'].indexOf(_name) === 0;
-        });
-        subwrapper.appendChild(button);
-  
-        button.addEventListener('click', () => {
-          this._toggleTune(tune.name);
-          button.classList.toggle('cdx-settings-button--active');
-        })
+      let subwrapper = [...wrapper.querySelectorAll('.tunes_')].find(sw => {
+        let _name = tune.name.split('_')[0];
+        return sw.dataset['tuneType'].indexOf(_name) === 0;
       });
-      return wrapper;
-    }
+      subwrapper.appendChild(button);
+  
+      button.addEventListener('click', () => {
+        this._toggleTune(tune.name);
+        button.classList.toggle('cdx-settings-button--active');
+      })
+    });
+    return wrapper;
+  }
 
-    _toggleTune(tuneName) {
-      let [ name, value ] = tuneName.split('_');
-      value = value.toLowerCase();
-      if (name === 'logoLang') {
-        this.wrapper.querySelector('[data-logo]').setAttribute('data-logo', value);
-      } else if (name === 'vehicleType') {
+  _toggleTune(tuneName) {
+    let [ name, value ] = tuneName.split('_');
+    value = value.toLowerCase();
+    if (name === 'logoLang') {
+      this.wrapper.querySelector('[data-logo]').setAttribute('data-logo', value);
+    } else if (name === 'vehicleType') {
       document.querySelectorAll('[data-type]').forEach(el => {
         el.setAttribute('data-type', value);
       });
     }
-    }
+  }
 
-    render() {
-      const api = endpoint => window.location.hostname.indexOf('truck1.eu') !== -1 ? `https://www.truck1.eu/t1api/comOffer/${endpoint}` : `http://localhost/offer2/index.php/${endpoint}`;
-      const that = this;
+  render() {
+    const api = endpoint => window.location.hostname.indexOf('truck1.eu') !== -1 ? `https://www.truck1.eu/t1api/comOffer/${endpoint}` : `http://localhost/offer2/index.php/${endpoint}`;
+    const that = this;
 
-      try {
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', api('stats'));
-        xhr.onreadystatechange = function() {
-          if (xhr.readyState === 4) {
-            if (xhr.status >= 200 && xhr.status < 300) {
-              let json = JSON.parse(xhr.responseText);
-              let stats = that.wrapper.querySelector('[data-key="stats"]');
-              for (const key in json) {
-                let value = stats.querySelector(`.value[data-key=${key}]`);
-                value.textContent = json[key][0];
-              }
-            } else {
-              console.log(xhr.responseText);
+    try {
+      let xhr = new XMLHttpRequest();
+      xhr.open('GET', api('stats'));
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            let json = JSON.parse(xhr.responseText);
+            let stats = that.wrapper.querySelector('[data-key="stats"]');
+            for (const key in json) {
+              let value = stats.querySelector(`.value[data-key=${key}]`);
+              value.textContent = json[key][0];
             }
+          } else {
+            console.log(xhr.responseText);
           }
         }
-        xhr.send()
-      } catch (error) {
-        console.log(error);
       }
-
-
-      const rootNode = document.createElement('div');
-      rootNode.setAttribute('id', 'hello-screen');
-
-      this.wrapper = rootNode;
-
-      ReactDOM.render(
-        (
-          <HelloScreenTool
-            dataContents={this.data.contents} 
-            type="construction"
-            />
-        ),
-        rootNode);
-        
-      return rootNode
+      xhr.send()
+    } catch (error) {
+      console.log(error);   
     }
+
+    let rootNode = document.createElement('div');
+    rootNode.setAttribute('data-id', `${this.data.dataId || (`01-hello-${btoa(Math.random()).slice(5, 12)}`)}`)
+
+    this.wrapper = rootNode;
+    
+    ReactDOM.render(
+      (
+        <HelloScreenTool
+          dataContents={this.data.contents} 
+          type="construction"
+          />
+      ),
+      rootNode);
+
+    return this.wrapper
+    
+    // return <HelloScreenTool
+    // dataContents={this.data.contents} 
+    // type="construction"
+    // />
+  }
+
+  componentDidUpdate() {
+    console.log('hi')
+    //let wrapper = makeRenderEl('01-hello', this.data);
+    //this.wrapper = wrapper;
+  };
+
+  save(el) {
+    const contents = [ ...el.querySelectorAll('[data-value-content][data-key]')].reduce((acc, elem) => {
+      acc[elem.dataset['key']] = elem.textContent;
+      return acc;
+    }, {});
+
+    return {
+      dataId: el.getAttribute('data-id'),
+      contents,
+      logo: el.querySelector('[data-logo]').dataset['logo'],
+      type: el.querySelector('[data-type]').dataset['type']
+    }
+  }
 }
 
 export default HelloScreen
