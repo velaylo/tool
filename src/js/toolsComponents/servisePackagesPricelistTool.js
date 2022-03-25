@@ -49,7 +49,7 @@ function ServisePackagesPricelist(props) {
                 suppressContentEditableWarning={true}>
                     Truck1 is the best option for those who value the quality of services and work efficiency
             </p>
-            <ServicePackagesList lists={props.lists} />
+            <ServicePackagesList this={props.this} lists={props.lists} addPriceModals={props.addPriceModals} />
         </StyledServisePackagesPricelist>
     )
 }

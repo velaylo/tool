@@ -26,7 +26,7 @@ class CreditsNotice extends React.Component {
 
     render() {
         const rootNode = document.createElement('div');
-        rootNode.setAttribute('class', 'credits-notice-text');
+        rootNode.setAttribute('data-id', `${this.data.dataId || (`05-credits-notice-${btoa(Math.random()).slice(5, 12)}`)}`)
         this.wrapper = rootNode;
 
 
@@ -37,6 +37,18 @@ class CreditsNotice extends React.Component {
             rootNode);
         
         return rootNode
+    }
+
+    save(el) {
+        const contents = [ ...el.querySelectorAll('[data-value-content][data-key]') ].reduce((acc, elem) => {
+          acc[elem.dataset['key']] = elem.textContent;
+          return acc;
+        }, {});
+    
+        return {
+          dataId: el.getAttribute('data-id'),
+          contents
+        }
     }
 }
 

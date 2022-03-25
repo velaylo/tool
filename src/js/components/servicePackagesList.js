@@ -29,12 +29,13 @@ const StyledServicePackagesList = styled.div`
 `
 
 function ServicePackagesList(props) {
+    const api = endpoint => window.location.hostname.indexOf('truck1.eu') !== -1 ? `https://www.truck1.eu/t1api/comOffer/${endpoint}` : `http://localhost/offer2/index.php/${endpoint}`;
+
     let _renderPrices = () => {
         _initAddPriceTool(document.querySelector('.packages-pricelist--content'));
     }
 
     let _initAddPriceTool = (container) => {
-        console.log(container)
         let button = document.createElement('div');
         button.textContent = '+';
         button.classList.add('list-control-button', 'add_', 'cdx-settings-button') 
@@ -44,7 +45,7 @@ function ServicePackagesList(props) {
         button.addEventListener('click', _onAdd())
     }
 
-    let _onAdd = () => {
+    let _onAdd = () => { 
         return function(event) {
             let target = event.target;
             let formWrapper = document.createElement('div');
@@ -57,10 +58,48 @@ function ServicePackagesList(props) {
             target.appendChild(formWrapper);
             formWrapper.addEventListener('click', (event) => event.stopImmediatePropagation());
       
-            //form.addEventListener('submit', this.add_SubmitHandler = this._add_submitHandler(form).bind(this));
+            form.addEventListener('submit', add_SubmitHandler(form));
 
-            //props._addPriceModals.l.construct.call(this, form);
-          }
+            props.addPriceModals.l.construct.call(props.this, form);
+        }
+    }
+
+    let add_SubmitHandler = (form) => {
+        return function(event) {
+            event.preventDefault();
+            let that = props.this
+
+            let qs = new URLSearchParams(new FormData(event.target)).toString();
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', api(`price?${qs}`));
+            xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4) {
+                if (xhr.status < 300) {
+                  that._renderSinglePriceRow(JSON.parse(xhr.responseText), ++that.pricesCurrentId);
+                } else {
+                  console.warn('XHR Status: ', xhr.status);
+                }
+              } 
+            }
+            xhr.send();
+
+            form.removeEventListener('submit', add_SubmitHandler);
+            form.parentNode.removeEventListener('click', (event) => event.stopImmediatePropagation());
+            for (const _modal in props.addPriceModals) {
+              if (_modal !== 'submit') {
+                let modal = props.addPriceModals[_modal];
+                modal.el.removeEventListener('click', modal.boundHandler);
+                modal.el = null;
+                modal.boundHandler = null;
+                modal.exists = false;
+              }
+            }
+
+            props.addPriceModals.submit.exists = false;
+            form.parentNode.parentNode.removeChild(form.parentNode);
+            this.add_SubmitHandler = null;
+
+        }
     }
 
     useEffect(() => _renderPrices(), []) 

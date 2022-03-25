@@ -338,11 +338,6 @@ class HelloScreen extends React.Component {
     // />
   }
 
-  componentDidUpdate() {
-    console.log('hi')
-    //let wrapper = makeRenderEl('01-hello', this.data);
-    //this.wrapper = wrapper;
-  };
 
   save(el) {
     const contents = [ ...el.querySelectorAll('[data-value-content][data-key]')].reduce((acc, elem) => {

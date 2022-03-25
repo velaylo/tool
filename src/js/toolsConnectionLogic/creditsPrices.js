@@ -93,20 +93,42 @@ class creditsPrices extends React.Component {
       slogan.hidden = !slogan.hidden;
     }
 
-    render() {
-        const rootNode = document.createElement('div');
-        rootNode.setAttribute('class', 'credits-prices');
-        this.wrapper = rootNode;
+  render() {
+    const rootNode = document.createElement('div');
+    rootNode.setAttribute('data-id', `${this.data.dataId || (`06-credits-prices-${btoa(Math.random()).slice(5, 12)}`)}`)
+    this.wrapper = rootNode;
+    
+    ReactDOM.render(
+        (
+            <CreditsPricesTool prices={this.data.prices} />
+        ),
+        rootNode);
+    
+    return rootNode
+  }
 
+  save(el) {
+    const contents = [ ...el.querySelectorAll('[data-value-content][data-key]') ].reduce((acc, elem) => {
+      acc[elem.dataset['key']] = elem.textContent;
+      return acc;
+    }, {});
 
-        ReactDOM.render(
-            (
-                <CreditsPricesTool prices={this.data.prices} />
-            ),
-            rootNode);
-        
-        return rootNode
+    const prices = [ ...el.querySelectorAll('.price_') ].map(x => {
+      return {
+        value: x.querySelector('.value_').textContent,
+        currency: x.querySelector('.currency_').textContent,
+        text: x.querySelector('.text_').textContent
+      }
+    });
+
+    return {
+      dataId: el.getAttribute('data-id'),
+      contents,
+      prices,
+      hideSlogan: el.querySelector('.slogan').hidden
     }
+  }
+
 }
 
 export default creditsPrices

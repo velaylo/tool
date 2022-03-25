@@ -15,10 +15,11 @@ function initRemoveTool(options) {
         return target.tagName === 'P';
       }
   }
-
+console.log('jk')
   return function() {
     let container = wrapper.querySelector(parent);
     let button;
+
     if(!container.querySelector('.list-control-button.remove_')) {
       button = document.createElement('div');
       button.classList.add('list-control-button', 'remove_', 'cdx-settings-button')
@@ -27,7 +28,7 @@ function initRemoveTool(options) {
       button = container.querySelector('.list-control-button.remove_');
     }
 
-    let onFocus = event => {
+    let onFocus = event => {  
       focusedElem = event.target;
       let child = (getChild(container, focusedElem) || focusedElem);
       button.classList.add('is-visible');

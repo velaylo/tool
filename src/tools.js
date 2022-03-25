@@ -8,6 +8,8 @@ import CreditsPrices from './js/toolsConnectionLogic/creditsPrices';
 import CreditsInfo from './js/toolsConnectionLogic/creditsInfo';
 import PricesMain from './js/toolsConnectionLogic/pricesMain';
 import ServisePackagesPricelist from './js/toolsConnectionLogic/servisePackagesPricelist';
+import SpecialOffer from './js/toolsConnectionLogic/specialOffer';
+import Banners from './js/toolsConnectionLogic/banners'
 
 export const EDITOR_JS_TOOLS = {
     paragraph: {
@@ -38,9 +40,14 @@ export const EDITOR_JS_TOOLS = {
     },
     CreditsInfoTool: {
         class: CreditsInfo,
-        inlineToolbar: ['MarkOrange', 'MarkGreen', 'MarkBlue']
     },
     PricesMain: {
         class: PricesMain
+    },
+    SpecialOffer: {
+        class: SpecialOffer
+    },
+    Banners: {
+        class: Banners
     }
 }

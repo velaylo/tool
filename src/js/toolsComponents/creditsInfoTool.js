@@ -20,7 +20,7 @@ const StyledCreditsInfo = styled.div`
             outline: solid 2px lightseagreen;
         }
     }
-    .credits-info_item {
+    .credits-info--items {
         display: flex;
         justify-content: space-between;
         .info-item {
@@ -74,8 +74,20 @@ function AddInformations(props) {
 function AddSingleInformation({ def, price }, key) {
     return (
         <div key={key} className='info-item'>
-            <p contentEditable={true} tabIndex={0} className='def_'>{def}</p>
-            <p contentEditable={true} tabIndex={0} className='price_'>{price}</p>
+            <p 
+                contentEditable={true} 
+                suppressContentEditableWarning={true}
+                tabIndex={0} 
+                className='def_'>
+                    {def}
+            </p>
+            <p 
+                contentEditable={true}
+                suppressContentEditableWarning={true} 
+                tabIndex={0} 
+                className='price_'>
+                    {price}
+            </p>
         </div>
     )
 }
@@ -83,12 +95,17 @@ function AddSingleInformation({ def, price }, key) {
 
 function CreditsInfoTool(props) {
     return (
-        <StyledCreditsInfo>
-            <div className='credits-info_wrapper'>
-                <div className='heading' contentEditable={true}>INFO ABOUT CREDITS:</div>
-                <div className='credits-info_item'>
-                    <AddInformations information={props.content} />
-                </div>
+        <StyledCreditsInfo className='credits-info--wrapper'>
+            <div 
+                className='heading' 
+                contentEditable={true}
+                suppressContentEditableWarning={true}
+                data-value-content 
+                data-key="heading">
+                    INFO ABOUT CREDITS:
+            </div>
+            <div className='credits-info--items'>
+                <AddInformations information={props.content} />
             </div>
         </StyledCreditsInfo>
     )

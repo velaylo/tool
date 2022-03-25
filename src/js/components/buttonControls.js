@@ -131,7 +131,7 @@ function ButtonControls(props) {
     }
 
     function makeListItem(item, attachEvents = true) {
-        if (!attachEvents && Number(item.offer_id) <= 10) { return false; }
+        if (!attachEvents && Number(item.offer_id) <= 8) { return false; }
       
         let listItem = document.createElement('div');
         listItem.classList.add('list-item')
@@ -139,7 +139,7 @@ function ButtonControls(props) {
         listItem.innerHTML = `
         <span class="id_"><span>${item.offer_id}</span></span>
         <span class="name_">${item.name}</span>
-        ${Number(item.offer_id) > 10 ? _deleteButton(item.offer_id) : ''}
+        ${Number(item.offer_id) > 8 ? _deleteButton(item.offer_id) : ''}
         `;
         listItem.dataset.id = item.offer_id;
         if (attachEvents) {
@@ -153,15 +153,12 @@ function ButtonControls(props) {
 
     function loadOffer(event) {
         let id = 'id' in event.target.dataset ? event.target.dataset['id'] : event.target.closest('.list-item').dataset['id'];
-        const editorWrapper = document.querySelector("#codex-editor__redactor")
 
         fetch(api(`load?offer_id=${id}`))
         .then(r => r.json())
         .then(json => {
-          console.log(json);
-          const Post = () => <><Output data={ JSON.parse(json.data) } /></>;
-          editorWrapper.innerHTML = Post()
-          //ReactEditorJS.render(JSON.parse(json.data)).then(_ => closeList());
+          //console.log(json);
+          props.render(json.data)
         });
     }
 
@@ -207,7 +204,7 @@ function ButtonControls(props) {
 
         // add footer to each page
         let height = printContent.clientHeight;
-        let pageHeightStep = 1122.52; // magic number #1
+        let pageHeightStep = 1760; // magic number #1
         let pageHeightStep_screen = 1754;
         let footerHeight = 80; // height + 
         for (let i = 0, j = 1; i < height; i += pageHeightStep_screen, j++) {
@@ -270,16 +267,23 @@ function ButtonControls(props) {
             position.innerHTML = obj.position;
             tel.innerHTML = obj.phone;
             email.innerHTML = `<a href="mailto:${obj.email}">${obj.email}</a>`;
+
             if (obj.linkedin) {
-                linkedin.innerHTML = `<a href="${obj.linkedin}" class="icon_ linkedin"></a>`;
+              linkedin.innerHTML = `<a href="${obj.linkedin}" class="icon_ linkedin">${obj.linkedin}</a>`;
             }
             if (obj.whatsapp) {
-                whatsapp.innerHTML = `<a href="https://api.whatsapp.com/send?phone=${obj.whatsapp}" class="icon_ whatsapp"></a>`
+              whatsapp.innerHTML = `<a href="https://api.whatsapp.com/send?phone=${obj.whatsapp}" class="icon_ whatsapp">${obj.whatsapp}</a>`
             }
         } catch (error) {
 
         }
     }
+
+    function openSave(event) {
+      document.querySelector('#overlay-save').hidden = false;
+      loadList(document.querySelector('#overlay-save [data-list-loaded]'), false);
+    }
+
 
     return (
         <StyledMainControls>
@@ -294,7 +298,7 @@ function ButtonControls(props) {
                     <button className="co-panel-btn" id="list" data-tooltip="Открыть шаблон" onClick={openList}>
                         <span className="material-icons">view_list</span>
                     </button>
-                    <button className="co-panel-btn" id="test_save" data-tooltip="Сохранить шаблон">
+                    <button className="co-panel-btn" id="test_save" data-tooltip="Сохранить шаблон" onClick={openSave}>
                       <span className="material-icons">save_alt</span>
                     </button>
                     <button className="co-panel-btn" id="PDF" data-tooltip="Сохранить PDF" onClick={printPDF}>

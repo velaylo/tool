@@ -34,7 +34,7 @@ const StyledCreditsPrices = styled.div`
             outline: solid 2px lightseagreen;
         }
     }
-    .credits-prices_prices {
+    .credits-prices--prices {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
@@ -158,6 +158,7 @@ function AddPrices(props) {
 function AddSinglePrice(obj) {
     return (
         <div
+            key={obj.value}
             className='price-wrapper' 
             data-credits-price-unit 
             onClick={initRemoveParagraphTool}>
@@ -240,31 +241,32 @@ function CreditsPricesTool(props) {
     }
 
     return (
-        <StyledCreditsPrices id='credits-price'>
-            <div className='credits-prices_wrapper'>
-                <div
-                    contentEditable={true} 
-                    suppressContentEditableWarning={true}
-                    className='credits-prices_heading'>
-                        PRICES FOR CREDITS (PROMO)
-                </div>
-                <div 
-                    contentEditable={true} 
-                    suppressContentEditableWarning={true}
-                    className='credits-prices_slogan slogan'
-                    data-key="slogan">
-                        Use your credits to promote your ads to the top of search results, to highlight your ads with color or advertising text to gain more attention
-                </div>
-                <div
-                    className='credits-prices_prices' 
-                    data-credits-prices>
-                        <AddPrices prices={props.prices} />
-                        <div 
-                            className="list-control-button add_ cdx-settings-button" 
-                            onClick={initAddParagraphTool}>
-                                +
-                        </div>
-                </div>
+        <StyledCreditsPrices className="credits-prices--wrapper" id='credits-price'>
+            <div
+                contentEditable={true} 
+                suppressContentEditableWarning={true}
+                data-value-content 
+                data-key="heading"
+                className='credits-prices_heading heading'>
+                    PRICES FOR CREDITS (PROMO)
+            </div>
+            <div 
+                contentEditable={true} 
+                suppressContentEditableWarning={true}
+                data-value-content 
+                data-key="slogan"
+                className='credits-prices_slogan slogan'>
+                    Use your credits to promote your ads to the top of search results, to highlight your ads with color or advertising text to gain more attention
+            </div>
+            <div
+                className='credits-prices--prices' 
+                data-credits-prices>
+                    <AddPrices prices={props.prices} />
+                    <div 
+                        className="list-control-button add_ cdx-settings-button" 
+                        onClick={initAddParagraphTool}>
+                            +
+                    </div>
             </div>
         </StyledCreditsPrices>
     )

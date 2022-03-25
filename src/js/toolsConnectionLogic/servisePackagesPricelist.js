@@ -132,65 +132,178 @@ class ServisePackagesPricelist extends React.Component {
         boundHandler: null,
         el: null
       },
-      //ads: {
-      //  exists: false,
-      //  construct: function(form) {
-      //    this._add_makeDetails({
-      //      form,
-      //      values: ['10', '15', '20', '25', '30', '35', '40', '50', '60', '70', '75', '80', '85', '90', '95', '100', '125', '130', '150', '175', '200', '300', '400', '500', '600', '750', '1000'],
-      //      summaryText: 'Количество объявлений',
-      //      paramName: 'ads',
-      //      next: 'months'
-      //    });
-      //  },
-      //  boundHandler: null,
-      //  el: null
-      //},
-      //months: {
-      //  exists: false,
-      //  construct: function(form) {
-      //    this._add_makeDetails({
-      //      form,
-      //      values: ['6', '12'],
-      //      summaryText: 'Количество месяцев',
-      //      paramName: 'months',
-      //      next: 'section',
-      //      onSelectCallback: function(value) {
-      //        localStorage.setItem('offer2021_months_package', JSON.stringify(value));
-      //      }
-      //    });
-      //  },
-      //  boundHandler: null,
-      //  el: null
-      //},
-      //section: {
-      //  exists: false,
-      //  construct: function(form) {
-      //    this._add_makeDetails({
-      //      form,
-      //      values: ['tru', 'agr', 'frk', 'att', 'spr'],
-      //      summaryText: 'Тип техники',
-      //      paramName: 'section',
-      //      next: 'submit'
-      //    });
-      //  },
-      //  boundHandler: null,
-      //  el: null
-      //},
-      //submit: {
-      //  exists: false,
-      //  construct: function(form) {
-      //    
-      //    form.appendChild(Helpers.DOM.make('button', {
-      //      class: 'co-btn',
-      //      textContent: 'Создать ценники',
-      //      el: { type: 'submit' }
-      //    }));
-      //    this._addPriceModals.submit.exists = true;
-      //  }
-      //}
+      ads: {
+        exists: false,
+        construct: function(form) {
+          this._add_makeDetails({
+            form,
+            values: ['10', '15', '20', '25', '30', '35', '40', '50', '60', '70', '75', '80', '85', '90', '95', '100', '125', '130', '150', '175', '200', '300', '400', '500', '600', '750', '1000'],
+            summaryText: 'Количество объявлений',
+            paramName: 'ads',
+            next: 'months'
+          });
+        },
+        boundHandler: null,
+        el: null
+      },
+      months: {
+        exists: false,
+        construct: function(form) {
+          this._add_makeDetails({
+            form,
+            values: ['6', '12'],
+            summaryText: 'Количество месяцев',
+            paramName: 'months',
+            next: 'section',
+            onSelectCallback: function(value) {
+              localStorage.setItem('offer2021_months_package', JSON.stringify(value));
+            }
+          });
+        },
+        boundHandler: null,
+        el: null
+      },
+      section: {
+        exists: false,
+        construct: function(form) {
+          this._add_makeDetails({
+            form,
+            values: ['tru', 'agr', 'frk', 'att', 'spr'],
+            summaryText: 'Тип техники',
+            paramName: 'section',
+            next: 'submit'
+          });
+        },
+        boundHandler: null,
+        el: null
+      },
+      submit: {
+        exists: false,
+        construct: function(form) {
+          let button = document.createElement('button')
+          button.classList.add('co-btn');
+          button.textContent = "Создать ценники"
+          button.setAttribute('type', 'submit')
+
+          form.appendChild(button);
+          this._addPriceModals.submit.exists = true;
+        }
+      }
     };
   }
+
+  _priceDropdownHandler(details, form, next, callback) {
+    return function(event) {
+      if (event.target.tagName === 'INPUT' && !event.target.hasAttribute('data-bypass')) {
+        let _val = details.querySelector('[data-selected]');
+        _val.innerText = event.target.value;
+        details.open = false;
+
+        if (next) {
+          let _next = this._addPriceModals[next];
+          if (!_next.exists) {
+            _next.construct.call(this, form);
+          } else {
+            details.nextElementSibling.tagName === 'DETAILS' && (details.nextElementSibling.open = true);
+          }
+        }
+
+        if (callback) {
+          callback(event.target.value);
+        }
+      }
+    }
+  }
+
+  _add_makeDetails(opts) {
+    let { form, summaryText, values, paramName, next, onSelectCallback, bypassSelect } = opts;
+    let details = document.createElement('details');
+    details.classList.add('addprice-details');
+    details.setAttribute('open', 'true');
+    form.appendChild(details);
+
+    let summary = document.createElement('summary');
+    summary.innerHTML = `${summaryText}: <span data-selected></span>`;
+    details.appendChild(summary);
+
+    let dropdown = document.createElement('div');
+    dropdown.classList.add('addprice-dropdown');
+    details.appendChild(dropdown);
+
+    for (const value of values) {
+      let label = document.createElement('label');
+      label.classList.add('details-label');
+      label.textContent = `${value}`;
+      label.setAttribute('data-value', `${value}`)
+      
+      let btn = document.createElement('input');
+      btn.setAttribute('type', 'radio');
+      btn.setAttribute('name', `${paramName}`);
+      btn.setAttribute('value', `${value}`);
+
+      if (bypassSelect) {
+        btn.setAttribute('data-bypass', '');
+      }
+      label.appendChild(btn);
+      dropdown.appendChild(label);
+    }
+
+    // dropdown handler
+    this._addPriceModals[paramName].boundHandler = this._priceDropdownHandler(details, form, next, onSelectCallback).bind(this);
+
+    dropdown.addEventListener('click', this._addPriceModals[paramName].boundHandler);
+    this._addPriceModals[paramName].el = dropdown;
+    this._addPriceModals[paramName].exists = true; 
+  }
+
+  _renderSinglePriceRow(priceObj, id) {
+    console.log(priceObj)
+    //priceObj = this._normalizePriceObj(priceObj, id);
+    let _render = (price, currency, isCrossed = false, enableCrossed = false) => `<div ${isCrossed ? 'class="crossed_" data-price-crossed' : 'data-price-default'}${isCrossed && !enableCrossed ? ' hidden' : ''}>
+      <span data-price-currency contenteditable>${currency}</span>
+      <span data-price-value contenteditable>${price.price_value}</span>
+      <span data-price-text contenteditable>${price.price_text}</span>
+    </div>
+    `;
+    for (const priceKey in priceObj.prices) {
+      try {
+        if (!id) {
+          id = priceObj.id;
+        }
+        let { topText, currency, price_crossed } = priceObj.prices[priceKey];
+        
+        // premium and gold price type
+        let price_default;
+        if (priceKey === 'price_premium') {
+          price_default = priceObj.prices[priceKey][this.premiumType] || priceObj.prices[priceKey].price_default;
+        } else if (priceKey === 'price_gold') {
+          price_default = priceObj.prices[priceKey][this.goldType] || priceObj.prices[priceKey].price_default;
+        } else {
+          price_default = priceObj.prices[priceKey].price_default;
+        }
+
+        let ul = this.wrapper.querySelector(`ul[data-price=${priceKey}]`);
+
+        let li = document.createElement('li');
+        li.classList.add('price');
+        li.setAttribute('data-price-id', 'id')
+
+        li.innerHTML = `<div data-price-toptext contenteditable>${topText}</div>
+        ${_render(price_crossed, currency, true, priceObj.enableCrossed)}
+        ${_render(price_default, currency)}        
+        <div data-id="${id}" class="list-control-button remove_ cdx-settings-button">✖</div>
+        <div class="list-control-button toggle-discount-visibility_ cdx-settings-button" title="скрыть скидку только в этом пакете">👁️</div>
+        <div data-id="${id}" class="list-control-button discount_ cdx-settings-button">%</div>`;
+        li._prices = priceObj.prices[priceKey];
+        ul.appendChild(li);
+        li.querySelector('.remove_').addEventListener('click', this.onPriceRemove = (this.onPriceRemove || this._onPriceRemove.bind(this)));
+        li.querySelector('.discount_').addEventListener('click', this.onToggleDiscount = (this.onToggleDiscount || this._onToggleDiscount.bind(this)));
+        li.querySelector('.toggle-discount-visibility_').addEventListener('click', this.toggleDiscountVisibility = (this.toggleDiscountVisibility || this._toggleDiscountVisibility.bind(this)));
+      } catch (error) {
+        console.error(error);
+      }
+    }
+}
 
   renderSettings() {
     const wrapper = document.createElement('div');
@@ -272,16 +385,46 @@ class ServisePackagesPricelist extends React.Component {
 
   render() {
     const rootNode = document.createElement('div');
-    rootNode.setAttribute('class', 'packages-pricelist');
+    rootNode.setAttribute('data-id', `${this.data.dataId || (`03-packages-pricelist-${btoa(Math.random()).slice(5, 12)}`)}`)
 
     this.wrapper = rootNode;
 
     ReactDom.render(
       (
-        <ServisePackagesPricelistTool lists={this.data.lists} />
+        <ServisePackagesPricelistTool
+          lists={this.data.lists}
+          this={this}
+          addPriceModals={this._addPriceModals} />
       ), rootNode);
 
     return rootNode;
+  }
+
+  save(el) {
+    const contents = [ ...el.querySelectorAll('[data-value-content][data-key]') ].reduce((acc, elem) => {
+      acc[elem.dataset['key']] = elem.textContent;
+      return acc;
+    }, {});
+
+    const lists = [ ...el.querySelectorAll('ul[data-list-type]') ].reduce((acc, list) => {
+      let key = list.dataset['list'];
+      let vals = [ ...list.querySelectorAll('li') ].map(li => li.textContent);
+      acc[key] = vals;
+      return acc;
+    }, {});
+
+    //const prices = this._savePrices();
+
+    return {
+      dataId: el.getAttribute('data-id'),
+      contents,
+      lists,
+      //prices,
+      //show_standard: !(el.querySelector('[data-package=standard]').hidden),
+      //show_premium: !(el.querySelector('[data-package=premium]').hidden),
+      //show_gold: !(el.querySelector('[data-package=gold]').hidden)
+      // todo: add props
+    }
   }
 
 }

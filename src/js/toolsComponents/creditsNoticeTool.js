@@ -6,7 +6,7 @@ const StyledCreditsNoticeWrapper = styled.div`
     max-width: 968px;
     margin: 0 auto;
     padding-top: 20px;
-    .credits-notice_information-container {
+    .credits-notice--text {
         padding: 16px 100px;
         border-radius: 16px;
         background-color: #17A2B8;
@@ -25,8 +25,16 @@ const StyledCreditsNoticeWrapper = styled.div`
 function CreditsNoticeTool(props) {
 
     return (
-        <StyledCreditsNoticeWrapper>
-            <div contentEditable={true} tabIndex={0} className="credits-notice_information-container">{props.content}</div>
+        <StyledCreditsNoticeWrapper className="credits-notice--wrapper">
+            <div 
+                contentEditable={true} 
+                suppressContentEditableWarning={true}
+                tabIndex={0} 
+                data-value-content
+                data-key="creditsNotice"
+                className="credits-notice--text">
+                    {props.content}
+            </div>
         </StyledCreditsNoticeWrapper>
     )
 }

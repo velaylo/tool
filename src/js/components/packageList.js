@@ -209,12 +209,16 @@ function PackagesList(props) {
                     className="package-header" 
                     contentEditable={true} 
                     suppressContentEditableWarning={true}
+                    data-value-content
+                    data-key={props.dataPackage + '_header'}
                     data-package={props.dataPackage}>
                         {props.packageType}
                 </div>
                 <div 
                     className="package-slogan"
                     contentEditable={true} 
+                    data-value-content
+                    data-key={props.dataPackage + '_slogan'}
                     suppressContentEditableWarning={true}>
                         {props.slogan}
                 </div>

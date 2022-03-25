@@ -7,6 +7,7 @@ import ContactForm from './js/components/contactForm';
 import PrintContent from './js/components/printContent';
 import FooterPDF from './js/components/footerPDF';
 import OverlayList from './js/components/overlayList';
+import OverlaySave from './js/components/overlaySave';
 import { Component } from 'react';
 
 const StyledWrapper = styled.div`
@@ -20,6 +21,11 @@ const StyledWorkspace = styled.div`
   margin: 0 auto;
   background-color: #F8F9F9;
 `
+const StyledLogButton = styled.button`
+  @media print {
+    display: none;
+  }
+`
 
 const ReactEditorJS = createReactEditorJS()
 
@@ -31,9 +37,16 @@ function App() {
     }, [])
 
     const handleSave = React.useCallback(async () => {
+      document.querySelectorAll('.ce-paragraph:empty').forEach(p => p.innerHTML = '&nbsp;&nbsp;&nbsp;');
       const savedData = await editorCore.current.save();
       console.log(savedData)
+
+      return savedData
     }, [])
+
+    const handleRender = React.useCallback(async (json) => {
+      await editorCore.current.render(json)
+    })
 
     return (
       <>
@@ -48,10 +61,16 @@ function App() {
           </StyledWrapper>
           <FooterPDF />
         </div>
-        <ButtonControls />
+        <ButtonControls render={handleRender} />
         <ContactForm />
-        <OverlayList />
-        <button className="co-btn" id="log" onClick={handleSave}>Log</button>
+        <OverlaySave render={handleRender} save={handleSave} name="save" />
+        <OverlayList render={handleRender} />
+        <StyledLogButton 
+          className="co-btn" 
+          id="log" 
+          onClick={handleSave}>
+            Log
+        </StyledLogButton>
         <PrintContent />
       </>
     );
