@@ -212,7 +212,7 @@ class HelloScreen extends React.Component {
         sellers_text: 'sellers',
         versions: '...31',
         versions_text: 'language versions',
-        years: '18',
+        years: '19',
         years_text: 'years online'
       }
     }

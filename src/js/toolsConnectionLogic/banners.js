@@ -5,7 +5,7 @@ import BannersTool from '../toolsComponents/bannersTool'
 class Banners extends React.Component {
   static get toolbox() {
     return {
-      icon: '<span>B</span>',
+      icon: '<span><b>B</b></span>',
       title: 'Banners'
     };
   }
@@ -32,13 +32,8 @@ class Banners extends React.Component {
             priceValue: '200',
             priceText: ' / mo. (total 1200€)'
           },
-          showPromoText: false,
           showLeft: true,
           showRight: true,
-          showCrossed: true,
-          showDivider: true,
-          showBottomRow: true,
-          // rightColor: 'blue'
         },
         {
           left: {
@@ -53,13 +48,8 @@ class Banners extends React.Component {
             priceValue: '100',
             priceText: ' / mo. (total 1200€)'
           },
-          showPromoText: false,
           showLeft: true,
           showRight: true,
-          showCrossed: true,
-          showDivider: true,
-          showBottomRow: true,
-          // rightColor: 'blue'
         }
       ]
     };
@@ -87,6 +77,37 @@ class Banners extends React.Component {
     )
 
     return this.wrapper
+  }
+
+  save(el) {
+    const contents = [ ...el.querySelectorAll('[data-value-content][data-key]') ].reduce((acc, elem) => {
+      acc[elem.dataset['key']] = elem.textContent;
+      return acc;
+    }, {});
+
+    const priceReducer = (acc, item) => {
+      let toPush = { left: {}, right: {} };
+      toPush.showLeft = !item.querySelector('.side_.left_').hidden;
+      toPush.showRight = !item.querySelector('.side_.right_').hidden;
+
+      ['left', 'right'].forEach(s => {
+        let side = item.querySelector(`.${s}_`);
+        let sideObj = toPush[s];
+        sideObj.currency = side.querySelector('.currency_').textContent;
+        sideObj.topText = side.querySelector('.top-text_').textContent;
+        sideObj.priceValue = side.querySelector('.price-main_:not(.crossed_) .value_').textContent;
+        sideObj.priceText = side.querySelector('.price-main_:not(.crossed_) .text_').textContent;
+      });
+
+      acc.push(toPush);
+      return acc;
+    };
+
+    return {
+      dataId: el.getAttribute('data-id'),
+      contents,
+      prices: [ ...el.querySelectorAll('.price-item') ].reduce(priceReducer, [])
+    }
   }
 }
 

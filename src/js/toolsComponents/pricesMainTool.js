@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react';
 import styled from 'styled-components'
+import PriceList from '../components/priceList'
+import ToolbarPrice from '../components/toolbarPrice'
 
 const StyledPricesMain = styled.div`
     padding-top: 60px;
@@ -18,7 +20,7 @@ const StyledPricesMain = styled.div`
             outline: solid 2px lightseagreen;
         }
     }
-    .prices-main_item {
+    .prices-main--items {
         padding-top: 60px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -27,33 +29,96 @@ const StyledPricesMain = styled.div`
         row-gap: 60px;
         position: relative;
         align-items: start;
+        &.single-column {
+            max-width: 570px;
+            grid-template-columns: 1fr;
+            margin: 0 auto;
+        }
+        &:hover {
+            .add_ {
+                display: flex;  
+            }
+        }
+        .list-control-button {
+            position: absolute;
+            z-index: 2;
+            background: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            border: 1px solid #ccc;
+            display: none;
+        }
+        .add_ {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 98%;
+            &:hover {
+                display: flex;  
+            }
+        }
     }
 `
 
-function AddPricesBlocks(props) {
-    let allPrices = props.pricesInformation;
-    let listPrices = []
-
-    for(let key in allPrices) {
-        listPrices[key] = AddSinglePriceBlock(allPrices[key])
-    }
-}
-
-function AddSinglePriceBlock(obj) {
-    console.log(obj)
-    // if(obj) {
-    //     return
-    // }
-}
-
 function PricesMainTool(props) {
+
+    const [price, setPrice] = useState([]);
+    const [toolbar, setToolbar] = useState('');
+    
+    function addPrice() {
+        setPrice(price => price.concat(<PriceList prices={props.prices[0]} />))
+    }
+
+    function _onFoucsIn(event) {
+        let target = event.target;
+        let item = target.closest('.price-item');
+    
+        props.context.lastActivePrice = item;
+        let left = `${item.offsetLeft + (item.offsetWidth / 2)}px`;
+        let right = `${item.offsetTop + item.offsetHeight - 5}px`;
+       
+        if(toolbar === '') {
+            setToolbar(<ToolbarPrice leftSize={left} rightSize={right} />)
+        } else {
+            return;
+        }
+    }
+
+    function _onBlur() {
+        if(toolbar != '') {
+            setToolbar('')
+        } else {
+            return;
+        }
+    }
+
     return (
-        <StyledPricesMain>
-            <div className='prices-main_wrapper'>
-                <div contentEditable={true} className='heading'>PRICES</div>
-                <div className='prices-main_item'>
-                    <AddPricesBlocks pricesInformation={props.pricesInformation} />
-                </div>
+        <StyledPricesMain className='prices-main--wrapper'>
+            <div 
+                contentEditable={true} 
+                suppressContentEditableWarning={true} 
+                className='heading'
+                data-value-content 
+                data-key="heading">
+                    PRICES
+            </div>
+            <div 
+                className='prices-main--items'
+                onFocus={_onFoucsIn}
+                onBlur={_onBlur}>
+                    {props.prices.map((item) => {
+                        return (<PriceList prices={item} />)
+                    })}
+                    {price.map((item) => {
+                        return item
+                    })}
+                    <div 
+                        className="list-control-button add_ cdx-settings-button" 
+                        onClick={addPrice}>
+                            +
+                    </div>
+                    {toolbar}
             </div>
         </StyledPricesMain>
     )

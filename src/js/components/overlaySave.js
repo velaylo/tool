@@ -231,8 +231,6 @@ function OverlaySaveBlock(props) {
             id = '';
         }
 
-        console.log(id)
-
         if (name) {
             props.save().then(data => {
                 const xhr = new XMLHttpRequest();
