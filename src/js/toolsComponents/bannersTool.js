@@ -21,13 +21,18 @@ const StyledBanners = styled.div`
         }
     }
     .banner--items {
-        margin-top: 40px;
+        padding-top: 40px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         column-gap: 30px;
         row-gap: 60px;
         position: relative;
         align-items: start;
+        &.single-column {
+            max-width: 570px;
+            grid-template-columns: 1fr;
+            margin: 0 auto;
+        }
         &:hover {
             .add_ {
                 display: flex;  
@@ -96,7 +101,7 @@ function BannersTool(props) {
             </div>
             <div className="banner--items">
                 {props.prices.map((item) => {
-                    return (<BannerList prices={item} />)
+                    return (<BannerList prices={item}/>)
                 })}
                 {banner.map((item) => {
                     return item

@@ -29,7 +29,9 @@ const StyledServicePackagesList = styled.div`
 `
 
 function ServicePackagesList(props) {
-    const api = endpoint => window.location.hostname.indexOf('truck1.eu') !== -1 ? `https://www.truck1.eu/t1api/comOffer/${endpoint}` : `http://localhost/offer2/index.php/${endpoint}`;
+    //const api = endpoint => window.location.hostname.indexOf('truck1.eu') !== -1 ? `https://www.truck1.eu/t1api/comOffer/${endpoint}` : `http://localhost/offer2/index.php/${endpoint}`;
+
+    const api = (endpoint) => `https://www.truck1.eu/t1api/comOffer/${endpoint}&T1Db_logged=c928cc422c32acc3bd9b03e4351c6b1b`;
 
     let _renderPrices = () => {
         _initAddPriceTool(document.querySelector('.packages-pricelist--content'));
@@ -71,11 +73,13 @@ function ServicePackagesList(props) {
 
             let qs = new URLSearchParams(new FormData(event.target)).toString();
             let xhr = new XMLHttpRequest();
+            console.log(qs)
             xhr.open('GET', api(`price?${qs}`));
             xhr.onreadystatechange = function() {
               if (xhr.readyState === 4) {
                 if (xhr.status < 300) {
-                  that._renderSinglePriceRow(JSON.parse(xhr.responseText), ++that.pricesCurrentId);
+                    console.log(xhr.responseText)
+                    that._renderSinglePriceRow(JSON.parse(xhr.responseText), ++that.pricesCurrentId);
                 } else {
                   console.warn('XHR Status: ', xhr.status);
                 }
@@ -121,7 +125,7 @@ function ServicePackagesList(props) {
                 list={props.lists['list_premium_plus']} 
                 slogan='All you ever need' 
                 packageType='Premium Plus'
-                dataPackage="premium-plus" />
+                dataPackage="premium_plus" />
             <PackagesList 
                 list={props.lists['list_gold']} 
                 slogan='All you ever need' 

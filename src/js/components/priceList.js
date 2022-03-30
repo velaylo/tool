@@ -60,6 +60,8 @@ const StyledPriceList = styled.div`
             }
             .crossed_ {
                 position: relative;
+                width: max-content;
+                margin: 0 auto;
                 &::after {
                     content: "";
                     position: absolute;

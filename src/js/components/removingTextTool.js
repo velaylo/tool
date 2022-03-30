@@ -15,7 +15,6 @@ function initRemoveTool(options) {
         return target.tagName === 'P';
       }
   }
-console.log('jk')
   return function() {
     let container = wrapper.querySelector(parent);
     let button;

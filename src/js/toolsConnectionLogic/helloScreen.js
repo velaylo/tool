@@ -212,7 +212,7 @@ class HelloScreen extends React.Component {
         sellers_text: 'sellers',
         versions: '...31',
         versions_text: 'language versions',
-        years: '19',
+        years: '...19',
         years_text: 'years online'
       }
     }
@@ -291,12 +291,13 @@ class HelloScreen extends React.Component {
   }
 
   render() {
-    const api = endpoint => window.location.hostname.indexOf('truck1.eu') !== -1 ? `https://www.truck1.eu/t1api/comOffer/${endpoint}` : `http://localhost/offer2/index.php/${endpoint}`;
+    //const api = endpoint => window.location.hostname.indexOf('truck1.eu') !== -1 ? `https://www.truck1.eu/t1api/comOffer/${endpoint}` : `http://localhost/offer2/index.php/${endpoint}`;
+    const api = `https://www.truck1.eu/t1api/comOffer/stats?T1Db_logged=c928cc422c32acc3bd9b03e4351c6b1b`;
     const that = this;
 
     try {
       let xhr = new XMLHttpRequest();
-      xhr.open('GET', api('stats'));
+      xhr.open('GET', api);
       xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
           if (xhr.status >= 200 && xhr.status < 300) {

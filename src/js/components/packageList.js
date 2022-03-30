@@ -16,6 +16,7 @@ const StyledServicePackagesList = styled.div`
         display: flex;
         flex-direction: column;
         height: 100%;
+        width: 100%;
         border-radius: 16px;
         box-shadow: 4px 4px 10px #EAEAEA;
         background: #FFFFFF;
@@ -37,7 +38,7 @@ const StyledServicePackagesList = styled.div`
                 color: #FFF;
                 background: linear-gradient(254.34deg, #2DD652 21.89%, #ABF40F 78.11%);
             }
-            &[data-package="premium-plus"] {
+            &[data-package="premium_plus"] {
                 color: #FFF;
                 background: linear-gradient(91.57deg, #07C8F9 0%, #0D41E1 100%);
             }
@@ -139,6 +140,112 @@ const StyledServicePackagesList = styled.div`
         .package-prices {
             margin: auto 24px 0 24px;
             border-top: 1px solid #E3E8F1;
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            
+                li {
+                    padding-top: 30px;
+                    padding-bottom: 30px;
+                    text-align: center;
+                    position: relative;
+
+                    &:not(:last-child) {
+                        border-bottom: 1px solid #E3E8F1;
+                    }
+                  
+                    [data-price-toptext] {
+                        color: #323F4B;
+                        font-weight: 700;
+                        letter-spacing: 0.01em;
+                        margin-bottom: 4px;
+                    }
+                  
+                    [data-price-currency] {
+                        vertical-align: super;
+                        font-family: "Source Sans Pro", sans-serif;
+                        font-size: 16px;
+                        font-weight: bold;
+                        color: #47535F;
+                    }
+                  
+                    [data-price-value] {
+                        color: #47535F;
+                        font-weight: bold;
+                        font-size: 28px;
+                        position: relative;
+                        top: 2px;
+                    }
+                  
+                    [data-price-text] {
+                        font-family: "Source Sans Pro", sans-serif;
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #6A737E;
+                    }
+                  
+                    .crossed_ {
+                        opacity: 0.85;
+                        position: relative;
+                        transform: scale(.85);
+
+                        &::before, &::after {
+                          content: '';
+                          position: absolute;
+                          z-index: 2;
+                          height: 2px;
+                          width: 80%;
+                          background-color: red;
+                          top: 50%;
+                          left: 50%;
+                        }
+                      
+                        &::before {
+                          transform: translate(-50%, -50%) rotateZ(8deg);
+                        }
+                      
+                        &::after {
+                          transform: translate(-50%, -50%) rotateZ(-8deg);
+                        }
+                      
+                        &.hidden_ {
+                          visibility: hidden;
+                        }
+                    }
+                  
+                    .list-control-button {
+                        position: absolute;
+                        z-index: 2;
+                        background: #fff;
+                        font-size: 20px;
+                        font-weight: bold;
+                        border: 1px solid #ccc;
+                        display: none;
+                        left: 0;
+                        &:hover {
+                            background: #eeeeee; 
+                        }
+
+                        &.remove_ {
+                        bottom: 5px;;
+                        }
+                    
+                        &.discount_ {
+                          top: 5px;
+                        }
+                      
+                        &.toggle-discount-visibility_ {
+                          top: 50%;
+                          transform: translateY(-50%);
+                        }
+                    }
+                  
+                    &:hover .list-control-button {
+                        display: flex;
+                    }
+                }
+            }
         }
     }
 `
@@ -232,7 +339,9 @@ function PackagesList(props) {
                     </div>
                     </ul>
                 </div>
-                <div className="package-prices"></div>
+                <div className="package-prices">
+                    <ul data-price={'price_' + props.dataPackage}></ul>
+                </div>
             </div>
         </StyledServicePackagesList>
     )

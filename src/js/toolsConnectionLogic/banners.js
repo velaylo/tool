@@ -62,6 +62,37 @@ class Banners extends React.Component {
     this.wrapper = undefined;
     this.lastActivePrice = null;
     this.toolbar = null;
+
+    this.settings = [
+      {
+        name: 'single_column',
+        icon: `<span title="В один ряд"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" width="100%" height="100%"><rect x="5" y="2" rx="1" width="10" height="4" stroke="#959595" fill="#e2e2e2" /><rect x="5" y="8" rx="1" width="10" height="4" stroke="#959595" fill="#e2e2e2" /><rect x="5" y="14" rx="1" width="10" height="4" stroke="#959595" fill="#e2e2e2" /></svg></span>`
+      }
+    ]
+  }
+
+  renderSettings() {
+    const wrapper = document.createElement('div');
+    this.settings.forEach(tune => {
+      let button = document.createElement('div');
+      button.classList.add('cdx-settings-button');
+      button.innerHTML = tune.icon;
+      wrapper.appendChild(button);
+
+      button.addEventListener('click', () => {
+        this._toggleTune(tune.name);
+        button.classList.toggle('crossed');
+      })
+    });
+
+    return wrapper;
+  }
+
+  _toggleTune(tuneName) {
+    switch(tuneName) {
+      case 'single_column': 
+        this.wrapper.querySelector('.banner--items').classList.toggle('single-column');
+    }
   }
 
   render() {

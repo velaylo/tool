@@ -20,64 +20,63 @@ class ServisePackagesPricelist extends React.Component {
     const _defaults = {
       lists: {
         list_standard: [    
-          'Ваши объявления на 30 языковых версиях',
-          'До 15 фотографий на каждое объявление ',
-          'Визитная карточка компании на сайте',
-          'Базовая статистика',
-          'Персональный аккаунт-менеджер',
-          'Ручное добавление объявлений'
+          'Your ads in 31 language versions',
+          'Up to 15 photos per ad',
+          'Profile of the company on the site',
+          'Basic statistics',
+          'Personal account manager',
+          'Manual adding of ads'
         ],
         list_premium: [
           'Все услуги пакета STANDARD',
-          'До 20 фотографий на каждое объявление',
-          'Возможность загружать видео в каждом объявлении',
-          'Статус "надежный"',
-          'Статус официального дилера',
-          'Автоматический перенос данных',
-          'Автоматическое обновление',
-          'Ссылки на все ваши соц.сети',
-          'Ссылка на Ваш корпоративный веб-сайт',
-          'Ссылка на Ваш YouTube-канал или видео о фирме'
+          'Up to 20 photos per ad',
+          'Possibility to upload video for each ad',
+          'Status "Reliable"',
+          '"Official Dealer" status',
+          'Automatic transfer of your stock (discussed individually)',
+          'Automatic update (if possible technically)',
+          'Links to your social media',
+          'Link to your personal web-site',
+          'Link to your Youtube chanel or video about the company'
         ],
         list_premium_plus: [
           'Все услуги пакета PREMIUM',
-          'Неограниченное количество фотографий на каждое объявление',
-          'Базовая статистика + рассылка',
-          'Ремаркетинг',
-          'Премиум-продвижение (кредиты)',
-          'Дополнительное продвижение Вашей компании в наших соц.сетях',
-          'Баннерная реклама',
-          'Разработка персонального сканера с Вашего корпоративного веб-сайта',
-          'Доступ к объявлениям “Заказы техники”',
-          'Текстовая реклама для 5 объявлений',
-          'Специльные условия на разработку сайта',
-          'Экспорт-файл со стоком Used machine integration for your website',
-          '-90% на банеры на сайтах сателлитах',
-          'Текстовая реклама в Google для ваших объявлений (5)'
+          'Unlim photos per each ad',
+          'Basic statistics + mailing',
+          'Remarketing, number of showings included 10000',
+          'Premium promotion (credits)',
+          'Additonal promotion in our social media (Instagram, Facebook)',
+          'Banner',
+          'Scanner of the stock from personal web-site (if possible technically)',
+          `Access to "I'm looking for" messages`,
+          'Special offer on website development',
+          'Export file with stock - Used machine integration for your website',
+          '-90% on banners on sites-satellites',
+          'Text advertising in Google for your ads (5)'
         ],
         list_gold: [
           'Все услуги пакета PREMIUM PLUS',
-          'Расширенная статистика + рассылка',
-          'Приоритетное обслуживание',
-          'Ремаркетинг 10K',
-          'Ваш логотип в рубрике «Ведущие продавцы» ',
-          'Визитная карточка + статья на сайте',
-          'Разработка персональной страницы дилера на специальных условиях',
-          'Консьерж объявлений (напоминание о старых объявлениях)',
-          'Текстовая реклама в Google для ваших объявлений',
-          'Доступ к КП с нескольких Email / менеджеров аккауната',
-          'Логотип в листингее',
+          'Detailed statistics + mailing',
+          'Priority Service',
+          'Remarketing, number of showings included 20000',
+          'Logo in "Top Sellers"',
+          'Profile of the company + Article',
+          'Personal dealer page design (special offer)',
+          'Concierge of ads (old ad reminder)',
+          'Text advertising in Google for your ads',
+          'Access to account control panel for several emails / managers',
+          'Logo in listing',
           'Услуги seo аудита'
         ],
         list_platinum: [
           'Все услуги пакета GOLD',
           'Дополнительный имиджевый статус',
-          'Доступ к специальным рекламным возможностям',
-          'Ремаркетинг 30K',
-          'Текстовая реклама в Google для ваших объявлений (12)',
-          'Оформление персонализированной страницы дилера',
+          'Access to special promotion tools',
+          'Remarketing, number of showings included 30000',
+          'Text advertising in Google for your ads (12)',
+          'Personalized dealer page design',
           'Приоритетный доступ к новым рекламным возможностям',
-          'Анализ техники (бизнес анализ)'
+          'Stock analysis (business analysis)'
         ]
       },
       prices: [],
@@ -105,8 +104,8 @@ class ServisePackagesPricelist extends React.Component {
         icon: `<span class="rect-control" data-package="premium" title="Показать/скрыть: Premium">Pr</span>`
       },
       {
-        name: 'add_premium-plus',
-        icon: `<span class="rect-control" data-package="premium-plus" title="Показать/скрыть: Premium Plus">PP</span>`
+        name: 'add_premium_plus',
+        icon: `<span class="rect-control" data-package="premium_plus" title="Показать/скрыть: Premium Plus">PP</span>`
       },
       {
         name: 'add_gold',
@@ -257,14 +256,15 @@ class ServisePackagesPricelist extends React.Component {
   }
 
   _renderSinglePriceRow(priceObj, id) {
+    priceObj = this._normalizePriceObj(priceObj, id);
     console.log(priceObj)
-    //priceObj = this._normalizePriceObj(priceObj, id);
     let _render = (price, currency, isCrossed = false, enableCrossed = false) => `<div ${isCrossed ? 'class="crossed_" data-price-crossed' : 'data-price-default'}${isCrossed && !enableCrossed ? ' hidden' : ''}>
       <span data-price-currency contenteditable>${currency}</span>
       <span data-price-value contenteditable>${price.price_value}</span>
       <span data-price-text contenteditable>${price.price_text}</span>
     </div>
     `;
+    console.log(priceObj.prices)
     for (const priceKey in priceObj.prices) {
       try {
         if (!id) {
@@ -283,6 +283,7 @@ class ServisePackagesPricelist extends React.Component {
         }
 
         let ul = this.wrapper.querySelector(`ul[data-price=${priceKey}]`);
+        console.log(ul)
 
         let li = document.createElement('li');
         li.classList.add('price');
@@ -296,14 +297,119 @@ class ServisePackagesPricelist extends React.Component {
         <div data-id="${id}" class="list-control-button discount_ cdx-settings-button">%</div>`;
         li._prices = priceObj.prices[priceKey];
         ul.appendChild(li);
-        li.querySelector('.remove_').addEventListener('click', this.onPriceRemove = (this.onPriceRemove || this._onPriceRemove.bind(this)));
-        li.querySelector('.discount_').addEventListener('click', this.onToggleDiscount = (this.onToggleDiscount || this._onToggleDiscount.bind(this)));
-        li.querySelector('.toggle-discount-visibility_').addEventListener('click', this.toggleDiscountVisibility = (this.toggleDiscountVisibility || this._toggleDiscountVisibility.bind(this)));
+        //li.querySelector('.remove_').addEventListener('click', this.onPriceRemove = (this.onPriceRemove || this._onPriceRemove.bind(this)));
+        //li.querySelector('.discount_').addEventListener('click', this.onToggleDiscount = (this.onToggleDiscount || this._onToggleDiscount.bind(this)));
+        //li.querySelector('.toggle-discount-visibility_').addEventListener('click', this.toggleDiscountVisibility = (this.toggleDiscountVisibility || this._toggleDiscountVisibility.bind(this)));
       } catch (error) {
         console.error(error);
       }
     }
-}
+  }
+
+  _normalizePriceObj(priceObj, id) {
+    if ('enableCrossed' in priceObj) {
+      return priceObj;
+    }
+
+    // TODO: adapt for package prices (3 types)
+    const { standard, premium, premium_plus, gold_nologo, gold_logo, gold_banner1, gold_banner2, platinum_banner1, platinum_banner2,  title, label_mo, label_total } = priceObj;
+    let months = Number((JSON.parse(localStorage.getItem('offer2021_months_package'))) || "12");
+    
+    let returnObj = { 
+      enableCrossed: false,  
+      id,
+      prices: {
+        price_standard: {
+          topText: title,
+          currency: '€',
+          price_default: {
+            price_value: String((Math.ceil(standard * 10 / months)) / 10).replace(/(\.\d)/, `<small style="font-size: 0.6em;">$1</small>`),
+            price_text: `/ ${label_mo} (${label_total} ${standard}€)`
+          },
+          price_crossed: {
+            price_value: String((Math.ceil(standard * 10 / months)) / 10).replace(/(\.\d)/, `<small style="font-size: 0.6em;">$1</small>`),
+            price_text: `/ ${label_mo} (${label_total} ${standard}€)`
+          }
+        },
+        price_premium: {
+          topText: title,
+          currency: '€',
+          price_default: {
+            price_value: String((Math.ceil(premium * 10 / months)) / 10).replace(/(\.\d)/, `<small style="font-size: 0.6em;">$1</small>`),
+            price_text: `/ ${label_mo} (${label_total} ${premium}€)`
+          },
+          price_crossed: {
+            price_value: String((Math.ceil(premium * 10 / months)) / 10).replace(/(\.\d)/, `<small style="font-size: 0.6em;">$1</small>`),
+            price_text: `/ ${label_mo} (${label_total} ${premium}€)`
+          }
+        },
+        price_premium_plus: {
+          topText: title,
+          currency: '€',
+          price_default: {
+            price_value: String((Math.ceil(premium_plus * 10 / months)) / 10).replace(/(\.\d)/, `<small style="font-size: 0.6em;">$1</small>`),
+            price_text: `/ ${label_mo} (${label_total} ${premium_plus}€)`
+          },
+          price_crossed: {
+            price_value: String((Math.ceil(premium_plus * 10 / months)) / 10).replace(/(\.\d)/, `<small style="font-size: 0.6em;">$1</small>`),
+            price_text: `/ ${label_mo} (${label_total} ${premium_plus}€)`
+          }
+        },
+        price_gold: {
+          topText: title,
+          currency: '€',
+          price_default: {
+            price_value: String(Math.ceil(gold_nologo * 10 / months) / 10).replace(/(\.\d)/, `<small style="font-size: 0.6em;">$1</small>`),
+            price_text: `/ ${label_mo} (${label_total} ${gold_nologo}€)`
+          },
+          price_crossed: {
+            price_value: String(Math.ceil(gold_nologo * 10 / months) / 10).replace(/(\.\d)/, `<small style="font-size: 0.6em;">$1</small>`),
+            price_text: `/ ${label_mo} (${label_total} ${gold_nologo}€)`
+          },
+          price_withLogo: {
+            price_value: String(Math.ceil(gold_logo * 10 / months) / 10).replace(/(\.\d)/, `<small style="font-size: 0.6em;">$1</small>`),
+            price_text: `/ ${label_mo} (${label_total} ${gold_logo}€)`
+          },
+          price_withoutLogo: {
+            price_value: String(Math.ceil(gold_nologo * 10 / months) / 10).replace(/(\.\d)/, `<small style="font-size: 0.6em;">$1</small>`),
+            price_text: `/ ${label_mo} (${label_total} ${gold_nologo}€)`
+          },
+          price_withBannerT1: {
+            price_value: String(Math.ceil(gold_banner1 * 10 / months) / 10).replace(/(\.\d)/, `<small style="font-size: 0.6em;">$1</small>`),
+            price_text: `/ ${label_mo} (${label_total} ${gold_banner1}€)`
+          },
+          price_withBannerT2: {
+            price_value: String(Math.ceil(gold_banner2 * 10 / months) / 10).replace(/(\.\d)/, `<small style="font-size: 0.6em;">$1</small>`),
+            price_text: `/ ${label_mo} (${label_total} ${gold_banner2}€)`
+          }
+        }, 
+        price_platinum: {
+          topText: title,
+          currency: '€',
+          price_default: {
+            price_value: String((Math.ceil(platinum_banner1 * 10 / months)) / 10).replace(/(\.\d)/, `<small style="font-size: 0.6em;">$1</small>`),
+            price_text: `/ ${label_mo} (${label_total} ${platinum_banner1}€)`
+          },
+          price_crossed: {
+            price_value: String((Math.ceil(platinum_banner1 * 10 / months)) / 10).replace(/(\.\d)/, `<small style="font-size: 0.6em;">$1</small>`),
+            price_text: `/ ${label_mo} (${label_total} ${platinum_banner1}€)`
+          },
+          price_withBannerT1: {
+            price_value: String(Math.ceil(platinum_banner1 * 10 / months) / 10).replace(/(\.\d)/, `<small style="font-size: 0.6em;">$1</small>`),
+            price_text: `/ ${label_mo} (${label_total} ${platinum_banner1}€)`
+          },
+          price_withBannerT2: {
+            price_value: String(Math.ceil(platinum_banner2 * 10 / months) / 10).replace(/(\.\d)/, `<small style="font-size: 0.6em;">$1</small>`),
+            price_text: `/ ${label_mo} (${label_total} ${platinum_banner2}€)`
+          },
+        }
+      }
+    };
+
+    localStorage.removeItem('offer2021_months_package');
+    console.log(returnObj)
+    return returnObj;
+  }
 
   renderSettings() {
     const wrapper = document.createElement('div');
@@ -317,11 +423,11 @@ class ServisePackagesPricelist extends React.Component {
     `
     this.settings.forEach(tune => {
       let buttonLabel = document.createElement('label')
-      buttonLabel.classList.add('cdx-settings-button',  `${tune.name.split('_')[1]}`);
+      buttonLabel.classList.add('cdx-settings-button',  `${tune.name.replace(/add_/gi, '')}`);
       
       let button = document.createElement('input');
       button.setAttribute('type', 'checkbox')
-      button.setAttribute('value', `${tune.name.split('_')[1]}`)
+      button.setAttribute('value', `${tune.name.replace(/add_/gi, '')}`)
 
       buttonLabel.innerHTML = tune.icon
       buttonLabel.prepend(button)

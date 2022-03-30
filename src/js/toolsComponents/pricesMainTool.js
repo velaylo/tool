@@ -64,7 +64,9 @@ const StyledPricesMain = styled.div`
 function PricesMainTool(props) {
 
     const [price, setPrice] = useState([]);
-    const [toolbar, setToolbar] = useState('');
+    const [leftSize, setLeftSize] = useState(0);
+    const [topSize, setTopSize] = useState(0);
+    const [targetOpen, setTarget] = useState();
     
     function addPrice() {
         setPrice(price => price.concat(<PriceList prices={props.prices[0]} />))
@@ -72,25 +74,30 @@ function PricesMainTool(props) {
 
     function _onFoucsIn(event) {
         let target = event.target;
-        let item = target.closest('.price-item');
-    
+        let item = target.closest('.price-item')
+        setTarget(item)
+
+        setLeftSize(`${item.offsetLeft + (item.offsetWidth / 2)}px`);
+        setTopSize(`${item.offsetTop + item.offsetHeight - 5}px`);
+
         props.context.lastActivePrice = item;
-        let left = `${item.offsetLeft + (item.offsetWidth / 2)}px`;
-        let right = `${item.offsetTop + item.offsetHeight - 5}px`;
-       
-        if(toolbar === '') {
-            setToolbar(<ToolbarPrice leftSize={left} rightSize={right} />)
-        } else {
-            return;
-        }
+
+        document.querySelector('.price-toolbar').style.display = 'flex'
     }
 
-    function _onBlur() {
-        if(toolbar != '') {
-            setToolbar('')
-        } else {
-            return;
+    function _onBlur(event) {
+        console.log(event.relatedTarget)
+        console.log(!!event.relatedTarget)
+
+        if(!event.relatedTarget.closest('.price-toolbar')) {
+            document.querySelector('.price-toolbar').style.display = 'none'
         }
+        //if (!!event.relatedTarget && event.relatedTarget.closest('.price-toolbar')) {}
+        //if(!event.target.closest('.price-item')) {
+        //    setTimeout(() => {
+        //        document.querySelector('.price-toolbar').style.display = 'none'
+        //    }, 200)
+        //}
     }
 
     return (
@@ -118,7 +125,7 @@ function PricesMainTool(props) {
                         onClick={addPrice}>
                             +
                     </div>
-                    {toolbar}
+                    <ToolbarPrice leftSize={leftSize} topSize={topSize} toolbarEvents={props.toolbarEvents} target={targetOpen} />
             </div>
         </StyledPricesMain>
     )
