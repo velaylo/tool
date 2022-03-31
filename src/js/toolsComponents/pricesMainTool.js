@@ -64,38 +64,67 @@ const StyledPricesMain = styled.div`
 function PricesMainTool(props) {
 
     const [price, setPrice] = useState([]);
+    const [toolbar, setToolbar] = useState(false);
+    const [lastActivePrice, setLastActivePrice] = useState(null);
     const [leftSize, setLeftSize] = useState(0);
     const [topSize, setTopSize] = useState(0);
-    const [targetOpen, setTarget] = useState();
-    
+
+
+
     function addPrice() {
         setPrice(price => price.concat(<PriceList prices={props.prices[0]} />))
     }
 
     function _onFoucsIn(event) {
-        let target = event.target;
-        let item = target.closest('.price-item')
-        setTarget(item)
+        let t = event.target;
+        let item = t.closest('.price-item');
+        if (!item || item === lastActivePrice) {
+          return;
+        }
 
         setLeftSize(`${item.offsetLeft + (item.offsetWidth / 2)}px`);
         setTopSize(`${item.offsetTop + item.offsetHeight - 5}px`);
 
-        props.context.lastActivePrice = item;
 
-        document.querySelector('.price-toolbar').style.display = 'flex'
+        setToolbar(true)
+        setLastActivePrice(item);
+        console.log(toolbar)
     }
 
-    function _onBlur(event) {
-
-        if(!event.relatedTarget.closest('.price-toolbar')) {
-            document.querySelector('.price-toolbar').style.display = 'none'
+    let _destroyToolbar = (container) => {
+        if (toolbar) {
+          //for (const event of Object.keys(props.toolbarEvents)) {
+          //  let button = toolbar.querySelector(`.button.${event}`);
+          //  //if (this[`on_${event}`]) {
+          //  //  button.removeEventListener('click', this[`on_${event}`]);
+          //  //  this[`on_${event}`] = null;
+          //  //}
+          //}
+    
+          //container.removeChild(toolbar);
+          setToolbar(false);
         }
-        //if (!!event.relatedTarget && event.relatedTarget.closest('.price-toolbar')) {}
-        //if(!event.target.closest('.price-item')) {
-        //    setTimeout(() => {
-        //        document.querySelector('.price-toolbar').style.display = 'none'
-        //    }, 200)
-        //}
+    }
+
+    function _onFoucsOut(event) {
+        console.log(event.relatedTarget)
+        if (!!event.relatedTarget && event.relatedTarget.closest('.price-toolbar')) {
+            return setTimeout(function() {
+              let toBeFocused = lastActivePrice.querySelector('.side_:not([hidden]) [tabindex]:not([hidden])');
+              console.log(lastActivePrice)
+              toBeFocused.focus();
+            }, 100);
+        }
+        if (!lastActivePrice) {
+            return;
+        }
+        const container = document.querySelector('.prices-main--items');
+        let t = event.target;
+        let item = t.closest('.price-item');
+        if (!!item && item === lastActivePrice) {
+            _destroyToolbar(container, item);
+            setLastActivePrice(null)
+        }
     }
 
     return (
@@ -111,7 +140,7 @@ function PricesMainTool(props) {
             <div 
                 className='prices-main--items'
                 onFocus={_onFoucsIn}
-                onBlur={_onBlur}>
+                onBlur={_onFoucsOut}>
                     {props.prices.map((item) => {
                         return (<PriceList prices={item} />)
                     })}
@@ -123,7 +152,7 @@ function PricesMainTool(props) {
                         onClick={addPrice}>
                             +
                     </div>
-                    <ToolbarPrice leftSize={leftSize} topSize={topSize} toolbarEvents={props.toolbarEvents} target={targetOpen} />
+                    {toolbar ? <ToolbarPrice leftSize={leftSize} topSize={topSize} toolbarEvents={props.toolbarEvents} /> : '' }
             </div>
         </StyledPricesMain>
     )

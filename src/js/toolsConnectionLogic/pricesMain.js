@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 import PricesMainTool from "../toolsComponents/pricesMainTool";
+import ToolbarPrice from "../components/toolbarPrice";
 
 class PricesMain extends React.Component {
   static get toolbox() {
@@ -249,6 +250,7 @@ class PricesMain extends React.Component {
           prices={this.data.prices}
           context = {this}
           toolbarEvents = {this.toolbarEvents}
+          toolbar = {this.toolbar}
           />
       ),rootNode);
     

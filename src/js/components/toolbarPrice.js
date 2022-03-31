@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const StyledToolbarPrice = styled.div`
     position: absolute;
-    display: none;
+    display: flex;
     padding: 5px;
     border-radius: 3px;
     background-color: #fafafa;
@@ -222,26 +222,33 @@ function ToolbarPrice(props) {
         <StyledToolbarPrice leftSize={props.leftSize} topSize={props.topSize} className='price-toolbar'>
             <div 
                 className="button togglePromo"
+                tabIndex={0}
                 onClick={props.toolbarEvents['togglePromo']}></div>
             <div 
                 className="button toggleCrossed"
+                tabIndex={0}
                 onClick={props.toolbarEvents['toggleCrossed']}></div>
             <div 
                 className="button toggleBottomRow"
+                tabIndex={0}
                 onClick={props.toolbarEvents['toggleBottomRow']}></div>
             <div className="divider"></div>
             <div 
                 className="button toggleLeft"
+                tabIndex={0}
                 onClick={(e) => props.toolbarEvents['toggleLeft'](e, props.target)}></div>
             <div 
                 className="button toggleRight"
+                tabIndex={0}
                 onClick={props.toolbarEvents['toggleRight']}></div>
             <div className="divider"></div>
             <div
                 className="button applyToAll"
+                tabIndex={0}
                 onClick={props.toolbarEvents['applyToAll']}></div>
             <div 
                 className="button remove"
+                tabIndex={0}
                 onClick={props.toolbarEvents['remove']}>✖</div>
         </StyledToolbarPrice>
     )
