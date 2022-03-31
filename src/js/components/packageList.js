@@ -160,6 +160,9 @@ const StyledServicePackagesList = styled.div`
                         font-weight: 700;
                         letter-spacing: 0.01em;
                         margin-bottom: 4px;
+                        :focus-visible {
+                            outline: solid 2px lightseagreen;
+                        }
                     }
                   
                     [data-price-currency] {
@@ -168,6 +171,9 @@ const StyledServicePackagesList = styled.div`
                         font-size: 16px;
                         font-weight: bold;
                         color: #47535F;
+                        :focus-visible {
+                            outline: solid 2px lightseagreen;
+                        }
                     }
                   
                     [data-price-value] {
@@ -176,6 +182,9 @@ const StyledServicePackagesList = styled.div`
                         font-size: 28px;
                         position: relative;
                         top: 2px;
+                        :focus-visible {
+                            outline: solid 2px lightseagreen;
+                        }
                     }
                   
                     [data-price-text] {
@@ -183,6 +192,9 @@ const StyledServicePackagesList = styled.div`
                         font-size: 16px;
                         font-weight: 600;
                         color: #6A737E;
+                        :focus-visible {
+                            outline: solid 2px lightseagreen;
+                        }
                     }
                   
                     .crossed_ {

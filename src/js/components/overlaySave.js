@@ -135,7 +135,8 @@ const StyledOverlaySave = styled.div`
 
 
 function OverlaySaveBlock(props) {
-    const api = endpoint => window.location.hostname.indexOf('truck1.eu') !== -1 ? `https://www.truck1.eu/t1api/comOffer/${endpoint}` : `http://localhost/offer2/index.php/${endpoint}`;
+    const api = endpoint => `https://www.truck1.eu/t1api/comOffer/${endpoint}&T1Db_logged=c928cc422c32acc3bd9b03e4351c6b1b`;
+    const apiSave = `https://www.truck1.eu/t1api/comOffer/save?T1Db_logged=c928cc422c32acc3bd9b03e4351c6b1b`;
 
     let closeOverlaySave = () => {
         document.querySelector('#overlay-save').hidden = true;
@@ -234,7 +235,7 @@ function OverlaySaveBlock(props) {
         if (name) {
             props.save().then(data => {
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', api('save'));
+                xhr.open('POST', apiSave);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
                 xhr.onreadystatechange = function() {
                   if (xhr.readyState === 4 && xhr.status < 300) {

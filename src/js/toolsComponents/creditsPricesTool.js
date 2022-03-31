@@ -209,7 +209,6 @@ function CreditsPricesTool(props) {
         item.addEventListener('click', initRemoveParagraphTool)
         item.innerHTML = addParagraph()
 
-        console.log(item)
         let container = event.target.closest('div[data-credits-prices]');
   
         container.appendChild(item)

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import ServicePackagesList from '../components/servicePackagesList'
 import styled from 'styled-components';
 
@@ -33,6 +33,9 @@ const StyledServisePackagesPricelist = styled.div`
 `
 
 function ServisePackagesPricelist(props) {
+
+    useEffect(() => props.this._renderPrices(), []) 
+
     return (
         <StyledServisePackagesPricelist className='packages-pricelist--wrapper'>
             <div

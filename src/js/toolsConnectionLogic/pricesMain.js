@@ -122,7 +122,6 @@ class PricesMain extends React.Component {
         }
       },
       toggleLeft: function(event, target) {
-        console.log(target)
         if (event.target.classList.contains('is-disabled')) {
           return false;
         }

@@ -39,14 +39,20 @@ function App() {
     const handleSave = React.useCallback(async () => {
       document.querySelectorAll('.ce-paragraph:empty').forEach(p => p.innerHTML = '&nbsp;&nbsp;&nbsp;');
       const savedData = await editorCore.current.save();
-      console.log(savedData)
 
       return savedData
     }, [])
 
     const handleRender = React.useCallback(async (json) => {
+      console.log(json)
       await editorCore.current.render(json)
     })
+
+    const saveData = () => {
+      handleSave().then(data => {
+        console.dir(data);
+      });
+    }
 
     return (
       <>
@@ -68,7 +74,7 @@ function App() {
         <StyledLogButton 
           className="co-btn" 
           id="log" 
-          onClick={handleSave}>
+          onClick={saveData}>
             Log
         </StyledLogButton>
         <PrintContent />

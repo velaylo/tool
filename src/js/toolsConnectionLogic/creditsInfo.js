@@ -74,7 +74,6 @@ class CreditsInfo extends React.Component {
     }, {});
 
     let clean = this._clean.bind(this);
-    console.log(clean(el.querySelector('.def_').innerHTML))
 
     const textReducer = (acc, el) => {
       acc.push({

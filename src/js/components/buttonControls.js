@@ -112,7 +112,8 @@ const StyledMainControls = styled.div`
 
 
 function ButtonControls(props) {
-    const api = endpoint => window.location.hostname.indexOf('truck1.eu') !== -1 ? `https://www.truck1.eu/t1api/comOffer/${endpoint}` : `http://localhost/offer2/index.php/${endpoint}`;
+    const api = endpoint => `https://www.truck1.eu/t1api/comOffer/${endpoint}&T1Db_logged=c928cc422c32acc3bd9b03e4351c6b1b`;
+    const apiList = `https://www.truck1.eu/t1api/comOffer/list?T1Db_logged=c928cc422c32acc3bd9b03e4351c6b1b`;
 
     const openList =() => {
         document.querySelector('#overlay-list').hidden = false;
@@ -120,7 +121,7 @@ function ButtonControls(props) {
     }
 
     function loadList(container, attachListItemEvents = true) {
-        fetch(api('list'))
+        fetch(apiList)
         .then(r => r.json())
         .then(arr => {
           arr.forEach(item => {
@@ -131,7 +132,7 @@ function ButtonControls(props) {
     }
 
     function makeListItem(item, attachEvents = true) {
-        if (!attachEvents && Number(item.offer_id) <= 8) { return false; }
+        if (!attachEvents && Number(item.offer_id) <= 10) { return false; }
       
         let listItem = document.createElement('div');
         listItem.classList.add('list-item')
@@ -139,7 +140,7 @@ function ButtonControls(props) {
         listItem.innerHTML = `
         <span class="id_"><span>${item.offer_id}</span></span>
         <span class="name_">${item.name}</span>
-        ${Number(item.offer_id) > 8 ? _deleteButton(item.offer_id) : ''}
+        ${Number(item.offer_id) > 10 ? _deleteButton(item.offer_id) : ''}
         `;
         listItem.dataset.id = item.offer_id;
         if (attachEvents) {
@@ -157,8 +158,8 @@ function ButtonControls(props) {
         fetch(api(`load?offer_id=${id}`))
         .then(r => r.json())
         .then(json => {
-          //console.log(json);
-          props.render(json.data)
+          console.log(json);
+          props.render(JSON.parse(json.data))
         });
     }
 

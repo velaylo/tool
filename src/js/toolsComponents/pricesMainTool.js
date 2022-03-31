@@ -86,8 +86,6 @@ function PricesMainTool(props) {
     }
 
     function _onBlur(event) {
-        console.log(event.relatedTarget)
-        console.log(!!event.relatedTarget)
 
         if(!event.relatedTarget.closest('.price-toolbar')) {
             document.querySelector('.price-toolbar').style.display = 'none'

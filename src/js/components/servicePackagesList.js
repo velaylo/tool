@@ -73,12 +73,10 @@ function ServicePackagesList(props) {
 
             let qs = new URLSearchParams(new FormData(event.target)).toString();
             let xhr = new XMLHttpRequest();
-            console.log(qs)
             xhr.open('GET', api(`price?${qs}`));
             xhr.onreadystatechange = function() {
               if (xhr.readyState === 4) {
                 if (xhr.status < 300) {
-                    console.log(xhr.responseText)
                     that._renderSinglePriceRow(JSON.parse(xhr.responseText), ++that.pricesCurrentId);
                 } else {
                   console.warn('XHR Status: ', xhr.status);
