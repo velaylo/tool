@@ -126,6 +126,14 @@ function PriceList(props) {
                         suppressContentEditableWarning={true} 
                         contentEditable={true}
                         tabIndex={0}
+                        hidden
+                        className="promo-text_">
+                            {props.prices['left'].promoText}
+                    </div>
+                    <div
+                        suppressContentEditableWarning={true} 
+                        contentEditable={true}
+                        tabIndex={0}
                         className="top-text_">
                             {props.prices['left'].topText}
                     </div>

@@ -90,37 +90,53 @@ class PricesMain extends React.Component {
     this.toolbar = null;
 
     this.toolbarEvents = {
-      togglePromo: function(target) {
-        return function(event) {
-          if (event.target.classList.contains('is-disabled')) {
-            return false;
-          }
-          this.__toggler(event, target, '.promo-text_');
-          let _toggleRight = this.toolbar.querySelector('.button.toggleRight');
-          if (_toggleRight) {
-            _toggleRight.classList.toggle('is-disabled');
-            _toggleRight.classList.toggle('is-on-promo');
-          }
-          this._locateToolbar(event.target.parentNode, target);
+      togglePromo: function(event, target) {
+        if (event.target.classList.contains('is-disabled')) {
+          return false;
         }
+
+        let elsToHide = target.querySelectorAll('.promo-text_');
+        elsToHide.forEach(el => {
+          el.hidden = !el.hidden;
+        });
+        event.target.classList.toggle('is-crossed');
+
+        let _toggleRight = this.toolbar.querySelector('.button.toggleRight');
+        if (_toggleRight) {
+          _toggleRight.classList.toggle('is-disabled');
+          _toggleRight.classList.toggle('is-on-promo');
+        }
+        
+        event.target.parentNode.style.left = `${target.offsetLeft + (target.offsetWidth / 2)}px`;
+        event.target.parentNode.style.top = `${target.offsetTop + target.offsetHeight - 5}px`;
       },
-      // toggleDivider: function(target) {
-      //   return function(event) {
-      //     this.__toggler(event, target, '.divider_');
-      //     this._locateToolbar(event.target.parentNode, target);
-      //   }
-      // },
-      toggleCrossed: function(target) {
-        return function(event) {
-          this.__toggler(event, target, '.price-main_.crossed_');
-          this._locateToolbar(event.target.parentNode, target);
+      toggleCrossed: function(event, target) {
+        if (event.target.classList.contains('is-disabled')) {
+          return false;
         }
+        
+        let elsToHide = target.querySelectorAll('.price-main_.crossed_');
+        elsToHide.forEach(el => {
+          el.hidden = !el.hidden;
+        });
+        event.target.classList.toggle('is-crossed');
+
+        event.target.parentNode.style.left = `${target.offsetLeft + (target.offsetWidth / 2)}px`;
+        event.target.parentNode.style.top = `${target.offsetTop + target.offsetHeight - 5}px`;
       },
-      toggleBottomRow: function(target) {
-        return function(event) {
-          this.__toggler(event, target, '.bottom_, .divider_');
-          this._locateToolbar(event.target.parentNode, target);
+      toggleBottomRow: function(event, target) {
+        if (event.target.classList.contains('is-disabled')) {
+          return false;
         }
+        
+        let elsToHide = target.querySelectorAll('.bottom_, .divider_');
+        elsToHide.forEach(el => {
+          el.hidden = !el.hidden;
+        });
+        event.target.classList.toggle('is-crossed');
+
+        event.target.parentNode.style.left = `${target.offsetLeft + (target.offsetWidth / 2)}px`;
+        event.target.parentNode.style.top = `${target.offsetTop + target.offsetHeight - 5}px`;
       },
       toggleLeft: function(event, target) {
         if (event.target.classList.contains('is-disabled')) {
@@ -135,74 +151,45 @@ class PricesMain extends React.Component {
         
         //this.__toggleDisabled(event, target);
       },
-      toggleRight: function(target) {
-        return function(event) {
-          if (event.target.classList.contains('is-disabled')) {
-            return false;
-          }
-          this.__toggler(event, target, '.side_.right_');
-          this.__toggleDisabled(event, target);
+      toggleRight: function(event, target) {
+        if (event.target.classList.contains('is-disabled')) {
+          return false;
         }
+
+        let elsToHide = target.querySelectorAll('.side_.right_');
+        elsToHide.forEach(el => {
+          el.hidden = !el.hidden;
+        });
+        event.target.classList.toggle('is-crossed');
+
+        //this.__toggleDisabled(event, target);
       },
-      rColor_blue: function(target) {
-        return function(event) {
-          this.__bgClass(event, target, 'blue');
-        }
-      },
-      rColor_orange: function(target) {
-        return function(event) {
-          this.__bgClass(event, target, 'orange');
-        }
-      },
-      rColor_green: function(target) {
-        return function(event) {
-          this.__bgClass(event, target, 'green');
-        }
-      },
-      // ptColor_blue: function(target) {
-      //   return function(event) {
-          
-      //   }
-      // },
-      // ptColor_orange: function(target) {
-      //   return function(event) {
-          
-      //   }
-      // },
-      // ptColor_green: function(target) {
-      //   return function(event) {
-          
-      //   }
-      // },
-      applyToAll: function(target) {
-        return function(event) {
-          let targetStates = {
-            showPromoText: target.querySelector('.promo-text_').hidden,
-            showLeft: target.querySelector('.side_.left_').hidden,
-            showRight: target.querySelector('.side_.right_').hidden,
-            showCrossed: target.querySelector('.price-main_.crossed_').hidden,
-            showBottomRow: target.querySelector('.bottom_').hidden
-          };
-          let items = target.parentNode.querySelectorAll('.price-item');
-          items.forEach(item => {
-            item.querySelector('.promo-text_').hidden = targetStates.showPromoText;
-            item.querySelector('.side_.left_').hidden = targetStates.showLeft;
-            item.querySelector('.side_.right_').hidden = targetStates.showRight;
-            item.querySelectorAll('.price-main_.crossed_').forEach(i => {
-              i.hidden = targetStates.showCrossed;
-            });
-            item.querySelectorAll('.bottom_, .divider_').forEach(i => {
-              i.hidden = targetStates.showBottomRow;
-            });
+      applyToAll: function(event, target) {
+        console.log(target.querySelector('.promo-text_'))
+        let targetStates = {
+          showPromoText: target.querySelector('.promo-text_').hidden,
+          showLeft: target.querySelector('.side_.left_').hidden,
+          showRight: target.querySelector('.side_.right_').hidden,
+          showCrossed: target.querySelector('.price-main_.crossed_').hidden,
+          showBottomRow: target.querySelector('.bottom_').hidden
+        };
+        let items = target.parentNode.querySelectorAll('.price-item');
+        items.forEach(item => {
+          item.querySelector('.promo-text_').hidden = targetStates.showPromoText;
+          item.querySelector('.side_.left_').hidden = targetStates.showLeft;
+          item.querySelector('.side_.right_').hidden = targetStates.showRight;
+          item.querySelectorAll('.price-main_.crossed_').forEach(i => {
+            i.hidden = targetStates.showCrossed;
           });
-        }
+          item.querySelectorAll('.bottom_, .divider_').forEach(i => {
+            i.hidden = targetStates.showBottomRow;
+          });
+        });
       },
       remove: function(target) {
-        return function(event) {
-          let container = target.parentNode;
-          container.removeChild(target);
-          this._destroyToolbar(container);
-        }
+        let container = target.parentNode;
+        container.removeChild(target);
+        this._destroyToolbar(container);
       }
     };
 
@@ -212,6 +199,21 @@ class PricesMain extends React.Component {
         icon: `<span title="В один ряд"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" width="100%" height="100%"><rect x="5" y="2" rx="1" width="10" height="4" stroke="#959595" fill="#e2e2e2" /><rect x="5" y="8" rx="1" width="10" height="4" stroke="#959595" fill="#e2e2e2" /><rect x="5" y="14" rx="1" width="10" height="4" stroke="#959595" fill="#e2e2e2" /></svg></span>`
       }
     ]
+  }
+
+  __toggleDisabled(event, target) {
+    let toolbar = event.target.parentNode;
+    ['.toggleLeft', '.toggleRight'].forEach(buttonClassName => {
+      toolbar.querySelector(buttonClassName).classList.remove('is-disabled');
+    });
+    toolbar.querySelector('.togglePromo').classList.add('is-disabled');
+    if (target.querySelector('.side_.left_').hidden) {
+      toolbar.querySelector('.toggleRight').classList.add('is-disabled');
+    }
+    if (target.querySelector('.side_.right_').hidden) {
+      toolbar.querySelector('.toggleLeft').classList.add('is-disabled');
+      toolbar.querySelector('.togglePromo').classList.remove('is-disabled');
+    }
   }
 
   renderSettings() {

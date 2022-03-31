@@ -223,15 +223,15 @@ function ToolbarPrice(props) {
             <div 
                 className="button togglePromo"
                 tabIndex={0}
-                onClick={props.toolbarEvents['togglePromo']}></div>
+                onClick={(e) => props.toolbarEvents['togglePromo'](e, props.target)}></div>
             <div 
                 className="button toggleCrossed"
                 tabIndex={0}
-                onClick={props.toolbarEvents['toggleCrossed']}></div>
+                onClick={(e) => props.toolbarEvents['toggleCrossed'](e, props.target)}></div>
             <div 
                 className="button toggleBottomRow"
                 tabIndex={0}
-                onClick={props.toolbarEvents['toggleBottomRow']}></div>
+                onClick={(e) => props.toolbarEvents['toggleBottomRow'](e, props.target)}></div>
             <div className="divider"></div>
             <div 
                 className="button toggleLeft"
@@ -240,16 +240,16 @@ function ToolbarPrice(props) {
             <div 
                 className="button toggleRight"
                 tabIndex={0}
-                onClick={props.toolbarEvents['toggleRight']}></div>
+                onClick={(e) => props.toolbarEvents['toggleRight'](e, props.target)}></div>
             <div className="divider"></div>
             <div
                 className="button applyToAll"
                 tabIndex={0}
-                onClick={props.toolbarEvents['applyToAll']}></div>
+                onClick={(e) => props.toolbarEvents['applyToAll'](e, props.target)}></div>
             <div 
                 className="button remove"
                 tabIndex={0}
-                onClick={props.toolbarEvents['remove']}>✖</div>
+                onClick={() => props.toolbarEvents['remove'](props.target)}>✖</div>
         </StyledToolbarPrice>
     )
 }

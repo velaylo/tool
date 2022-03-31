@@ -68,6 +68,7 @@ function PricesMainTool(props) {
     const [lastActivePrice, setLastActivePrice] = useState(null);
     const [leftSize, setLeftSize] = useState(0);
     const [topSize, setTopSize] = useState(0);
+    const [itemTarget, setItemTarget] = useState();
 
 
 
@@ -86,6 +87,7 @@ function PricesMainTool(props) {
         setTopSize(`${item.offsetTop + item.offsetHeight - 5}px`);
 
 
+        setItemTarget(item)
         setToolbar(true)
         setLastActivePrice(item);
         console.log(toolbar)
@@ -152,7 +154,7 @@ function PricesMainTool(props) {
                         onClick={addPrice}>
                             +
                     </div>
-                    {toolbar ? <ToolbarPrice leftSize={leftSize} topSize={topSize} toolbarEvents={props.toolbarEvents} /> : '' }
+                    {toolbar ? <ToolbarPrice leftSize={leftSize} topSize={topSize} toolbarEvents={props.toolbarEvents} target={itemTarget} /> : '' }
             </div>
         </StyledPricesMain>
     )
