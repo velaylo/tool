@@ -258,6 +258,49 @@ class PricesMain extends React.Component {
     
     return rootNode
   }
+
+  save(el) {
+    const contents = [ ...el.querySelectorAll('[data-value-content][data-key]') ].reduce((acc, elem) => {
+      acc[elem.dataset['key']] = elem.textContent;
+      return acc;
+    }, {});
+
+    const priceReducer = (acc, item) => {
+      let toPush = { left: {}, right: {} };
+      toPush.showLeft = !item.querySelector('.side_.left_').hidden;
+      toPush.showRight = !item.querySelector('.side_.right_').hidden;
+      toPush.showDivider = !item.querySelector('.divider_').hidden;
+      toPush.showCrossed = !item.querySelector('.price-main_.crossed_').hidden;
+      toPush.showBottomRow = !item.querySelector('.bottom_').hidden;
+      toPush.showPromoText = !item.querySelector('.promo-text_').hidden;
+      // toPush.rightColor = [ ...item.querySelector('.side_.right_').classList ].find(cln => !cln.indexOf('bg-color')).split('-').pop();
+
+      ['left', 'right'].forEach(s => {
+        let side = item.querySelector(`.${s}_`);
+        let sideObj = toPush[s];
+        sideObj.currency = side.querySelector('.currency_').textContent;
+        sideObj.topText = side.querySelector('.top-text_').textContent;
+        sideObj.priceValue = side.querySelector('.price-main_:not(.crossed_) .value_').textContent;
+        sideObj.priceText = side.querySelector('.price-main_:not(.crossed_) .text_').textContent;
+        sideObj.priceValue_crossed = side.querySelector('.price-main_.crossed_ .value_').textContent;
+        sideObj.priceText_crossed = side.querySelector('.price-main_.crossed_ .text_').textContent;
+        sideObj.bottomRow = side.querySelector('.bottom_').textContent;
+        if (s === 'left') {
+          sideObj.promoText = side.querySelector('.promo-text_').textContent;
+        }
+      });
+
+      acc.push(toPush);
+      return acc;
+    };
+
+    return {
+      dataId: el.getAttribute('data-id'),
+      contents,
+      isSingleColumn: el.querySelector('.prices-main--items').classList.contains('single-row'),
+      prices: [ ...el.querySelectorAll('.price-item') ].reduce(priceReducer, [])
+    }
+  }
 }
 
 export default PricesMain

@@ -101,6 +101,10 @@ function PricesMainTool(props) {
           //  //  button.removeEventListener('click', this[`on_${event}`]);
           //  //  this[`on_${event}`] = null;
           //  //}
+
+          //  if(typeof button.onclick === "function") {
+          //      console.log('event true')
+          //  }
           //}
     
           //container.removeChild(toolbar);
@@ -109,11 +113,9 @@ function PricesMainTool(props) {
     }
 
     function _onFoucsOut(event) {
-        console.log(event.relatedTarget)
         if (!!event.relatedTarget && event.relatedTarget.closest('.price-toolbar')) {
             return setTimeout(function() {
               let toBeFocused = lastActivePrice.querySelector('.side_:not([hidden]) [tabindex]:not([hidden])');
-              console.log(lastActivePrice)
               toBeFocused.focus();
             }, 100);
         }
@@ -124,7 +126,7 @@ function PricesMainTool(props) {
         let t = event.target;
         let item = t.closest('.price-item');
         if (!!item && item === lastActivePrice) {
-            _destroyToolbar(container, item);
+            _destroyToolbar(container);
             setLastActivePrice(null)
         }
     }

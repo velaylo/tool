@@ -28,7 +28,7 @@ class ServisePackagesPricelist extends React.Component {
           'Manual adding of ads'
         ],
         list_premium: [
-          'Все услуги пакета STANDARD',
+          'All services of STANDARD package',
           'Up to 20 photos per ad',
           'Possibility to upload video for each ad',
           'Status "Reliable"',
@@ -40,7 +40,7 @@ class ServisePackagesPricelist extends React.Component {
           'Link to your Youtube chanel or video about the company'
         ],
         list_premium_plus: [
-          'Все услуги пакета PREMIUM',
+          'All services of PREMIUM package',
           'Unlim photos per each ad',
           'Basic statistics + mailing',
           'Remarketing, number of showings included 10000',
@@ -55,7 +55,7 @@ class ServisePackagesPricelist extends React.Component {
           'Text advertising in Google for your ads (5)'
         ],
         list_gold: [
-          'Все услуги пакета PREMIUM PLUS',
+          'All services of PREMIUM PLUS package',
           'Detailed statistics + mailing',
           'Priority Service',
           'Remarketing, number of showings included 20000',
@@ -65,17 +65,16 @@ class ServisePackagesPricelist extends React.Component {
           'Concierge of ads (old ad reminder)',
           'Text advertising in Google for your ads',
           'Access to account control panel for several emails / managers',
-          'Logo in listing',
-          'Услуги seo аудита'
+          'Logo in listing'
         ],
         list_platinum: [
-          'Все услуги пакета GOLD',
-          'Дополнительный имиджевый статус',
+          'All services of GOLD package',
+          'Additional image status',
           'Access to special promotion tools',
           'Remarketing, number of showings included 30000',
           'Text advertising in Google for your ads (12)',
           'Personalized dealer page design',
-          'Приоритетный доступ к новым рекламным возможностям',
+          'Access to special promotion tools',
           'Stock analysis (business analysis)'
         ]
       },

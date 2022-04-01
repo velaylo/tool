@@ -139,6 +139,7 @@ function OverlaySaveBlock(props) {
     const apiSave = `https://www.truck1.eu/t1api/comOffer/save?T1Db_logged=c928cc422c32acc3bd9b03e4351c6b1b`;
 
     let closeOverlaySave = () => {
+        document.querySelector('#overlay-save .list[data-list-loaded]').innerHTML = ''
         document.querySelector('#overlay-save').hidden = true;
     }
 
@@ -150,6 +151,7 @@ function OverlaySaveBlock(props) {
         const isFormActive = form.hidden
 
         if(!itsForm && !isFormActive) {
+            document.querySelector('#overlay-save .list[data-list-loaded]').innerHTML = ''
             form.closest('#overlay-save').hidden = true;
         }
     }
@@ -260,7 +262,7 @@ function OverlaySaveBlock(props) {
                     <p>Перезаписать</p>
                     <div 
                         className="list" 
-                        data-list-loaded="0"
+                        data-list-loaded={0}
                         onClick={addSaveList}
                         >
                     </div>

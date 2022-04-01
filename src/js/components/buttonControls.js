@@ -205,7 +205,7 @@ function ButtonControls(props) {
 
         // add footer to each page
         let height = printContent.clientHeight;
-        let pageHeightStep = 1760; // magic number #1
+        let pageHeightStep = 1720; // magic number #1
         let pageHeightStep_screen = 1754;
         let footerHeight = 80; // height + 
         for (let i = 0, j = 1; i < height; i += pageHeightStep_screen, j++) {

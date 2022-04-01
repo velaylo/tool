@@ -134,7 +134,7 @@ function OverlayList(props) {
     onClick={closeList}>
       <div
         className="list modal" 
-        data-list-loaded="0">
+        data-list-loaded={0}>
       </div>
     </StyledOverlayList>
   )
