@@ -5,6 +5,8 @@ import ToolbarPrice from '../components/toolbarPrice'
 
 const StyledPricesMain = styled.div`
     padding-top: 60px;
+    border-top: 1px solid #E3E8F1;
+    border-bottom: 1px solid #E3E8F1;
     padding-bottom: 60px;
     width: 100%;
     max-width: 1160px;
@@ -56,6 +58,24 @@ const StyledPricesMain = styled.div`
             top: 98%;
             &:hover {
                 display: flex;  
+            }
+        }
+    }
+    .botoom-price-description {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 60px;
+        p {
+            font-weight: 400;
+            font-size: 18px;
+            max-width: 768px;
+            line-height: 28px;
+            text-align: center;
+            font-family: "Source Sans Pro", sans-serif;
+            color: #47535F;
+            :focus-visible {
+                outline: solid 2px lightseagreen;
             }
         }
     }
@@ -157,6 +177,18 @@ function PricesMainTool(props) {
                             +
                     </div>
                     {toolbar ? <ToolbarPrice leftSize={leftSize} topSize={topSize} toolbarEvents={props.toolbarEvents} target={itemTarget} /> : '' }
+            </div>
+            <div class="botoom-price-description">
+                <p
+                    contentEditable={true} 
+                    suppressContentEditableWarning={true} >
+                    *Please consider minimal advertising period of 6 months
+                </p>
+                <p
+                    contentEditable={true} 
+                    suppressContentEditableWarning={true} >
+                    **Payment is made in advance and in a single transaction.
+                </p>
             </div>
         </StyledPricesMain>
     )

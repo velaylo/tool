@@ -78,8 +78,8 @@ function AddSingleInformation({ def, price }, key) {
                 contentEditable={true} 
                 suppressContentEditableWarning={true}
                 tabIndex={0} 
-                className='def_'>
-                    {def}
+                className='def_'
+                dangerouslySetInnerHTML={{__html: def}}>
             </p>
             <p 
                 contentEditable={true}

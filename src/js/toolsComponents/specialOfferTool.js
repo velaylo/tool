@@ -6,6 +6,8 @@ const StyledSpecialOffer = styled.div`
     max-width: 1160px;
     margin: 0 auto; 
     padding-top: 60px;
+    border-bottom: 1px solid #E3E8F1;
+    padding-bottom: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;

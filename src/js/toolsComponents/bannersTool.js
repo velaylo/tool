@@ -5,6 +5,7 @@ import BannerList from "../components/bannerItem";
 const StyledBanners = styled.div`
     padding-top: 60px;
     padding-bottom: 60px;
+    border-bottom: 1px solid #E3E8F1;
     width: 100%;
     max-width: 1170px;
     margin: 0 auto;

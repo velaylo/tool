@@ -19,15 +19,15 @@ class CreditsInfo extends React.Component {
     const _defaults = {
       text: [
         {
-          def: <><span className="text-orange text-bold text-roboto">TOP</span> ad is placed first in results list. If more than one TOP ad appears in the results, random ad is shown.</>,
+          def: '<span className="text-orange text-bold text-roboto">TOP</span> ad is placed first in results list. If more than one TOP ad appears in the results, random ad is shown.',
           price: `30 credits per day per ad`
         },
         {
-          def: <>Ads with <span className="text-green text-bold text-roboto">CUSTOM TEXT</span> are good to announce special proposals, for example sales, discounts etc.</>,
+          def: 'Ads with <span className="text-green text-bold text-roboto">CUSTOM TEXT</span> are good to announce special proposals, for example sales, discounts etc.',
           price: `20 credits per day per ad`
         },
         {
-          def: <><span className="text-blue text-bold text-roboto">COLOR ads</span> are marked with contrast background color to attract more attention.</>,
+          def: '<span className="text-blue text-bold text-roboto">COLOR ads</span> are marked with contrast background color to attract more attention.',
           price: `20 credits per day per ad`
         }
       ]
