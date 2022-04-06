@@ -26,7 +26,6 @@ const StyledServicePackagesList = styled.div`
             text-transform: uppercase;
             font-size: 24px;
             font-weight: 700;
-            line-height: 37px;
             border-top-left-radius: 16px;
             letter-spacing: 0.01em;
             border-top-right-radius: 16px;
@@ -59,7 +58,6 @@ const StyledServicePackagesList = styled.div`
             padding: 16px 0;
             font-weight: 600;
             font-size: 18px;
-            line-height: 28px;
             text-align: center;
             color: #47535F;
             text-transform: uppercase;
@@ -91,7 +89,6 @@ const StyledServicePackagesList = styled.div`
                     }
                     font-family: "Source Sans Pro", sans-serif;
                     color: #47535F;
-                    line-height: 25px;
                     font-weight: 400;
                     font-size: 16px;
                     letter-spacing: 0.01em;

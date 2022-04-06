@@ -218,7 +218,9 @@ class HelloScreen extends React.Component {
     }
 
     this.data = data || {};
-    this.data.contents = this.data.contents || {}
+    this.data.contents = data.contents || {}
+    this.data.logo = data.logo || 'intl'
+    this.data.type = data.type || 'construction'
 
     for (const key in _defaults.contents) {
       if (!this.data.contents[key]) {
@@ -326,17 +328,13 @@ class HelloScreen extends React.Component {
       (
         <HelloScreenTool
           dataContents={this.data.contents} 
-          type="construction"
+          dataLogo={this.data.logo}
+          type={this.data.type}
           />
       ),
       rootNode);
 
     return this.wrapper
-    
-    // return <HelloScreenTool
-    // dataContents={this.data.contents} 
-    // type="construction"
-    // />
   }
 
 

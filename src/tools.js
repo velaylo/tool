@@ -40,6 +40,7 @@ export const EDITOR_JS_TOOLS = {
     },
     CreditsInfoTool: {
         class: CreditsInfo,
+        inlineToolbar: true
     },
     PricesMain: {
         class: PricesMain

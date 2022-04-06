@@ -17,7 +17,6 @@ const StyledBannerList = styled.div`
                 color: #323F4B;
                 font-weight: 700;
                 font-size: 16px;
-                line-height: 25px;
                 text-align: center;
                 margin-bottom: 6px;
                 :focus-visible {
@@ -29,7 +28,6 @@ const StyledBannerList = styled.div`
                     vertical-align: super;
                     font-size: 16px;
                     font-weight: 600;
-                    line-height: 25px;
                     margin-top: -50%;
                     color: #47535F;
                     :focus-visible {
@@ -40,7 +38,6 @@ const StyledBannerList = styled.div`
                     font-size: 28px;
                     font-weight: 700;
                     color: #47535F;
-                    line-height: 43px;
                     margin-left: 4px;
                     :focus-visible {
                         outline: solid 2px lightseagreen;
@@ -51,7 +48,6 @@ const StyledBannerList = styled.div`
                     letter-spacing: 0.01em;
                     font-weight: 600;
                     font-size: 16px;
-                    line-height: 25px;
                     :focus-visible {
                         outline: solid 2px lightseagreen;
                     }

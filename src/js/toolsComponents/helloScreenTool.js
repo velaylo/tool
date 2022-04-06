@@ -52,7 +52,7 @@ const StyledHelloScreen = styled.div`
             font-family: 'Source Sans Pro', sans-serif;
             font-size: 18px;
             font-weight: bold;
-            line-height: 28px;
+            line-height: 1.55;
             :focus-visible {
                 outline: solid 2px lightseagreen;
             }
@@ -105,13 +105,11 @@ const StyledHelloScreen = styled.div`
                 font-weight: bold;
                 letter-spacing: initial;
                 margin-bottom: 0;
-                line-height: 37px;
                 color: #323F4B;
               }
               .key {
                 margin-top: 4px;
                 font-family: 'Source Sans Pro', sans-serif;
-                line-height: 28px;
                 font-weight: 400;
                 font-size: 18px;
                 color: #47535F;
@@ -170,6 +168,8 @@ function RenderAchievements(props) {
             <div 
                 suppressContentEditableWarning={true} 
                 contentEditable={true} 
+                data-value-content
+                data-key={item+'_text'}
                 tabIndex={0} 
                 className="key">
                     {props.types[`${item}_text`]}
@@ -188,12 +188,14 @@ function HelloScreenTool(props) {
             <div className="hello--header">
                 <div
                     className="logo" 
-                    data-logo="intl" 
+                    data-logo={props.dataLogo} 
                     data-value-attr="logo">
                 </div>
                 <span 
                     className="slogan" 
                     contentEditable={true} 
+                    data-value-content
+                    data-key="slogan"
                     suppressContentEditableWarning={true} 
                     tabIndex={0}>
                         {props.dataContents.slogan}
@@ -204,6 +206,8 @@ function HelloScreenTool(props) {
                     contentEditable={true}
                     suppressContentEditableWarning={true}  
                     tabIndex={0} 
+                    data-value-content
+                    data-key="heading"
                     className="heading">
                         {props.dataContents.heading}
                 </div>

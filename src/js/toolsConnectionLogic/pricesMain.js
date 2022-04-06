@@ -78,6 +78,7 @@ class PricesMain extends React.Component {
     };
 
     this.data = data || {};
+    this.data.contents = data.contents || {}
 
     for (const key in _defaults) {
       if (!this.data[key]) {
@@ -253,6 +254,7 @@ class PricesMain extends React.Component {
           context = {this}
           toolbarEvents = {this.toolbarEvents}
           toolbar = {this.toolbar}
+          data={this.data}
           />
       ),rootNode);
     

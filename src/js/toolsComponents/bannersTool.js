@@ -7,13 +7,12 @@ const StyledBanners = styled.div`
     padding-bottom: 60px;
     border-bottom: 1px solid #E3E8F1;
     width: 100%;
-    max-width: 1170px;
+    max-width: 1160px;
     margin: 0 auto;
     .heading {
         color: #323F4B;
         font-weight: 700;
         font-size: 24px;
-        line-height: 37px;
         text-align: center;
         letter-spacing: 0.01em;
         text-decoration: uppercase;
@@ -29,7 +28,7 @@ const StyledBanners = styled.div`
         row-gap: 60px;
         position: relative;
         align-items: start;
-        &.single-column {
+        .single-column {
             max-width: 570px;
             grid-template-columns: 1fr;
             margin: 0 auto;
@@ -72,7 +71,6 @@ const StyledBanners = styled.div`
         margin-top: 60px;
         font-weight: 400;
         font-size: 18px;
-        line-height: 28px;
         color: #47535F;
         text-align: center;
         font-family: "Source Sans Pro", sans-serif;
@@ -98,7 +96,7 @@ function BannersTool(props) {
                 contentEditable={true}
                 data-value-content 
                 data-key="heading">
-                    BANNERS
+                    {props.data.contents.heading || "BANNERS"}
             </div>
             <div className="banner--items">
                 {props.prices.map((item) => {
@@ -118,8 +116,8 @@ function BannersTool(props) {
                 suppressContentEditableWarning={true} 
                 contentEditable={true}
                 data-value-content 
-                data-key="text-footer">
-                    Your company's banner, logo or vehicles can be placed on our main page or category page
+                data-key="textFooter">
+                    {props.data.contents.textFooter || "Your company's banner, logo or vehicles can be placed on our main page or category page"}
             </div>
         </StyledBanners>
     )

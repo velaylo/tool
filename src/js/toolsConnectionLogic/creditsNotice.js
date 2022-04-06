@@ -19,7 +19,9 @@ class CreditsNotice extends React.Component {
         this.data = data;
         if (!this.data.contents) {
           this.data.contents = {};
+          this.data.contents.creditsNotice = 'You can use your credits to promote your ads to the top of search results, to highlight your ads with color or advertising text to gain more attention'
         }
+
         this._defaultText = 'You can use your credits to promote your ads to the top of search results, to highlight your ads with color or advertising text to gain more attention';
         this.wrapper = undefined;
     }
@@ -32,7 +34,8 @@ class CreditsNotice extends React.Component {
 
         ReactDOM.render(
             (
-                <CreditsNoticeTool content={this._defaultText} />
+                <CreditsNoticeTool
+                  data={this.data} />
             ),
             rootNode);
         

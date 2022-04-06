@@ -15,7 +15,6 @@ const StyledCreditsInfo = styled.div`
         color: #323F4B;
         margin-bottom: 40px;
         text-align: center;
-        line-height: 31px;
         :focus-visible {
             outline: solid 2px lightseagreen;
         }
@@ -33,16 +32,20 @@ const StyledCreditsInfo = styled.div`
                 font-size: 18px;
                 font-weight: 400;
                 margin-top: 0;
-                line-height: 28px;
                 color: #323F4B;
                 .text-bold {
-                  font-weight: bold;
+                  font-weight: 700;
                 }
                 .text-roboto {
                   font-family: "Roboto", sans-serif;
                 }
                 :focus-visible {
                     outline: solid 2px lightseagreen;
+                }
+            }
+            p {
+                span {
+                    font-weight: 600;
                 }
             }
 
@@ -78,8 +81,8 @@ function AddSingleInformation({ def, price }, key) {
                 contentEditable={true} 
                 suppressContentEditableWarning={true}
                 tabIndex={0} 
-                className='def_'
-                dangerouslySetInnerHTML={{__html: def}}>
+                className='def_'>
+                    {def}
             </p>
             <p 
                 contentEditable={true}
@@ -94,6 +97,7 @@ function AddSingleInformation({ def, price }, key) {
 
 
 function CreditsInfoTool(props) {
+    console.log(props)
     return (
         <StyledCreditsInfo className='credits-info--wrapper'>
             <div 
@@ -102,10 +106,10 @@ function CreditsInfoTool(props) {
                 suppressContentEditableWarning={true}
                 data-value-content 
                 data-key="heading">
-                    INFO ABOUT CREDITS:
+                    {props.data.contents.heading || "INFO ABOUT CREDITS:"}
             </div>
             <div className='credits-info--items'>
-                <AddInformations information={props.content} />
+                <AddInformations information={props.data.text} />
             </div>
         </StyledCreditsInfo>
     )

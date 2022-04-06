@@ -26,7 +26,6 @@ const StyledWrapper = styled.div`
             margin-bottom: 16px;
             letter-spacing: 0.01em;
             color: #323F4B;
-            line-height: 37px;
             font-family: "Roboto", sans-serif;
             :focus {
                 outline: solid 2px lightseagreen;
@@ -71,7 +70,6 @@ const StyledWrapper = styled.div`
             p {
                 font-size: 16px;
                 font-family: "Source Sans Pro", sans-serif;
-                line-height: 1.55;
                 margin: 16px 0;
                 &:not(:first-child) {
                     margin-top: 25px
@@ -93,7 +91,6 @@ const StyledWrapper = styled.div`
                     position: relative;
                     color: #4ec4f0;
                     text-decoration: none;
-                    line-height: 1.55;
                     font-size: 18px;
                     &::before,
                     &::after {
@@ -133,6 +130,7 @@ const StyledWrapper = styled.div`
                 background-position: center;
                 background-size: cover;
                 height: 100%;
+                color: transparent;
                 &[data-type=construction] {
                     background-image: url(${constructionTextImg})
                 }
@@ -255,6 +253,8 @@ function HelloTextTool(props) {
             <div className="right_">
                 <div className="hello-text--image">
                     <div 
+                        data-value-content
+                        data-key="type"
                         data-type={props.type} 
                         data-value-attr="type">
                     </div>

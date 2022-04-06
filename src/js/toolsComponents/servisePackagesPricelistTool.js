@@ -13,7 +13,6 @@ const StyledServisePackagesPricelist = styled.div`
         text-align: center;
         text-transform: uppercase;
         color: #323F4B;
-        line-height: 37px;
         margin-bottom: 16px;
         :focus-visible {
             outline: solid 2px lightseagreen;
@@ -23,7 +22,6 @@ const StyledServisePackagesPricelist = styled.div`
         font-family: "Source Sans Pro", sans-serif;
         font-weight: 400;
         font-size: 18px;
-        line-height: 28px;
         text-align: center;
         color: #47535F;
         :focus-visible {
@@ -44,15 +42,21 @@ function ServisePackagesPricelist(props) {
                 suppressContentEditableWarning={true}
                 data-value-content
                 data-key="heading">
-                    Service Packages
+                    {props.data.contents.heading || 'Service Packages'}
             </div>
             <p 
                 className='packages-pricelist--title'
                 contentEditable={true} 
-                suppressContentEditableWarning={true}>
-                    Truck1 is the best option for those who value the quality of services and work efficiency
+                suppressContentEditableWarning={true}
+                data-value-content
+                data-key="title">
+                    {props.data.contents.title || 'Truck1 is the best option for those who value the quality of services and work efficiency'}
             </p>
-            <ServicePackagesList this={props.this} lists={props.lists} addPriceModals={props.addPriceModals} />
+            <ServicePackagesList 
+                this={props.this} 
+                lists={props.lists} 
+                addPriceModals={props.addPriceModals}
+                data={props.data} />
         </StyledServisePackagesPricelist>
     )
 }

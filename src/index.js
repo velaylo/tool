@@ -23,13 +23,6 @@ const Global = createGlobalStyle`
     background-color: #F8F9F9;
   }
 
-  @media print {
-    html, body{
-  		height: 297mm;
-  		width: 210mm;
-  	}
-  }
-
   #editorjs {
     width: 100%;
     position: relative;

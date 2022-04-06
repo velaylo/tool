@@ -12,11 +12,14 @@ const StyledPriceList = styled.div`
             flex-grow: 1;
             padding: 16px 20px;
             flex-grow: 1;
+            .promo-text_ {
+                color: #E90F8E;
+                margin-bottom: 20px;
+            }
             .top-text_ {
                 color: #323F4B;
                 font-weight: 700;
                 font-size: 16px;
-                line-height: 25px;
                 text-align: center;
                 margin-bottom: 6px;
                 :focus-visible {
@@ -28,7 +31,6 @@ const StyledPriceList = styled.div`
                     vertical-align: super;
                     font-size: 16px;
                     font-weight: 600;
-                    line-height: 25px;
                     margin-top: -50%;
                     font-family: "Source Sans Pro", sans-serif;
                     color: #47535F;
@@ -40,7 +42,6 @@ const StyledPriceList = styled.div`
                     font-size: 28px;
                     font-weight: 700;
                     color: #47535F;
-                    line-height: 43px;
                     margin-left: 4px;
                     :focus-visible {
                         outline: solid 2px lightseagreen;
@@ -51,7 +52,6 @@ const StyledPriceList = styled.div`
                     letter-spacing: 0.01em;
                     font-weight: 600;
                     font-size: 16px;
-                    line-height: 25px;
                     font-family: "Source Sans Pro", sans-serif;
                     :focus-visible {
                         outline: solid 2px lightseagreen;
@@ -86,7 +86,6 @@ const StyledPriceList = styled.div`
                 font-weight: 600;
                 font-size: 18px;
                 color: #47535F;
-                line-height: 28px;
                 font-family: "Source Sans Pro", sans-serif;
                 :focus-visible {
                     outline: solid 2px lightseagreen;

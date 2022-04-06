@@ -70,7 +70,6 @@ const StyledPricesMain = styled.div`
             font-weight: 400;
             font-size: 18px;
             max-width: 768px;
-            line-height: 28px;
             text-align: center;
             font-family: "Source Sans Pro", sans-serif;
             color: #47535F;
@@ -159,7 +158,7 @@ function PricesMainTool(props) {
                 className='heading'
                 data-value-content 
                 data-key="heading">
-                    PRICES
+                    {props.data.contents.heading || "PRICES"}
             </div>
             <div 
                 className='prices-main--items'
@@ -178,16 +177,20 @@ function PricesMainTool(props) {
                     </div>
                     {toolbar ? <ToolbarPrice leftSize={leftSize} topSize={topSize} toolbarEvents={props.toolbarEvents} target={itemTarget} /> : '' }
             </div>
-            <div class="botoom-price-description">
+            <div className="botoom-price-description">
                 <p
                     contentEditable={true} 
-                    suppressContentEditableWarning={true} >
-                    *Please consider minimal advertising period of 6 months
+                    suppressContentEditableWarning={true}
+                    data-value-content 
+                    data-key="descriptionOne">
+                    {props.data.contents.descriptionOne || "*Please consider minimal advertising period of 6 months"}
                 </p>
                 <p
                     contentEditable={true} 
-                    suppressContentEditableWarning={true} >
-                    **Payment is made in advance and in a single transaction.
+                    suppressContentEditableWarning={true}
+                    data-value-content 
+                    data-key="descriptionTwo">
+                    {props.data.contents.descriptionTwo || "**Payment is made in advance and in a single transaction."}
                 </p>
             </div>
         </StyledPricesMain>

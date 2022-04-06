@@ -14,7 +14,6 @@ const StyledCreditsPrices = styled.div`
         text-align: center;
         margin-bottom: 16px;
         color: #323F4B;
-        line-height: 37px;
         :focus-visible {
             outline: solid 2px lightseagreen;
         }
@@ -27,7 +26,6 @@ const StyledCreditsPrices = styled.div`
         font-family: "Source Sans Pro", sans-serif;
         text-align: center;
         position: relative;
-        line-height: 28px;
         font-size: 18px;
         color: #47535F;
         :focus-visible {
@@ -62,7 +60,6 @@ const StyledCreditsPrices = styled.div`
                     vertical-align: super;
                     font-size: 16px;
                     font-weight: 600;
-                    line-height: 25px;
                     margin-top: -50%;
                     color: #47535F;
                     :focus-visible {
@@ -73,7 +70,6 @@ const StyledCreditsPrices = styled.div`
                     font-size: 28px;
                     font-weight: 700;
                     color: #47535F;
-                    line-height: 43px;
                     margin-left: 4px;
                     :focus-visible {
                         outline: solid 2px lightseagreen;
@@ -82,7 +78,6 @@ const StyledCreditsPrices = styled.div`
               }
               .text_ {
                     font-size: 24px;
-                    line-height: 37px;
                     font-weight: 700;
                     color: #323F4B;
                     :focus-visible {
@@ -247,7 +242,7 @@ function CreditsPricesTool(props) {
                 data-value-content 
                 data-key="heading"
                 className='credits-prices_heading heading'>
-                    PRICES FOR CREDITS (PROMO)
+                    {props.data.contents.heading || "PRICES FOR CREDITS (PROMO)"}
             </div>
             <div 
                 contentEditable={true} 
@@ -255,12 +250,12 @@ function CreditsPricesTool(props) {
                 data-value-content 
                 data-key="slogan"
                 className='credits-prices_slogan slogan'>
-                    Use your credits to promote your ads to the top of search results, to highlight your ads with color or advertising text to gain more attention
+                    {props.data.contents.slogan || "Use your credits to promote your ads to the top of search results, to highlight your ads with color or advertising text to gain more attention"}
             </div>
             <div
                 className='credits-prices--prices' 
                 data-credits-prices>
-                    <AddPrices prices={props.prices} />
+                    <AddPrices prices={props.data.prices} />
                     <div 
                         className="list-control-button add_ cdx-settings-button" 
                         onClick={initAddParagraphTool}>

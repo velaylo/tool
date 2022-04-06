@@ -56,6 +56,9 @@ class ServisePackagesText extends React.Component {
             this.data[key] = _defaults[key];
           }
         }
+
+        this.data.contents = data.contents || {}
+
         this.wrapper = undefined;
         this.focusedEl = null;
     }
@@ -67,7 +70,9 @@ class ServisePackagesText extends React.Component {
 
       ReactDOM.render(
           (
-              <ServisePackagesTextTool content={this.data.text} />
+              <ServisePackagesTextTool 
+                content={this.data.text}
+                data={this.data} />
           ),
           rootNode);
       

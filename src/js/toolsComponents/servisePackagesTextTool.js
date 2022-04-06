@@ -13,7 +13,6 @@ const StyledServisePackagesTextWrapper = styled.div`
         text-transform: capitalize;
         text-align: center;
         color: #323F4B;
-        line-height: 37px;
         :focus-visible {
             outline: solid 2px lightseagreen;
         }
@@ -89,14 +88,12 @@ const StyledServisePackagesTextContent = styled.div`
                 font-size: 20px;
                 color: #323F4B;
                 margin-bottom: 4px;
-                line-height: 31px;
                 :focus-visible {
                     outline: solid 2px lightseagreen;
                 }
              }
     
             .content_ {
-                line-height: 25px;
                 font-weight: 400;
                 color: #47535F;
                 font-family: "Source Sans Pro", sans-serif;
@@ -235,7 +232,7 @@ function ServisePackagesTextTool(props) {
                     data-value-content
                     data-key="heading"
                     className="heading">
-                        SERVICE PACKAGES ALSO INCLUDES:
+                        {props.data.contents.heading || 'SERVICE PACKAGES ALSO INCLUDES:'}
                 </div>
             </StyledServisePackagesTextWrapper>
             <StyledServisePackagesTextContent className='service-packages-text--content'>

@@ -14,7 +14,6 @@ const StyledCreditsNoticeWrapper = styled.div`
         color: #fff;
         text-align: center;
         font-weight: 600;
-        line-height: 28px;
         font-size: 18px;
         :focus-visible {
             outline: solid 2px lightseagreen;
@@ -33,7 +32,7 @@ function CreditsNoticeTool(props) {
                 data-value-content
                 data-key="creditsNotice"
                 className="credits-notice--text">
-                    {props.content}
+                    {props.data.contents.creditsNotice}
             </div>
         </StyledCreditsNoticeWrapper>
     )

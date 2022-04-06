@@ -54,6 +54,7 @@ class Banners extends React.Component {
       ]
     };
     this.data = data || {};
+    this.data.contents = data.contents || {}
     for (const key in _defaults) {
       if (!this.data[key]) {
         this.data[key] = _defaults[key];
@@ -103,7 +104,9 @@ class Banners extends React.Component {
         
     ReactDOM.render(
       (
-        <BannersTool prices={this.data.prices} />
+        <BannersTool 
+          prices={this.data.prices}
+          data={this.data} />
       ), rootNode
     )
 

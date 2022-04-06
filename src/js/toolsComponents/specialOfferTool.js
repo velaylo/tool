@@ -18,7 +18,6 @@ const StyledSpecialOffer = styled.div`
         font-weight: 700;
         font-size: 24px;    
         text-transform: uppercase;
-        line-height: 37px;
         :focus-visible {
             outline: solid 2px lightseagreen;
         }
@@ -55,7 +54,6 @@ const StyledSpecialOffer = styled.div`
                     vertical-align: super;
                     font-size: 16px;
                     font-weight: 600;
-                    line-height: 25px;
                     margin-top: -50%;
                     color: #47535F;
                     :focus-visible {
@@ -66,7 +64,6 @@ const StyledSpecialOffer = styled.div`
                     font-size: 28px;
                     font-weight: 700;
                     color: #47535F;
-                    line-height: 43px;
                     margin-left: 4px;
                     :focus-visible {
                         outline: solid 2px lightseagreen;
@@ -80,7 +77,6 @@ const StyledSpecialOffer = styled.div`
                     letter-spacing: 0.01em;
                     font-weight: 600;
                     font-size: 16px;
-                    line-height: 25px;
                     :focus-visible {
                         outline: solid 2px lightseagreen;
                     }
@@ -99,7 +95,8 @@ function SpecialOfferTool(props) {
                 data-value-content 
                 data-key="heading"
                 className="special-offer-title">
-                    SPECIAL OFFER</div>
+                    {props.data.contents.heading || "SPECIAL OFFER"}
+                </div>
             <div className="special-offer-information-block">
                 <p
                     suppressContentEditableWarning={true} 
@@ -107,14 +104,14 @@ function SpecialOfferTool(props) {
                     data-value-content 
                     data-key="slogan"
                     className="special-offer-promo">
-                        Promo text
+                        {props.data.contents.slogan || "Promo text"}
                 </p>
                 <p
                     suppressContentEditableWarning={true} 
                     contentEditable={true}
                     data-value-content 
                     data-key="description">
-                        Up to 600 ads for 6 months
+                        {props.data.contents.description || "Up to 600 ads for 6 months"}
                 </p>
                 <div 
                     className="special-offer-price price_"

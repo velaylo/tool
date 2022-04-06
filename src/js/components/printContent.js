@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledPrintContent = styled.div`
-    page-break-after: avoid;
+    ${'' /* page-break-after: avoid;
     page-break-before: avoid;
     width: 100%;
 
@@ -10,9 +10,9 @@ const StyledPrintContent = styled.div`
     .content {
       position: relative;
       width: 100%;
-    }
+    } */}
 
-    @media print {
+    ${'' /* @media print {
         display: block !important;
         .content {
           zoom: 63%;
@@ -28,7 +28,7 @@ const StyledPrintContent = styled.div`
           position: absolute;
           width: 100%;
         }
-    }
+    } */}
 `
 
 function PrintContent(props) {

@@ -13,7 +13,6 @@ const StyledFooterPDF = styled.footer`
             [data-footer-position] {
               font-weight: 400;
               color: #47535F;
-              line-height: 28px;
               font-family: "Source Sans Pro", sans-serif;
               margin-bottom: 16px;
             }
@@ -21,7 +20,6 @@ const StyledFooterPDF = styled.footer`
               font-family: 'Roboto', sans-serif;
               font-weight: 700;
               font-size: 18px;
-              line-height: 28px;
               margin-bottom: 16px;
               letter-spacing: 0.01em;
               color: #323F4B;
@@ -32,7 +30,6 @@ const StyledFooterPDF = styled.footer`
                     color: #00B2FF;
                     font-family: "Source Sans Pro", sans-serif;
                     font-weight: 600;
-                    line-height: 28px;
                     font-size: 18px;
                     text-decoration: underline;
                 }
@@ -57,7 +54,6 @@ const StyledFooterPDF = styled.footer`
                                   font-weight: 400;
                                   text-decoration: none;
                                   color: #47535F;
-                                  line-height: 28px;
                                   font-family: "Source Sans Pro", sans-serif;
                                 }
                                 margin-bottom: 16px;
@@ -68,7 +64,6 @@ const StyledFooterPDF = styled.footer`
                                   color: #00B2FF;
                                   font-family: "Source Sans Pro", sans-serif;
                                   font-weight: 600;
-                                  line-height: 28px;
                                   font-size: 18px;
                                   text-decoration: underline;
                                 }

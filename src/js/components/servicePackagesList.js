@@ -110,28 +110,28 @@ function ServicePackagesList(props) {
         <StyledServicePackagesList className="packages-pricelist--content">
             <PackagesList
                 list={props.lists['list_standard']} 
-                slogan='Starting out' 
+                slogan={props.data.contents.standard_slogan || 'Starting out'} 
                 packageType='Standard'
                 dataPackage="standard"
                 />
             <PackagesList 
                 list={props.lists['list_premium']} 
-                slogan='Most popular plan' 
+                slogan={props.data.contents.premium_slogan || 'Most popular plan'} 
                 packageType='Premium'
                 dataPackage="premium" />
             <PackagesList 
                 list={props.lists['list_premium_plus']} 
-                slogan='All you ever need' 
+                slogan={props.data.contents.premium_plus_slogan || 'All you ever need'} 
                 packageType='Premium Plus'
                 dataPackage="premium_plus" />
             <PackagesList 
                 list={props.lists['list_gold']} 
-                slogan='All you ever need' 
+                slogan={props.data.contents.gold_slogan || 'All you ever need'}
                 packageType='Gold'
                 dataPackage="gold" />
             <PackagesList 
                 list={props.lists['list_platinum']} 
-                slogan='All you ever need' 
+                slogan={props.data.contents.platinum_slogan || 'All you ever need'} 
                 packageType='Platinum'
                 dataPackage="platinum" />
         </StyledServicePackagesList>

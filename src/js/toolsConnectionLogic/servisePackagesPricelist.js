@@ -84,7 +84,9 @@ class ServisePackagesPricelist extends React.Component {
       show_standard: true
 
     }
-    this.data = data;
+    this.data = data || {};
+    this.data.contents = data.contents || {}
+   
     for (const key in _defaults) {
         if (!this.data[key]) {
             this.data[key] = _defaults[key];
@@ -656,6 +658,7 @@ class ServisePackagesPricelist extends React.Component {
         <ServisePackagesPricelistTool
           lists={this.data.lists}
           this={this}
+          data={this.data}
           addPriceModals={this._addPriceModals} />
       ), rootNode);
 

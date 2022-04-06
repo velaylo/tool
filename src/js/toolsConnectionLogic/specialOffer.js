@@ -26,6 +26,7 @@ class SpecialOffer extends React.Component {
           ]
         }
         this.data = data || {};
+        this.data.contents = data.contents || {}
 
         for (const key in _defaults) {
           if (!this.data[key]) {
@@ -44,7 +45,9 @@ class SpecialOffer extends React.Component {
 
         ReactDOM.render(
             (
-                <SpecialOfferTool prices={this.data.prices} />
+                <SpecialOfferTool
+                  data={this.data}
+                  prices={this.data.prices} />
             ), rootNode
         )
 

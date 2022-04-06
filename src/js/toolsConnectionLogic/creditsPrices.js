@@ -52,6 +52,7 @@ class creditsPrices extends React.Component {
             creditsWord: 'credits'
         }
         this.data = data || {};
+        this.data.contents = data.contents || {}
         for (const key in _defaults) {
           if (!this.data[key]) {
             this.data[key] = _defaults[key];
@@ -100,7 +101,7 @@ class creditsPrices extends React.Component {
     
     ReactDOM.render(
         (
-            <CreditsPricesTool prices={this.data.prices} />
+            <CreditsPricesTool data={this.data} />
         ),
         rootNode);
     
