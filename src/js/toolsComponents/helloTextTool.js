@@ -132,31 +132,31 @@ const StyledWrapper = styled.div`
                 height: 100%;
                 color: transparent;
                 &[data-type=construction] {
-                    background-image: url(${constructionTextImg})
+                    background-image: url(${process.env.NODE_ENV.indexOf('dev') !== -1 ? constructionTextImg : `https://www.truck1.eu/_dev_/offer-react${constructionTextImg}`})
                 }
                 &[data-type=trucks] {
-                    background-image: url(${trucksTextImg})
+                    background-image: url(${process.env.NODE_ENV.indexOf('dev') !== -1 ? trucksTextImg : `https://www.truck1.eu/_dev_/offer-react${trucksTextImg}`})
                 }
                 &[data-type=trailers] {
-                    background-image: url(${trailersTextImg})
+                    background-image: url(${process.env.NODE_ENV.indexOf('dev') !== -1 ? trailersTextImg : `https://www.truck1.eu/_dev_/offer-react${trailersTextImg}`})
                 }
                 &[data-type=agriculture] {
-                    background-image: url(${agricultureTextImg})
+                    background-image: url(${process.env.NODE_ENV.indexOf('dev') !== -1 ? agricultureTextImg : `https://www.truck1.eu/_dev_/offer-react${agricultureTextImg}`})
                 }
                 &[data-type=spares] {
-                    background-image: url(${sparesTextImg})
+                    background-image: url(${process.env.NODE_ENV.indexOf('dev') !== -1 ? sparesTextImg : `https://www.truck1.eu/_dev_/offer-react${sparesTextImg}`})
                 }
                 &[data-type=attachments] {
-                    background-image: url(${attachmentsTextImg})
+                    background-image: url(${process.env.NODE_ENV.indexOf('dev') !== -1 ? attachmentsTextImg : `https://www.truck1.eu/_dev_/offer-react${attachmentsTextImg}`})
                 }
                 &[data-type=forklifts] {
-                    background-image: url(${forkliftsTextImg})
+                    background-image: url(${process.env.NODE_ENV.indexOf('dev') !== -1 ? forkliftsTextImg : `https://www.truck1.eu/_dev_/offer-react${forkliftsTextImg}`})
                 }
                 &[data-type=buses] {
-                    background-image: url(${busesTextImg})
+                    background-image: url(${process.env.NODE_ENV.indexOf('dev') !== -1 ? busesTextImg : `https://www.truck1.eu/_dev_/offer-react${busesTextImg}`})
                 }
                 &[data-type=campers] {
-                    background-image: url(${campersTextImg})
+                    background-image: url(${process.env.NODE_ENV.indexOf('dev') !== -1 ? campersTextImg : `https://www.truck1.eu/_dev_/offer-react${campersTextImg}`})
                 }
             }
         }

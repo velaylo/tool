@@ -109,7 +109,6 @@ function PricesMainTool(props) {
         setItemTarget(item)
         setToolbar(true)
         setLastActivePrice(item);
-        console.log(toolbar)
     }
 
     let _destroyToolbar = (container) => {

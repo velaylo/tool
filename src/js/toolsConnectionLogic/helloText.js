@@ -52,7 +52,6 @@ class HelloText extends React.Component {
         ...newData
       };
     }
-    console.log(this.data.contents.type)
 
     ReactDOM.render(
       (

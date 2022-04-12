@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import removingTextTool from "../components/removingTextTool";
+import DraggableList from "./draggableList";
 
 const StyledServicePackagesList = styled.div`
     width: 368px;
@@ -70,7 +71,6 @@ const StyledServicePackagesList = styled.div`
             border-top: 1px solid #E3E8F1;
             margin: 0 24px;
             padding-top: 16px;
-            padding-bottom: 16px;
             &[data-package="standard"] {
                 ul {
                     li {
@@ -112,6 +112,9 @@ const StyledServicePackagesList = styled.div`
                     font-weight: bold;
                     border: 1px solid #ccc;
                     display: none;
+                    &:hover {
+                        background: #eeeeee; 
+                    }
                 }
                 .add_ {
                     position: absolute;
@@ -128,9 +131,26 @@ const StyledServicePackagesList = styled.div`
                     top: unset;
                     right: -20px;
                     left: unset;
+                    margin-right: 0;
+                }
+                .move_ {
+                    position: absolute;
+                    top: unset;
+                    right: -20px;
+                    left: unset;
+                    margin-right: 0;
                 }
                 .is-visible {
                     display: flex;
+                }
+                .draggable-list-item {
+                    border-top: 2px solid transparent;
+                }
+                .draggable-list-item.dragover {
+                    border-top-color: green;
+                }
+                .draggable-list-item.dragstart {
+                    opacity: 0.5;
                 }
             }
         }
@@ -237,7 +257,7 @@ const StyledServicePackagesList = styled.div`
                         }
 
                         &.remove_ {
-                        bottom: 5px;;
+                            bottom: 5px;;
                         }
                     
                         &.discount_ {
@@ -247,6 +267,9 @@ const StyledServicePackagesList = styled.div`
                         &.toggle-discount-visibility_ {
                           top: 50%;
                           transform: translateY(-50%);
+                        }
+                        .is-visible {
+                            display: flex;
                         }
                     }
                   
@@ -318,6 +341,8 @@ function PackagesList(props) {
         return item[item.length - 1];
     }
 
+    console.log(props)
+
     return (
         <StyledServicePackagesList className="package-wrapper" data-package={props.dataPackage}>
             <div className="package">
@@ -339,14 +364,19 @@ function PackagesList(props) {
                         {props.slogan}
                 </div>
                 <div className="package-content" data-package={props.dataPackage}>
-                    <ul className={'ul-list' + ' ' + props.dataPackage} data-list-type={props.dataPackage}>
+                    <DraggableList 
+                        data={props.list}
+                        dataPackage={props.dataPackage}
+                    />
+
+                    {/* <ul className={'ul-list' + ' ' + props.dataPackage} data-list-type={props.dataPackage}>
                         <List list={props.list} />
                         <div 
                             className="list-control-button add_ cdx-settings-button" 
                             onClick={initAddParagraphTool}>
                                 +
-                    </div>
-                    </ul>
+                        </div>
+                    </ul> */}
                 </div>
                 <div className="package-prices">
                     <ul data-price={'price_' + props.dataPackage}></ul>

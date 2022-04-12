@@ -54,6 +54,23 @@ function App() {
       });
     }
 
+    const downloadJSON = () => {
+      handleSave().then(json => {
+        let download = `data${Date.now()}.json`;
+        let href = `data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(json, null, 2))}`;
+        let a = document.createElement('a');
+        a.innerHTML = 'D';
+        a['download'] = download;
+        a.setAttribute('href', href);
+        document.body.appendChild(a);
+        // let click = new Event('click', { view: window, bubbles: true, cancelable: true });
+        // a.dispatchEvent(click);
+        // document.body.removeChild(a);
+        a.click();
+        a.remove();
+      });
+    }
+
     return (
       <>
         <div id='screen' className='screen-only'>
@@ -76,6 +93,12 @@ function App() {
           id="log" 
           onClick={saveData}>
             Log
+        </StyledLogButton>
+        <StyledLogButton 
+          className="co-btn" 
+          id="json" 
+          onClick={downloadJSON}>
+            Download JSON
         </StyledLogButton>
         <PrintContent />
       </>

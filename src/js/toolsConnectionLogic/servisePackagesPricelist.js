@@ -634,7 +634,6 @@ class ServisePackagesPricelist extends React.Component {
   _onPriceTypeChange(event) {
     const { changedPackage, value } = event.detail;
     const packagePrices = this.wrapper.querySelectorAll(`[data-package="${changedPackage}"] li.price`);
-    console.log(packagePrices)
     packagePrices.forEach(li => {
       if (!('_prices' in li)) {
         console.warn('Price object has not been stored in li.price.');

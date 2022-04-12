@@ -112,8 +112,8 @@ const StyledMainControls = styled.div`
 
 
 function ButtonControls(props) {
-  const api = endpoint => `https://www.truck1.eu/t1api/comOffer/${endpoint}&T1Db_logged=c928cc422c32acc3bd9b03e4351c6b1b`;
-  const apiList = `https://www.truck1.eu/t1api/comOffer/list?T1Db_logged=c928cc422c32acc3bd9b03e4351c6b1b`;
+  const api = endpoint => process.env.NODE_ENV.indexOf('dev') !== -1 ? `https://www.truck1.eu/t1api/comOffer/${endpoint}&T1Db_logged=c928cc422c32acc3bd9b03e4351c6b1b` : `https://www.truck1.eu/t1api/comOffer/${endpoint}`;
+  const apiList = process.env.NODE_ENV.indexOf('dev') !== -1 ? `https://www.truck1.eu/t1api/comOffer/list?T1Db_logged=c928cc422c32acc3bd9b03e4351c6b1b` : `https://www.truck1.eu/t1api/comOffer/list`;
 
   const openList =() => {
     document.querySelector('#overlay-list').hidden = false;
@@ -132,7 +132,7 @@ function ButtonControls(props) {
   }
 
   function makeListItem(item, attachEvents = true) {
-    if (!attachEvents && Number(item.offer_id) <= 0) { return false; }
+    if (!attachEvents && Number(item.offer_id) <= 10) { return false; }
   
     let listItem = document.createElement('div');
     listItem.classList.add('list-item')
@@ -208,12 +208,10 @@ function ButtonControls(props) {
     let pageHeightStep = 1122.52; // magic number #1
     let pageHeightStep_screen = 1754;
     let footerHeight = 120; // height + 
-    console.log(printContent)
     for (let i = 0, j = 1; i < height; i += pageHeightStep_screen, j++) {
       printContent.style.minHeight = `${pageHeightStep * j - 20}px`;
       let footer = addFooter(printContent, getContactData());
       footer.style.top = `${(pageHeightStep * j) - footerHeight}px`;
-      console.log(footer.style.top)
     }
 
     printContent.parentNode.style.display = 'none';

@@ -31,7 +31,7 @@ const StyledServicePackagesList = styled.div`
 function ServicePackagesList(props) {
     //const api = endpoint => window.location.hostname.indexOf('truck1.eu') !== -1 ? `https://www.truck1.eu/t1api/comOffer/${endpoint}` : `http://localhost/offer2/index.php/${endpoint}`;
 
-    const api = (endpoint) => `https://www.truck1.eu/t1api/comOffer/${endpoint}&T1Db_logged=c928cc422c32acc3bd9b03e4351c6b1b`;
+    const api = (endpoint) => process.env.NODE_ENV.indexOf('dev') !== -1 ? `https://www.truck1.eu/t1api/comOffer/${endpoint}&T1Db_logged=c928cc422c32acc3bd9b03e4351c6b1b` : `https://www.truck1.eu/t1api/comOffer/${endpoint}`;
 
     let _renderPrices = () => {
         _initAddPriceTool(document.querySelector('.packages-pricelist--content'));

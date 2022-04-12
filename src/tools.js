@@ -10,6 +10,7 @@ import PricesMain from './js/toolsConnectionLogic/pricesMain';
 import ServisePackagesPricelist from './js/toolsConnectionLogic/servisePackagesPricelist';
 import SpecialOffer from './js/toolsConnectionLogic/specialOffer';
 import Banners from './js/toolsConnectionLogic/banners'
+import AddImg from './js/toolsConnectionLogic/addImg'
 
 export const EDITOR_JS_TOOLS = {
     paragraph: {
@@ -50,5 +51,8 @@ export const EDITOR_JS_TOOLS = {
     },
     Banners: {
         class: Banners
+    },
+    AddImg: {
+        class: AddImg
     }
 }

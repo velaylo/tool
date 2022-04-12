@@ -5,7 +5,7 @@ import BannersTool from '../toolsComponents/bannersTool'
 class Banners extends React.Component {
   static get toolbox() {
     return {
-      icon: '<span><b>B</b></span>',
+      icon: '<span>B</span>',
       title: 'Banners'
     };
   }

@@ -97,7 +97,6 @@ function AddSingleInformation({ def, price }, key) {
 
 
 function CreditsInfoTool(props) {
-    console.log(props)
     return (
         <StyledCreditsInfo className='credits-info--wrapper'>
             <div 

@@ -36,7 +36,7 @@ const Global = createGlobalStyle`
       opacity: 0.25;
       background-position: top center;
       background-repeat: repeat-y;
-      background-image: url(${BgWorkspace2})
+      background-image: url(${process.env.NODE_ENV.indexOf('dev') !== -1 ? BgWorkspace2 : `https://www.truck1.eu/_dev_/offer-react/${BgWorkspace2}`})
     }
   }
 

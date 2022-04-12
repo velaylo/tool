@@ -135,8 +135,8 @@ const StyledOverlaySave = styled.div`
 
 
 function OverlaySaveBlock(props) {
-    const api = endpoint => `https://www.truck1.eu/t1api/comOffer/${endpoint}&T1Db_logged=c928cc422c32acc3bd9b03e4351c6b1b`;
-    const apiSave = `https://www.truck1.eu/t1api/comOffer/save?T1Db_logged=c928cc422c32acc3bd9b03e4351c6b1b`;
+    const api = endpoint => process.env.NODE_ENV.indexOf('dev') !== -1 ? `https://www.truck1.eu/t1api/comOffer/${endpoint}&T1Db_logged=c928cc422c32acc3bd9b03e4351c6b1b` : `https://www.truck1.eu/t1api/comOffer/${endpoint}`;
+    const apiSave = process.env.NODE_ENV.indexOf('dev') !== -1 ? `https://www.truck1.eu/t1api/comOffer/save?T1Db_logged=c928cc422c32acc3bd9b03e4351c6b1b` : `https://www.truck1.eu/t1api/comOffer/save`;
 
     let closeOverlaySave = () => {
         document.querySelector('#overlay-save .list[data-list-loaded]').innerHTML = ''
@@ -196,11 +196,9 @@ function OverlaySaveBlock(props) {
         let modal = target.closest('.modal');
         let input = modal.querySelector('input[data-template-name]');
         input.value = oldName;
-        console.log(input)
         let buttonContainer = document.createElement('div');
         buttonContainer.setAttribute('style', 'margin: 5px 0');
         input.parentNode.appendChild(buttonContainer);
-        console.log(buttonContainer)
         let button = document.createElement('button');
         button.classList.add('co-btn');
         button.setAttribute('data-replace-id', `${id}`);
@@ -220,7 +218,6 @@ function OverlaySaveBlock(props) {
         if (e.target.closest('.list-item')) {
           let id = e.target.closest('.list-item').dataset.id;
           let oldName = e.target.closest('.list-item').querySelector('span.name_').textContent;
-          console.log(oldName)
           let removeButton = document.querySelector('#overlay-save button[data-replace-id]');
           if (removeButton) { removeButton.parentNode.removeChild(removeButton); }
           save_makeRemoveIDButton(e.target, id, oldName);
@@ -230,7 +227,6 @@ function OverlaySaveBlock(props) {
     function saveData(event) {
         let name = document.querySelector('#overlay-save [data-template-name]').value;
         let id = document.querySelector('#overlay-save [data-replace-id]');
-        console.log(name + ' ' + id.dataset['replaceId'])
 
         if (id) {
             id = `&offer_id=${id.dataset['replaceId']}`;

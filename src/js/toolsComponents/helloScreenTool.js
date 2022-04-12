@@ -131,31 +131,31 @@ const StyledHelloScreen = styled.div`
         background-repeat: no-repeat;
         background-size: cover;
         &[data-type=construction] {
-            background-image: url(${construction})
+            background-image: url(${process.env.NODE_ENV.indexOf('dev') !== -1 ? construction : `https://www.truck1.eu/_dev_/offer-react${construction}`})
         }
         &[data-type=trucks] {
-            background-image: url(${trucks})
+            background-image: url(${process.env.NODE_ENV.indexOf('dev') !== -1 ? trucks : `https://www.truck1.eu/_dev_/offer-react${trucks}`})
         }
         &[data-type=trailers] {
-            background-image: url(${trailers})
+            background-image: url(${process.env.NODE_ENV.indexOf('dev') !== -1 ? trailers : `https://www.truck1.eu/_dev_/offer-react${trailers}`})
         }
         &[data-type=agriculture] {
-            background-image: url(${agriculture})
+            background-image: url(${process.env.NODE_ENV.indexOf('dev') !== -1 ? agriculture : `https://www.truck1.eu/_dev_/offer-react${agriculture}`})
         }
         &[data-type=spares] {
-            background-image: url(${spares})
+            background-image: url(${process.env.NODE_ENV.indexOf('dev') !== -1 ? spares : `https://www.truck1.eu/_dev_/offer-react${spares}`})
         }
         &[data-type=attachments] {
-            background-image: url(${attachments})
+            background-image: url(${process.env.NODE_ENV.indexOf('dev') !== -1 ? attachments : `https://www.truck1.eu/_dev_/offer-react${attachments}`})
         }
         &[data-type=forklifts] {
-            background-image: url(${forklifts})
+            background-image: url(${process.env.NODE_ENV.indexOf('dev') !== -1 ? forklifts : `https://www.truck1.eu/_dev_/offer-react${forklifts}`})
         }
         &[data-type=buses] {
-            background-image: url(${buses})
+            background-image: url(${process.env.NODE_ENV.indexOf('dev') !== -1 ? buses : `https://www.truck1.eu/_dev_/offer-react${buses}`})
         }
         &[data-type=campers] {
-            background-image: url(${campers})
+            background-image: url(${process.env.NODE_ENV.indexOf('dev') !== -1 ? campers : `https://www.truck1.eu/_dev_/offer-react${campers}`})
         }
     }
 `

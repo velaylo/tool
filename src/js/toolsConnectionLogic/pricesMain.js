@@ -166,7 +166,6 @@ class PricesMain extends React.Component {
         //this.__toggleDisabled(event, target);
       },
       applyToAll: function(event, target) {
-        console.log(target.querySelector('.promo-text_'))
         let targetStates = {
           showPromoText: target.querySelector('.promo-text_').hidden,
           showLeft: target.querySelector('.side_.left_').hidden,
