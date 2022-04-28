@@ -49,14 +49,11 @@ const StyledCreditsInfo = styled.div`
                 }
             }
 
-            .def_ {
-                margin-bottom: 12px;
-            }
-
             .price_ {
                 color: #323F4B;
                 font-weight: 600;
                 margin-bottom: 0;
+                margin-top: 12px;
                 font-family: "Source Sans Pro", sans-serif;
             }
         }
@@ -77,13 +74,13 @@ function AddInformations(props) {
 function AddSingleInformation({ def, price }, key) {
     return (
         <div key={key} className='info-item'>
-            <p 
+            <span 
                 contentEditable={true} 
                 suppressContentEditableWarning={true}
                 tabIndex={0} 
                 className='def_'>
                     {def}
-            </p>
+            </span>
             <p 
                 contentEditable={true}
                 suppressContentEditableWarning={true} 

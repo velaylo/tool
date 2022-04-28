@@ -290,9 +290,9 @@ class ServisePackagesPricelist extends React.Component {
     priceObj = this._normalizePriceObj(priceObj, id);
 
     let _render = (price, currency, isCrossed = false, enableCrossed = false) => `<div ${isCrossed ? 'class="crossed_" data-price-crossed' : 'data-price-default'}${isCrossed && !enableCrossed ? ' hidden' : ''}>
-      <span data-price-currency contenteditable>${currency}</span>
-      <span data-price-value contenteditable>${price.price_value}</span>
-      <span data-price-text contenteditable>${price.price_text}</span>
+      <span data-price-currency contenteditable='true'>${currency}</span>
+      <span data-price-value contenteditable='true'>${price.price_value}</span>
+      <span data-price-text contenteditable='true'>${price.price_text}</span>
     </div>
     `;
 
@@ -319,7 +319,7 @@ class ServisePackagesPricelist extends React.Component {
         li.classList.add('price');
         li.setAttribute('data-price-id', id)
 
-        li.innerHTML = `<div data-price-toptext contenteditable>${topText}</div>
+        li.innerHTML = `<div data-price-toptext contenteditable='true'>${topText}</div>
         ${_render(price_crossed, currency, true, priceObj.enableCrossed)}
         ${_render(price_default, currency)}        
         <div data-id="${id}" class="list-control-button remove_ cdx-settings-button">✖</div>
@@ -672,7 +672,7 @@ class ServisePackagesPricelist extends React.Component {
 
     const lists = [ ...el.querySelectorAll('ul[data-list-type]') ].reduce((acc, list) => {
       let key = 'list_' + list.dataset.listType;
-      let vals = [ ...list.querySelectorAll('li') ].map(li => li.textContent);
+      let vals = [ ...list.querySelectorAll('li[draggable="true"]') ].map(li => li.textContent);
       acc[key] = vals;
       return acc;
     }, {});

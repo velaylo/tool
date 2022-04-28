@@ -68,32 +68,46 @@ function DraggableListItem(props) {
     //event when drop 
     function onDrop() {
         itemRef.current.classList.remove('dragover');
+        itemRef.current.focus()
+
+        let mainContainer = itemRef.current.closest('ul[data-list-type]')
+        let removeButton = mainContainer.querySelector('div.remove_');
+        removeButton.classList.remove('is-visible')
+        
         props.onDrop(props.index);
     }
 
     //remove paragraph button
     function initRemoveParagraphTool(event) {
-        let  mainContainer = document.querySelector('.packages-pricelist--wrapper');
-        let typeContainer = event.target.closest('ul[data-list-type]');
-        let type = typeContainer.getAttribute("data-list-type") 
-        return removingTextTool({
-            wrapper: mainContainer,
-            parent: `.packages-pricelist--content ul.${type}`,
-            focusedElem: event.trget,
-            getChild: function(_, focused) {
-              return focused;
-            },
-            focusEventCondition: function(target) {
-              return target.parentNode.classList.contains('ul-list');
-            }
-        })();
+        if(event.target.classList.contains('hidden-class')) {
+            return
+        } else {
+            let listItem = event.target;
+            let typeContainer = event.target.closest('ul[data-list-type]');
+            let buttonRemove = typeContainer.querySelector('.remove_')
+            
+            buttonRemove.style.bottom = `${typeContainer.offsetHeight - event.target.offsetTop - 30}px`
+            buttonRemove.classList.add('is-visible')
+
+            buttonRemove.removeEventListener('click', () => {props.removeItem(buttonRemove, event.target)})
+            buttonRemove.addEventListener('click', () => {props.removeItem(buttonRemove, event.target)});
+            
+            document.addEventListener('click', (event) => {
+                if(event.target !== listItem) {
+                    buttonRemove.classList.remove('is-visible')
+                } else {
+                    buttonRemove.classList.add('is-visible')
+                }
+            })
+        }
     }
 
     return(
         <li 
             ref={itemRef}
-            className='draggable-list-item package-list'
-            contentEditable={true} 
+            index={props.index}
+            className={props.hiddenClass ? `${props.hiddenClass} draggable-list-item package-list` : `draggable-list-item package-list`}
+            contentEditable={props.draggable !== undefined ? props.draggable : true}
             suppressContentEditableWarning={true}
             onClick={initRemoveParagraphTool}
             draggable={props.draggable !== undefined ? props.draggable : true}

@@ -222,7 +222,7 @@ function HelloTextTool(props) {
                     data-value-content
                     data-key="heading"
                     tabIndex={0}>
-                        Dear Mr. Smith
+                        {props.data.contents.heading || 'Dear Mr. Smith'}
                 </div>
                 <div 
                     className="hello-text--content" 

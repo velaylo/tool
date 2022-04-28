@@ -84,17 +84,11 @@ const StyledServicePackagesList = styled.div`
                 position: relative;
                 padding-inline-start: 20px;
                 li {
-                    &:first-child {
-                        font-weight: 600;
-                    }
                     font-family: "Source Sans Pro", sans-serif;
                     color: #47535F;
                     font-weight: 400;
                     font-size: 16px;
                     letter-spacing: 0.01em;
-                    &:first-child {
-                        font-weight: 600;
-                    }
                     :focus-visible {
                         outline: solid 2px lightseagreen;
                     }
@@ -103,6 +97,9 @@ const StyledServicePackagesList = styled.div`
                     .add_ {
                         display: flex;  
                     }
+                }
+                .hidden-class {
+                    overflow: hidden;
                 }
                 .list-control-button {
                     position: absolute;
@@ -282,67 +279,7 @@ const StyledServicePackagesList = styled.div`
     }
 `
 
-function List(props) {
-    let listContainer = []
-
-    for(let key in props.list) {
-        listContainer[key] = <li key={key} className='package-list' onClick={initRemoveParagraphTool} contentEditable={true} suppressContentEditableWarning={true}>{props.list[key]}</li>
-    }
-
-
-    return <>{listContainer}</>
-}
-
-function initRemoveParagraphTool(event) {
-    let  mainContainer = document.querySelector('.packages-pricelist--wrapper');
-    let typeContainer = event.target.closest('ul[data-list-type]');
-    let type = typeContainer.getAttribute("data-list-type") 
-    return removingTextTool({
-        wrapper: mainContainer,
-        parent: `.packages-pricelist--content ul.${type}`,
-        focusedElem: event.trget,
-        getChild: function(_, focused) {
-          return focused;
-        },
-        focusEventCondition: function(target) {
-          return target.parentNode.classList.contains('ul-list');
-        }
-    })();
-}
-
 function PackagesList(props) {
-
-    // Adding paragraph tool
-    function initAddParagraphTool(event) {
-        let  mainContainer = document.querySelector('.package-wrapper');
-        let button = mainContainer.querySelector('.add_');
-
-        button.addEventListener('click', onAddParagraph(event))
-    }
-
-
-    function onAddParagraph(event) {
-        let item = document.createElement('li');
-        item.classList.add('package-list')
-        item.setAttribute('contenteditable', 'true')
-        item.addEventListener('click', initRemoveParagraphTool)
-        let container = event.target.closest('ul');
-  
-        container.appendChild(item)
-
-        let lastParagraph = getLastParagraph(event);
-        lastParagraph.focus()
-    }
-
-    function getLastParagraph(event) {
-        let  container = event.target.closest('ul');
-        let item = container.querySelectorAll('li');
-
-        return item[item.length - 1];
-    }
-
-    console.log(props)
-
     return (
         <StyledServicePackagesList className="package-wrapper" data-package={props.dataPackage}>
             <div className="package">
@@ -368,15 +305,6 @@ function PackagesList(props) {
                         data={props.list}
                         dataPackage={props.dataPackage}
                     />
-
-                    {/* <ul className={'ul-list' + ' ' + props.dataPackage} data-list-type={props.dataPackage}>
-                        <List list={props.list} />
-                        <div 
-                            className="list-control-button add_ cdx-settings-button" 
-                            onClick={initAddParagraphTool}>
-                                +
-                        </div>
-                    </ul> */}
                 </div>
                 <div className="package-prices">
                     <ul data-price={'price_' + props.dataPackage}></ul>

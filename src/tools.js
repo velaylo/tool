@@ -28,7 +28,8 @@ export const EDITOR_JS_TOOLS = {
         inlineToolbar: ['link']
     },
     ServisePackagesPricelist: {
-        class: ServisePackagesPricelist
+        class: ServisePackagesPricelist,
+        inlineToolbar: true
     },
     ServisePackagesText: {
         class: ServisePackagesText

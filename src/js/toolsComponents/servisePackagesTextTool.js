@@ -136,7 +136,7 @@ function initRemoveParagraphTool(event) {
     return removingTextTool({
         wrapper: mainContainer,
         parent: `.service-packages-text--content .${side}`,
-        focusedElem: event.trget,
+        focusedElem: event.target,
         getChild: function(_, focused) {
           return focused.parentNode;
         },

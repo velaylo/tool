@@ -287,6 +287,7 @@ footer {
 
   #print {
     .content {
+      background-color: #fff;
       .ce-paragraph {
         max-width: $container-width;
         font-size: #{cut(18)}px;
@@ -313,6 +314,7 @@ footer {
       .hello-information {
         max-width: $container-width;
         padding-top: #{cut(36)}px;
+        background-color: #fff;
       
         .heading {
           font-size: #{cut(36)}px;
@@ -457,6 +459,7 @@ footer {
                   
                     [data-price-toptext] {
                       margin-bottom: #{cut(4)}px;
+                      font-size: #{cut(18)}px;
                     }
                   
                     [data-price-currency] {
@@ -777,6 +780,24 @@ footer {
         .banner-footer {
           margin-top: #{cut(60)}px;
           font-size: #{cut(18)}px;
+        }
+      }
+
+      /****/
+
+      //IMG
+      .load-img-container {
+        max-width: $container-width;
+        padding-top: #{cut(50)}px;
+        padding-bottom: #{cut(15)}px;
+        margin: 0px auto;
+        .img-container {
+          .loading-img {
+            max-height: #{cut(600)}px;
+          }
+        }
+        form {
+          display: none;
         }
       }
     }

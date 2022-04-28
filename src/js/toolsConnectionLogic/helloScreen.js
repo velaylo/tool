@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 import HelloScreenTool from "../toolsComponents/helloScreenTool";
-import makeRenderEl from "../utils/makeRenderEl";
 
 const icons_vehicleType = {
     trucks: `<span title="Грузовики и тягачи"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 25">
@@ -340,7 +339,7 @@ class HelloScreen extends React.Component {
 
   save(el) {
     const contents = [ ...el.querySelectorAll('[data-value-content][data-key]')].reduce((acc, elem) => {
-      acc[elem.dataset['key']] = elem.textContent;
+      acc[elem.dataset['key']] = elem.getAttribute('value');
       return acc;
     }, {});
 

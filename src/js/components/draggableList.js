@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import DraggableListItem from './draggableListItem'
-import removingTextTool from "../components/removingTextTool";
 
 function DraggableList(props) {
     const [data, setData] = useState(props.data);
@@ -35,48 +34,21 @@ function DraggableList(props) {
     }
 
     function initAddParagraphTool(event) {
-        let  mainContainer = document.querySelector('.package-wrapper');
-        let button = mainContainer.querySelector('.add_');
-
-        button.addEventListener('click', onAddParagraph(event))
+        let ulContainer = event.target.closest('ul')
+        let copyArr = [...ulContainer.querySelectorAll('li[draggable="true"]')];
+        let textArr = copyArr.map((item) => item.textContent)
+        
+        textArr.push('Text');
+        setData(textArr)
     }
 
-    function onAddParagraph(event) {
-        let item = document.createElement('li');
-        item.classList.add('package-list');
-        item.setAttribute('contenteditable', 'true');
-        item.setAttribute('draggable', 'true');
-        item.addEventListener('click', initRemoveParagraphTool)
-        let container = event.target.closest('ul');
-  
-        container.appendChild(item)
+    function removeItem(button, item) {
+        let textArr = [...data]
+        let index = item.getAttribute('index')
+        textArr.splice(index, 1)
+        setData(textArr)
 
-        let lastParagraph = getLastParagraph(event);
-        lastParagraph.focus()
-    }
-
-    function getLastParagraph(event) {
-        let  container = event.target.closest('ul');
-        let item = container.querySelectorAll('li');
-
-        return item[item.length - 1];
-    }
-
-    function initRemoveParagraphTool(event) {
-        let  mainContainer = document.querySelector('.packages-pricelist--wrapper');
-        let typeContainer = event.target.closest('ul[data-list-type]');
-        let type = typeContainer.getAttribute("data-list-type") 
-        return removingTextTool({
-            wrapper: mainContainer,
-            parent: `.packages-pricelist--content ul.${type}`,
-            focusedElem: event.trget,
-            getChild: function(_, focused) {
-              return focused;
-            },
-            focusEventCondition: function(target) {
-              return target.parentNode.classList.contains('ul-list');
-            }
-        })();
+        button.classList.remove("is-visible")
     }
 
 
@@ -89,6 +61,7 @@ function DraggableList(props) {
                         <DraggableListItem 
                             key={index}
                             index={index}
+                            removeItem={removeItem}
                             onDragStart={(index) => onDragStart(index)}
                             onDrop={(index) => onDrop(index)}
                         >
@@ -103,15 +76,20 @@ function DraggableList(props) {
                 <DraggableListItem 
                     key={data.length}
                     index={data.length}
-                    draggale={false}
+                    draggable={false}
+                    hiddenClass='hidden-class'
                     onDrop={(index) => onDrop(index)}
                 />
-
                 {/* add button */}
                 <div 
                     className="list-control-button add_ cdx-settings-button" 
-                    onClick={initAddParagraphTool}>
+                    onClick={(event) => initAddParagraphTool(event)}>
                         +
+                </div>
+                <div 
+                    className='list-control-button remove_ cdx-settings-button'
+                    >
+                        ✖
                 </div>
         </ul>
     )

@@ -15,6 +15,7 @@ function initRemoveTool(options) {
         return target.tagName === 'P';
       }
   }
+
   return function() {
     let container = wrapper.querySelector(parent);
     let button;
@@ -30,7 +31,11 @@ function initRemoveTool(options) {
     let onFocus = event => {  
       focusedElem = event.target;
       let child = (getChild(container, focusedElem) || focusedElem);
-      button.classList.add('is-visible');
+      if(child.classList.contains('hidden-class')) {
+        button.classList.remove('is-visible');
+      } else {
+        button.classList.add('is-visible');
+      }
       button.style.bottom = `${container.offsetHeight - child.offsetTop - 30}px`;
       if (watchRemoveButtonXAxis) {
         button.style.right = `${container.offsetWidth - (child.offsetLeft + child.offsetWidth - 30)}px`;
@@ -41,11 +46,11 @@ function initRemoveTool(options) {
       button.classList.remove('is-visible');
     };
     let onDelete = (event) => {
-        event.stopPropagation();
-        event.stopImmediatePropagation();
-        container.removeChild(getChild(container, focusedElem) || focusedElem);
-        focusedElem = null;
-        button.classList.remove('is-visible');
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      container.removeChild(getChild(container, focusedElem) || focusedElem);
+      focusedElem = null;
+      button.classList.remove('is-visible');
     };
 
     container.appendChild(button);
